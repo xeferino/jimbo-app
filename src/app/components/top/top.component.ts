@@ -1,6 +1,6 @@
 /**
  *
- * @fileoverview HomePage
+ * @fileoverview TopComponent
  *
  * @version 1.0
  *
@@ -14,15 +14,14 @@
  import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-top',
+  templateUrl: './top.component.html',
+  styleUrls: ['./top.component.scss'],
 })
-export class HomePage implements OnInit {
+export class TopComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
