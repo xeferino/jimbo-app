@@ -1,9 +1,103 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
+  <br />
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img src="../../assets/img/logo.png" class="app-logo" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <p class="p-ultra"><b>¡Bienvenidos!</b></p>
+        <p class="p-normal">Si te has registrado inicia sesión de lo contrario regístrate y gana</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.email && !errors.email), 'app-input-danger': (touch.email && errors.email) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.email"
+            (ionFocus)="validate('email')"
+            (ionChange)="validate('email')"
+            type="text"
+            class="app-input"
+            placeholder="Correo electrónico"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.email">{{ errors.email }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.password && !errors.password), 'app-input-danger': (touch.password && errors.password) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.password"
+            (ionFocus)="validate('password')"
+            (ionChange)="validate('password')"
+            [type]="show ? 'text' : 'password'"
+            class="app-input"
+            placeholder="Contraseña"
+          ></ion-input>
+          <ion-button
+            [disabled]="load"
+            color="dark"
+            fill="outline"
+            slot="end"
+            (click)="password()"
+            class="app-btn-input"
+            mode="ios"
+          >
+            <ion-icon [name]="show ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.password">{{ errors.password }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-button (click)="routes('login')" mode="ios" class="app-button-jimbo" shape="round" expand="full">Empezar</ion-button>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal">
+          ¿No tienes una cuenta?&nbsp;&nbsp;<b class="app-signup" (click)="routes('signup')">Regístrate</b>
+        </p>
+      </ion-col>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
