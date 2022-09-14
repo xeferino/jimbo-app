@@ -12,6 +12,7 @@
 
  import { ApiService } from 'src/app/services/api/api.service';
  import { HelperService } from 'src/app/services/helper/helper.service';
+ import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,7 @@ export class LoginPage implements OnInit {
 
   show: boolean = false;
 
-  constructor(private api: ApiService, private helper: HelperService) { }
+  constructor(private auth: AuthService, private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
   }
@@ -71,6 +72,35 @@ export class LoginPage implements OnInit {
     if (!this.errors.email && !this.errors.password && this.touch.email && this.touch.password) {
       this.disabled = false;
     }
+  }
+
+  login() {
+    this.load = true;
+    setTimeout(() => {
+      this.load = false;
+      this.auth.token('12345678901234567890123456789012345');
+      this.auth.profile({
+        id: 3,
+        name: "Milan Gotera",
+        email: "milangotera@gmail.com"
+      });
+      this.helper.toast('Ahora puedes disfrutar del servicio', 'Bienvenido');
+      this.routes('home');
+    }, 3 * 1000);
+    /*
+    this.api
+      .post(`login`, this.form)
+      .then((response: any) => {
+        this.load = false;
+      })
+      .catch((danger: any) => {
+        this.load = false;
+        if (danger.error.errors) {
+          this.errors = danger.error.errors;
+        }
+        this.helper.toast(danger.error.message, 'Lo siento');
+      });
+    */
   }
 
   password() {
