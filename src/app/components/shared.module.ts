@@ -16,16 +16,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { TopComponent } from './top/top.component';
 import { HeadComponent } from './head/head.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
   declarations: [
     TopComponent,
     HeadComponent,
+    MenuComponent,
   ],
   exports: [
     TopComponent,
     HeadComponent,
+    MenuComponent,
   ],
 })
 export class SharedModule {}
