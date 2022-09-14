@@ -1,26 +1,211 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/**
+* 
+* @fileoverview global.scss
+*
+* @version 1.0
+*
+* @author Milan Gotera <milangotera@gmail.com>
+*
+*/
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+/* devanagari */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/pxiByp8kv8JHgFVrLGT9Z11lFc-K.woff2') format('woff2');
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/pxiByp8kv8JHgFVrLGT9Z1JlFc-K.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/Gilroy-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/assets/fonts/Manrope-Light.woff2') format('woff2');
+}
+
+.app-header {
+  background: none;
+  --background: none;
+}
+
+.app-header ion-toolbar {
+  padding-top: 10px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+body {
+}
+
+.app-content {
+}
+
+.app-container {
+}
+
+.app-grid {
+}
+
+.app-indeterminate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.app-load {
+  width: 20px;
+  height: 20px;
+}
+
+.app-spinner {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  z-index: 10000;
+}
+
+.p-menu-icon {
+  margin: auto;
+  font-size: 25px !important;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.p-mega {
+  margin: auto;
+  font-size: 30px !important;
+  color: #000000;
+  font-family: 'Gilroy';
+}
+
+.p-super {
+  margin: auto;
+  font-size: 25px !important;
+  color: #000000;
+}
+
+.p-ultra {
+  margin: auto;
+  font-size: 20px !important;
+}
+
+.p-title {
+  margin: auto;
+  font-size: 16px !important;
+  color: #000000;
+}
+
+.p-subtitle {
+  margin: auto;
+  font-size: 14px !important;
+  color: #000000;
+}
+.p-normal {
+  margin: auto;
+  font-size: 12px !important;
+  color: #000000;
+}
+
+.p-info {
+  margin: auto;
+  font-size: 10px !important;
+  color: #000000;
+}
+
+.app-button {
+  font-family: 'Gilroy';
+  --background-activated: transparent !important;
+  --color-activated: #fafafa;
+  color: #51b366;
+  --border-color: #51b366 !important;
+  font-weight: bold;
+  height: 60px;
+  font-size: 18px;
+}
+
+.app-button.normal {
+  height: 50px;
+}
+
+.app-input {
+  font-size: 14px;
+  height: 50px;
+}
+
+.app-input-success {
+  --border-color: #51b366;
+}
+
+.app-input-danger {
+  --border-color: #ff0000;
+}
+
+.app-input-error {
+  color: #ff0000;
+  margin: auto !important;
+  padding-top: 10px;
+  font-size: 10px !important;
+  padding-left: 20px;
+}
+
+.app-btn-input,
+.app-btn-input:hover,
+.app-btn-input:active {
+  --background: none !important;
+  --color: #000000 !important;
+  --border-width: 0px;
+}
+
+.app-button-jimbo {
+  height: 40px;
+  --background: rgb(52,74,152);
+  --background: linear-gradient(90deg, rgba(52,74,152,1) 39%, rgba(245,147,59,1) 100%);
+  font-weight: bold;
+}
