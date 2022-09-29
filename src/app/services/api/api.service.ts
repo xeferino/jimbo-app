@@ -37,40 +37,13 @@ export class ApiService {
     });
   }
 
-  postBase(path, data) {
-    this.setHeaders();
-    var simbol = path.includes('?') ? '&' : '?';
-    return new Promise((resolve, reject) => {
-      this.http
-        .post(
-          `${this.url}${path}${simbol}latitude=${localStorage.getItem('latitude') || 0}&longitude=${
-            localStorage.getItem('longitude') || 0
-          }`,
-          data,
-          { headers: this.headers }
-        )
-        .subscribe(
-          (data) => {
-            resolve(data);
-          },
-          (error) => {
-            if (error.status == 401) {
-              this.auth.logout();
-              this.helper.routes('intro');
-            }
-            reject(error);
-          }
-        );
-    });
-  }
-
   post(path, data) {
     this.setHeaders();
     var simbol = path.includes('?') ? '&' : '?';
     return new Promise((resolve, reject) => {
       this.http
         .post(
-          `${this.token ? this.url + 'user/' : this.url + 'auth/'}${path}${simbol}latitude=${
+          `${this.url}${path}${simbol}latitude=${
             localStorage.getItem('latitude') || 0
           }&longitude=${localStorage.getItem('longitude') || 0}`,
           data,
@@ -97,7 +70,7 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http
         .get(
-          `${this.token ? this.url + 'user/' : this.url + 'auth/'}${path}${simbol}latitude=${
+          `${this.url}${path}${simbol}latitude=${
             localStorage.getItem('latitude') || 0
           }&longitude=${localStorage.getItem('longitude') || 0}`,
           { headers: this.headers }
@@ -123,7 +96,7 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http
         .put(
-          `${this.token ? this.url + 'user/' : this.url + 'auth/'}${path}${simbol}latitude=${
+          `${this.url}${path}${simbol}latitude=${
             localStorage.getItem('latitude') || 0
           }&longitude=${localStorage.getItem('longitude') || 0}`,
           data,
@@ -150,7 +123,7 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http
         .delete(
-          `${this.token ? this.url + 'user/' : this.url + 'auth/'}${path}${simbol}latitude=${
+          `${this.url}${path}${simbol}latitude=${
             localStorage.getItem('latitude') || 0
           }&longitude=${localStorage.getItem('longitude') || 0}`,
           { headers: this.headers }

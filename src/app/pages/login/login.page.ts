@@ -76,18 +76,6 @@ export class LoginPage implements OnInit {
 
   login() {
     this.load = true;
-    setTimeout(() => {
-      this.load = false;
-      this.auth.token('12345678901234567890123456789012345');
-      this.auth.profile({
-        id: 3,
-        name: "Milan Gotera",
-        email: "milangotera@gmail.com"
-      });
-      this.helper.toast('Ahora puedes disfrutar del servicio', 'Bienvenido');
-      this.routes('home');
-    }, 3 * 1000);
-    /*
     this.api
       .post(`login`, this.form)
       .then((response: any) => {
@@ -100,7 +88,6 @@ export class LoginPage implements OnInit {
         }
         this.helper.toast(danger.error.message, 'Lo siento');
       });
-    */
   }
 
   password() {

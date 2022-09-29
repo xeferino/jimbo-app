@@ -10,7 +10,7 @@
 
 export const environment = {
   production: true,
-  server: 'http://127.0.0.1:8000/api/',
-  url: 'http://127.0.0.1:8000/',
+  server: 'https://panel-web.jimbosorteos.com/api/',
+  url: 'https://panel-web.jimbosorteos.com/',
   secureKey: Math.random().toString(32).substring(2, 32),
 };
