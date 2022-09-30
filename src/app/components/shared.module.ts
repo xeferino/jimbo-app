@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TopComponent } from './top/top.component';
 import { HeadComponent } from './head/head.component';
 import { MenuComponent } from './menu/menu.component';
+import { BannersComponent } from './banners/banners.component';
+import { RafflesComponent } from './raffles/raffles.component';
 
 @NgModule({
   imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
@@ -24,11 +26,15 @@ import { MenuComponent } from './menu/menu.component';
     TopComponent,
     HeadComponent,
     MenuComponent,
+    BannersComponent,
+    RafflesComponent
   ],
   exports: [
     TopComponent,
     HeadComponent,
     MenuComponent,
+    BannersComponent,
+    RafflesComponent
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,15 @@
+<ion-grid class="app-grid">
+  <ion-slides [options]="slidesBanner" class="app-slides-banner">
+        
+    <ion-slide *ngFor="let item of banners">
+      <img [src]="item.slider" class="app-banner-img" />
+    </ion-slide>
+
+    <ion-slide *ngIf="load">
+      <div class="app-loader-div">
+        <ion-skeleton-text animated class="app-loader-two"></ion-skeleton-text>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-grid>
