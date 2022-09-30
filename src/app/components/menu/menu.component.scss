@@ -15,6 +15,10 @@
   height: 35px;
 }
 
+.app-menu-button.active {
+  color: #f5933b;
+}
+
 .app-menu-title {
   margin: auto;
   padding: 0px;
@@ -23,4 +27,8 @@
   padding-top: 5px;
   cursor: pointer;
   height: 30px;
+}
+
+.app-menu-title.active {
+  color: #f5933b;
 }
