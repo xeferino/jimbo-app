@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'modal-countries',
     loadChildren: () => import('./modals/modal-countries/modal-countries.module').then( m => m.ModalCountriesPageModule),
   },
+  {
+    path: 'modal-alert',
+    loadChildren: () => import('./modals/modal-alert/modal-alert.module').then( m => m.ModalAlertPageModule)
+  },
 ];
 
 @NgModule({
