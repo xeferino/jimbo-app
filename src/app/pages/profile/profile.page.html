@@ -27,7 +27,20 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="ion-text-center">
-        <img [src]="profile.image" class="app-profile-avatar" />
+        <div class="app-profile-avatar" [ngStyle]="{ 'background-image': 'url('+profile.image+')' }">
+          <div class="app-profile-avatar-button" (click)="setImagen()">
+            <ion-icon name="pencil-outline"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12" style="display: none">
+        <ion-input
+          #file
+          type="file"
+          class="app-input"
+          accept="image/png,image/jpeg"
+          (change)="loadImage($event)"
+        ></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>

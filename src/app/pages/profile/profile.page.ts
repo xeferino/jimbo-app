@@ -165,6 +165,33 @@ export class ProfilePage implements OnInit {
     }
   }
 
+  setImagen() {
+    let element: HTMLElement = document.querySelector('input[type="file"]') as HTMLElement;
+    element.click();
+  }
+
+  loadImage(event) {
+    var file = event.target.files[0],
+      imageType = /image.*/;
+    var valid = file.type.match(imageType);
+
+    if (!valid) {
+      this.helper.toast('Selecciona un formato de imagen válido', 'Lo siento');
+    }
+
+    if (valid) {
+      var reader = new FileReader();
+
+      reader.onload = () => {
+        var url = reader.result;
+        this.form.image    = url;
+        this.profile.image = url;
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
   async openCountries() {
     const modal = await this.modal.create({
       component: ModalCountriesPage,
