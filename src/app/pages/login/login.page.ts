@@ -94,6 +94,10 @@ export class LoginPage implements OnInit {
       });
   }
 
+  forgot() {
+    this.helper.toast('Esta función aún está en desarrollo', 'Lo siento');
+  }
+
   password() {
     this.show = this.show ? false : true;
   }

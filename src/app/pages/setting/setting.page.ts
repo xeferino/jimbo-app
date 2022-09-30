@@ -31,6 +31,10 @@ export class SettingPage implements OnInit {
 
   routes(route: string) { this.helper.routes(route); }
 
+  developing() {
+    this.helper.toast('Esta función aún está en desarrollo', 'Lo siento');
+  }
+
   async logout() {
     const modal = await this.modal.create({
       component: ModalAlertPage,
