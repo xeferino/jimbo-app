@@ -29,6 +29,7 @@ export class WinnersPage implements OnInit {
     //this.loadData();
     setTimeout(() => {
       this.load = false;
+      this.helper.toast('Se están mostrando datos de prueba', 'En costrucción');
     }, 3000);
   }
 
