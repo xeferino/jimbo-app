@@ -1,9 +1,149 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>forgot</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <br />
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img src="../../assets/img/logo.png" class="app-logo" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <p class="p-ultra"><b>¿Olvidaste tu contraeña?</b></p>
+        <p class="p-normal">Completa los datos para recuperar tu contraeña</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="view == 1">
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.email && !errors.email), 'app-input-danger': (touch.email && errors.email) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.email"
+            (ionFocus)="validate('email')"
+            (ionChange)="validate('email')"
+            type="text"
+            class="app-input"
+            placeholder="Correo electrónico"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.email">{{ errors.email }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="view == 2">
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.password && !errors.password), 'app-input-danger': (touch.password && errors.password) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.password"
+            (ionFocus)="validate('password')"
+            (ionChange)="validate('password')"
+            [type]="show ? 'text' : 'password'"
+            class="app-input"
+            placeholder="Contraseña"
+          ></ion-input>
+          <ion-button
+            [disabled]="load"
+            color="dark"
+            fill="outline"
+            slot="end"
+            (click)="password()"
+            class="app-btn-input"
+            mode="ios"
+          >
+            <ion-icon [name]="show ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.password">{{ errors.password }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="view == 2">
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.cpassword && !errors.cpassword), 'app-input-danger': (touch.cpassword && errors.cpassword) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.cpassword"
+            (ionFocus)="validate('cpassword')"
+            (ionChange)="validate('cpassword')"
+            [type]="cshow ? 'text' : 'password'"
+            class="app-input"
+            placeholder="Repite contraseña"
+          ></ion-input>
+          <ion-button
+            [disabled]="load"
+            color="dark"
+            fill="outline"
+            slot="end"
+            (click)="cpassword()"
+            class="app-btn-input"
+            mode="ios"
+          >
+            <ion-icon [name]="cshow ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.cpassword">{{ errors.cpassword }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid *ngIf="view == 1">
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-button [disabled]="load || disabled" (click)="send()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Continuar</ion-button>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="view == 2">
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-button [disabled]="load || disabled" (click)="change()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Cambiar clave</ion-button>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal">
+          ¿Recordaste tu contraeña?&nbsp;&nbsp;<b class="app-signup" (click)="routes('login')">Iniciar sesión</b>
+        </p>
+      </ion-col>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
