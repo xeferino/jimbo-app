@@ -171,8 +171,7 @@ export class ProfilePage implements OnInit {
   }
 
   loadImage(event) {
-    var file = event.target.files[0],
-      imageType = /image.*/;
+    var file = event.target.files[0], imageType = /image.*/;
     var valid = file.type.match(imageType);
 
     if (!valid) {
