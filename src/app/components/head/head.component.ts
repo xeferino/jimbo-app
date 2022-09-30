@@ -20,8 +20,10 @@
 })
 export class HeadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private helper: HelperService) { }
 
   ngOnInit() {}
+
+  routes(route: string) { this.helper.routes(route); }
 
 }
