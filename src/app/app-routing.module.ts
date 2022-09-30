@@ -45,6 +45,11 @@ const routes: Routes = [
     canActivate: [GuardService],
   },
   {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [GuardService],
+  },
+  {
     path: 'roulette',
     loadChildren: () => import('./pages/roulette/roulette.module').then( m => m.RoulettePageModule),
     canActivate: [GuardService],
@@ -61,7 +66,7 @@ const routes: Routes = [
   {
     path: 'modal-alert',
     loadChildren: () => import('./modals/modal-alert/modal-alert.module').then( m => m.ModalAlertPageModule)
-  },
+  }
 ];
 
 @NgModule({

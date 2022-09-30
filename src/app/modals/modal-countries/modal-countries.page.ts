@@ -36,7 +36,7 @@ export class ModalCountriesPage implements OnInit {
       .get(`countries`)
       .then((response: any) => {
         this.load = false;
-        this.countries = response.contries;
+        this.countries = response.countries;
       })
       .catch((danger: any) => {
         this.load = false;

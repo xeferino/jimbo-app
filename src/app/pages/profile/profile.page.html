@@ -1,0 +1,139 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="routes('setting')">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <br />
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img [src]="profile.image" class="app-profile-avatar" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.name && !errors.name), 'app-input-danger': (touch.name && errors.name) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.name"
+            (ionFocus)="validate('name')"
+            (ionChange)="validate('name')"
+            type="text"
+            class="app-input"
+            placeholder="Nombre completo"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.name">{{ errors.name }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.dni && !errors.dni), 'app-input-danger': (touch.dni && errors.dni) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.dni"
+            (ionFocus)="validate('dni')"
+            (ionChange)="validate('dni')"
+            type="text"
+            class="app-input"
+            placeholder="DNI"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.dni">{{ errors.dni }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.phone && !errors.phone), 'app-input-danger': (touch.phone && errors.phone) }"
+        >
+          <img [src]="country.icon" style="width: 30px;" *ngIf="country" slot="start" (click)="openCountries()" />
+
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.phone"
+            (ionFocus)="validate('phone')"
+            (ionChange)="validate('phone')"
+            type="number"
+            class="app-input"
+            placeholder="Teléfono"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.phone">{{ errors.phone }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8">
+        <ion-item
+          [ngClass]="{ 'app-input-success': (touch.email && !errors.email), 'app-input-danger': (touch.email && errors.email) }"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.email"
+            (ionFocus)="validate('email')"
+            (ionChange)="validate('email')"
+            type="text"
+            class="app-input"
+            placeholder="Correo electrónico"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.email">{{ errors.email }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" class="ion-text-center">
+        <ion-button [disabled]="load || disabled" (click)="updateData()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Actualizar mis datos</ion-button>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

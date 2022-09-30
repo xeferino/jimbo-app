@@ -1,0 +1,29 @@
+ion-header { background: #FFFFFF; }
+ion-toolbar { --background: #FFFFFF; }
+
+.app-profile-avatar {
+  margin: auto;
+  width: 100px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+}
+
+.app-profile-logo {
+  width: 150px;
+}
+
+.app-signup {
+  color: #344a98;
+  font-size: 12px !important;
+  font-weight: bold;
+}
+
+.app-forgot {
+  color: #f5933b;
+  cursor: pointer;
+}
+
+ion-footer ion-toolbar {
+  --background: #FFFFFF !important;
+}
