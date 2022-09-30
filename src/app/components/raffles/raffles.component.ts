@@ -29,6 +29,7 @@ export class RafflesComponent implements OnInit {
     //this.loadData();
     setTimeout(() => {
       this.load = false;
+      this.helper.toast('Se están mostrando datos de prueba', 'Sorteos en construcción');
     }, 3000);
   }
 
