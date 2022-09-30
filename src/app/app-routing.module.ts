@@ -40,6 +40,21 @@ const routes: Routes = [
     canActivate: [GuardService],
   },
   {
+    path: 'setting',
+    loadChildren: () => import('./pages/setting/setting.module').then( m => m.SettingPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'roulette',
+    loadChildren: () => import('./pages/roulette/roulette.module').then( m => m.RoulettePageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'winners',
+    loadChildren: () => import('./pages/winners/winners.module').then( m => m.WinnersPageModule),
+    canActivate: [GuardService],
+  },
+  {
     path: 'modal-countries',
     loadChildren: () => import('./modals/modal-countries/modal-countries.module').then( m => m.ModalCountriesPageModule),
   },
