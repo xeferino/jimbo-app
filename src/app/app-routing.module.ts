@@ -39,6 +39,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'modal-countries',
+    loadChildren: () => import('./modals/modal-countries/modal-countries.module').then( m => m.ModalCountriesPageModule),
+  },
 ];
 
 @NgModule({

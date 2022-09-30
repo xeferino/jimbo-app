@@ -1,0 +1,35 @@
+<ion-content>
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <ion-grid class="app-grid" style="padding: 20px;" *ngIf="!load">
+
+    <br />
+    <br />
+
+    <ion-row style="padding-top: 5px;">
+      <ion-col size="6" class="ion-text-center">
+        <p class="p-title">Selecciona tu país</p>
+      </ion-col>
+    </ion-row>
+
+    <br />
+    <br />
+
+    <ion-row style="border-bottom: solid 1px #cccccc;"></ion-row>
+    <ion-row *ngFor="let item of countries" (click)="selectCountry(item)" style="border-bottom: solid 1px #cccccc; padding-top: 5px;">
+      <ion-col size="1" class="ion-text-left"></ion-col>
+      <ion-col size="2" class="ion-text-left">
+        <img [src]="item.icon" style="width: 30px;" />
+      </ion-col>
+      <ion-col size="6" class="ion-text-left">
+        <p class="p-title">{{ item.name }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-right">
+        <p class="p-title">{{ item.code }}</p>
+      </ion-col>
+      <ion-col size="1" class="ion-text-right"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

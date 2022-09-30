@@ -74,12 +74,16 @@ export class LoginPage implements OnInit {
     }
   }
 
-  login() {
+  continue() {
     this.load = true;
     this.api
       .post(`login`, this.form)
       .then((response: any) => {
         this.load = false;
+        this.helper.toast(response.message, 'Bien hecho');
+        this.auth.profile(response.profile);
+        this.auth.token(response.token);
+        this.routes('home');
       })
       .catch((danger: any) => {
         this.load = false;
