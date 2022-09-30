@@ -104,7 +104,7 @@ export class ForgotPage implements OnInit {
 
   send () {
     this.load = true;
-    setTimeout(() => { this.load = false; this.view = 2; }, 3000);
+    setTimeout(() => { this.load = false; this.view = 2; }, 2000);
   }
 
   change() {

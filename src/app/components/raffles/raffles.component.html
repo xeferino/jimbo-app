@@ -8,25 +8,22 @@
           
           <ion-row>
             <ion-col size="12">
-              <img src="https://via.placeholder.com/400x200" class="img-raffles" alt="">
+              <img [src]="item.logo" class="img-raffles" alt="">
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="6">
-              <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Quedan 25 días</ion-button>
+              <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Quedan {{ item.remaining_days }} días</ion-button>
             </ion-col>
             <ion-col size="6">
-              <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;">Boleto $1</ion-button>
+              <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;">Boleto {{ item.cash_to_draw }}</ion-button>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col size="12" class="ion-text-center">
-              <p class="p-ultra" style="color: #92949c;">PRIMER PREMIO</p>
-            </ion-col>
-            <ion-col size="12" class="ion-text-center">
-              <p class="p-ultra" style="color: #f5933b;"><b>$1000</b></p>
+              <p class="p-ultra" style="color: #92949c;">{{ item.title }}</p>
             </ion-col>
           </ion-row>
 
@@ -66,9 +63,6 @@
           <ion-row>
             <ion-col size="12" class="ion-text-center">
               <ion-skeleton-text animated style="width: 120px; height: 20px; margin: auto;"></ion-skeleton-text>
-            </ion-col>
-            <ion-col size="12" class="ion-text-center">
-              <ion-skeleton-text animated style="width: 80px; height: 20px; margin: auto;"></ion-skeleton-text>
             </ion-col>
           </ion-row>
 

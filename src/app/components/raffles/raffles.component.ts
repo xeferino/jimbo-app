@@ -19,18 +19,14 @@ import { HelperService } from 'src/app/services/helper/helper.service';
 })
 export class RafflesComponent implements OnInit {
 
-  raffles: any = [0, 1, 2, 3, 4, 5, 6, 7];
+  raffles: any = [];
 
   load: boolean = true;
 
   constructor(private api: ApiService, private helper: HelperService) {}
 
   ngOnInit() {
-    //this.loadData();
-    setTimeout(() => {
-      this.load = false;
-      this.helper.toast('Se están mostrando datos de prueba', 'Sorteos en construcción');
-    }, 3000);
+    this.loadData();
   }
 
   loadData() {
