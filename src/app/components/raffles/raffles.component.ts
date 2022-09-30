@@ -1,4 +1,16 @@
+/**
+ *
+ * @fileoverview RafflesComponent
+ *
+ * @version 1.0
+ *
+ * @author Milan Gotera <milangotera@gmail.com>
+ *
+ */
+
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service';
+import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
   selector: 'app-raffles',
@@ -7,8 +19,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RafflesComponent implements OnInit {
 
-  constructor() { }
+  raffles: any = [0, 1, 2, 3, 4, 5, 6, 7];
 
-  ngOnInit() {}
+  load: boolean = true;
 
+  constructor(private api: ApiService, private helper: HelperService) {}
+
+  ngOnInit() {
+    //this.loadData();
+    setTimeout(() => {
+      this.load = false;
+    }, 3000);
+  }
+
+  loadData() {
+    this.load = true;
+    this.api
+      .get(`raffles`)
+      .then((response: any) => {
+        this.load = false;
+        this.raffles = response.raffles;
+      })
+      .catch((danger: any) => {
+        this.load = false;
+      });
+  }
 }
