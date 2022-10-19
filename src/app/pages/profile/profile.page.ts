@@ -84,6 +84,7 @@ export class ProfilePage implements OnInit {
 
   updateData() {
     this.load = true;
+    this.form.phone = this.form.phone.toString();
     this.api
       .post(`user/profile/${this.profile.id}`, this.form)
       .then((response: any) => {

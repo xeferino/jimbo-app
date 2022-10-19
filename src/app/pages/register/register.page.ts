@@ -144,6 +144,7 @@ export class RegisterPage implements OnInit {
   continue() {
     this.load = true;
     this.form.cpassword = this.form.password;
+    this.form.phone = this.form.phone.toString();
     this.api
       .post(`signup`, this.form)
       .then((response: any) => {

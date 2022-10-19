@@ -22,6 +22,8 @@ import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
 })
 export class SettingPage implements OnInit {
 
+  profile: any = JSON.parse(localStorage.getItem('profile'));
+  
   load: boolean = false;
 
   constructor(private helper: HelperService, private auth: AuthService, private api: ApiService, private modal: ModalController) { }
