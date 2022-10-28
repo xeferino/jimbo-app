@@ -65,7 +65,7 @@ export class RafflesSummaryPage implements OnInit {
       .then((response: any) => {
         this.load = false;
         this.sale(response.details);
-        localStorage.removeItem('details');
+        localStorage.removeItem('sale');
         localStorage.removeItem('raffle');
         localStorage.removeItem('ticket');
         localStorage.removeItem('method');
