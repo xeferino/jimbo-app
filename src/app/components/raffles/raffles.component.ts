@@ -19,6 +19,8 @@ import { HelperService } from 'src/app/services/helper/helper.service';
 })
 export class RafflesComponent implements OnInit {
 
+  profile: any = JSON.parse(localStorage.getItem('profile'));
+  
   raffles: any = [];
 
   load: boolean = true;
@@ -40,5 +42,28 @@ export class RafflesComponent implements OnInit {
       .catch((danger: any) => {
         this.load = false;
       });
+  }
+
+  favoriteRaffles(item){
+    this.load = true;
+    this.api
+      .post(`raflles/favorites`, { user_id: this.profile.id, raffle_id: item.id })
+      .then((response: any) => {
+        this.load = false;
+        this.helper.toast(response.message, 'Bien hecho');
+        //this.raffles = response.raffles;
+      })
+      .catch((danger: any) => {
+        this.load = false;
+      });
+  }
+
+  openRaffles(item){
+    localStorage.setItem('raffle', JSON.stringify(item));
+    this.routes(`raffles/${item.id}`);
+  }
+
+  routes(route){
+    this.helper.routes(route);
   }
 }

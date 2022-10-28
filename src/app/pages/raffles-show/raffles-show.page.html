@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="routes('home')">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="app-grid" style="padding-left: 10px; padding-right: 10px;">
+    
+    <ion-row *ngIf="!load">
+
+      <ion-col size="12" *ngIf="raffles">
+        <ion-card class="app-card-raffles">
+          <ion-card-content>
+            
+            
+
+            <ion-row>
+              <ion-col size="6">
+                <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Quedan {{ raffles.remaining_days }} días</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;">Premio {{ raffles.cash_to_draw }}</ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12">
+                <img [src]="raffles.logo" class="img-raffles" alt="">
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <p class="p-ultra" style="color: #92949c;">PRIMER PREMIO</p>
+              </ion-col>
+              <ion-col size="12" class="ion-text-center">
+                <p class="p-ultra" style="color: #f5933b; font-weight: bold;">{{ raffles.cash_to_draw }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-left">
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Avance del sorteo</p>
+              </ion-col>
+              <ion-col size="12" class="ion-text-center">
+                <ion-progress-bar [value]=" raffles.progress / 100" color="warning" class="app-progress-bar"></ion-progress-bar>
+                <p class="p-info" style="
+                  color: #000000;
+                  position: absolute;
+                  width: 100%;
+                  top: 8px;
+                  font-weight: bold;
+                "
+                >{{ raffles.progress }}%</p>
+              </ion-col>
+            </ion-row>
+            
+            <br />
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-left">
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Descripción del premio</p>
+              </ion-col>
+              <ion-col size="12" class="ion-text-justify">
+                <p class="p-info" style="color: #000000;">{{ raffles.description }}</p>
+              </ion-col>
+            </ion-row>
+
+            <br />
+
+            <ion-row style="height: 46px;">
+              <ion-col size="6" class="ion-text-left">
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Fecha de inicio del sorte</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal" style="color: #f5933b;">{{ raffles.date_start }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="height: 46px;">
+              <ion-col size="6" class="ion-text-left">
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Fecha límite para ingresar</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal" style="color: #f5933b;">{{ raffles.date_end }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="height: 46px;">
+              <ion-col size="6" class="ion-text-left">
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Fecha del sorteo</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal" style="color: #f5933b;">{{ raffles.date_release }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="">
+              <ion-col size="12" style="border-top: solid 1px #eeeeee;"></ion-col>
+            </ion-row>
+
+            <ion-row style="">
+              <ion-col size="6" class="ion-text-left">
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Selecciona un boleto</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="">
+              <ion-col size="12" class="ion-text-center" *ngFor="let tickets of raffles.tickets">
+                <ion-button
+                  [color]="tickets.promotions.id == form.promotion_id ? 'warning' : 'medium'"
+                  [fill]="tickets.promotions.id == form.promotion_id ? 'solid' : 'outline'"
+                  shape="round"
+                  expand="full"
+                  style="font-size: 12px; height: 35px;"
+                  (click)="setData(tickets.id, tickets.promotions.id)"
+                  [disabled]="!tickets.promotions.available"
+                >
+                  {{ tickets.promotions.price }} ({{ tickets.promotions.quantity }} BOLETOS)
+                </ion-button>
+              </ion-col>
+            </ion-row>
+
+            <br />
+
+            <ion-row style="">
+              <ion-col size="12" class="ion-text-center">
+                <p class="p-info" style="color: #000000;">Al comprar acepta nuestros <span style="color: #f5933b;">términos y condiciones</span></p>
+              </ion-col>
+            </ion-row>
+
+            <br />
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData()">Comprar</ion-button>
+              </ion-col>
+              <ion-col size="12" class="ion-text-center" *ngIf="profile.role == 'seller'">
+                <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="saleData()">Vender a otra persona</ion-button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row *ngIf="load">
+      
+      <ion-col size="12">
+        <ion-card class="app-card-raffles">
+          <ion-card-content>
+            
+            <ion-row>
+              <ion-col size="12">
+                <ion-skeleton-text animated style="width: 100%; height: 150px;"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="6">
+                <ion-skeleton-text animated style="width: 100%; height: 30px;"></ion-skeleton-text>
+              </ion-col>
+              <ion-col size="6">
+                <ion-skeleton-text animated style="width: 100%; height: 30px;"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <ion-skeleton-text animated style="width: 120px; height: 20px; margin: auto;"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <ion-skeleton-text animated style="width: 100%; height: 40px; -webkit-border-radius: 30px; -moz-border-radius: 30px; border-radius: 30px;"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+  

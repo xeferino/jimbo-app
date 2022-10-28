@@ -28,6 +28,7 @@ export class ModalAlertPage implements OnInit {
   constructor(private helper: HelperService, private modal: ModalController) {}
 
   ngOnInit() {
+    
   }
 
   back(confirm: boolean = false) {

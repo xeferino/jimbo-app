@@ -11,28 +11,6 @@
   <ion-grid class="app-grid">
 
     <ion-row>
-
-      <ion-col size="6" class="ion-text-center">
-        <ion-card class="app-card-setting">
-          <ion-card-content>
-            <p class="p-ultra" style="padding-top: 0px; font-weight: bold;">{{ profile.jib }}</p>
-            <p class="p-info" style="padding-top: 0px;">JIB</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6" class="ion-text-center">
-        <ion-card class="app-card-setting">
-          <ion-card-content>
-            <p class="p-ultra" style="padding-top: 0px; font-weight: bold;">${{ profile.usd }}</p>
-            <p class="p-info" style="padding-top: 0px;">USD</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-    </ion-row>
-
-    <ion-row>
       <ion-col size="12">
         <ion-card class="app-card-setting">
           <ion-card-content>
@@ -43,7 +21,7 @@
               padding-bottom: 5px;
               cursor: pointer;
             "
-            (click)="routes('profile')"
+            (click)="routes('profile/account')"
             >
               <ion-col size="1">
                 <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">

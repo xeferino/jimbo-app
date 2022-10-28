@@ -1,0 +1,29 @@
+.app-head {
+    width: 100%;
+    height: auto;
+    //background: #FFFFFF;
+}
+
+.app-head-button {
+    margin: auto;
+    padding: 0px;
+    color: #344a98;
+    font-size: 25px !important;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.app-card {
+    margin: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border: solid 1px #d7d8da;
+    background: #f4f4f4;
+    padding: 0px;
+}
+
+.app-card ion-card-content {
+    padding: 5px;
+}
+  

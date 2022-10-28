@@ -24,7 +24,8 @@ import { ModalCountriesPage } from '../../modals/modal-countries/modal-countries
 export class RegisterPage implements OnInit {
 
   form: any = {
-    name: null,
+    names: null,
+    surnames: null,
     dni: null,
     phone: null,
     email: null,
@@ -34,7 +35,8 @@ export class RegisterPage implements OnInit {
   };
 
   errors: any = {
-    name: null,
+    names: null,
+    surnames: null,
     dni: null,
     phone: null,
     email: null,
@@ -43,7 +45,8 @@ export class RegisterPage implements OnInit {
   };
 
   touch: any = {
-    name: false,
+    names: false,
+    surnames: false,
     dni: false,
     phone: false,
     email: false,
@@ -78,12 +81,20 @@ export class RegisterPage implements OnInit {
       } else {
         this.errors.email = 'Ingresa un correo válido';
       }
-    } else if (input == 'name') {
-      this.touch.name = true;
-      if (this.form.name == '' || this.form.name == null) {
-        this.errors.name = 'Ingresa un nombre válido';
+    } else if (input == 'names') {
+      this.touch.names = true;
+      if (this.form.names == '' || this.form.names == null) {
+        this.errors.names = 'Ingresa un nombre válido';
       } else {
-        this.errors.name = null;
+        this.errors.names = null;
+      }
+    }
+    else if (input == 'surnames') {
+      this.touch.surnames = true;
+      if (this.form.surnames == '' || this.form.surnames == null) {
+        this.errors.surnames = 'Ingresa un apellido válido';
+      } else {
+        this.errors.surnames = null;
       }
     }  else if (input == 'password') {
       this.touch.password = true;
@@ -125,13 +136,15 @@ export class RegisterPage implements OnInit {
     
 
     if (
-      !this.errors.name && 
+      !this.errors.names &&
+      !this.errors.surnames && 
       !this.errors.dni && 
       !this.errors.phone && 
       !this.errors.email && 
       !this.errors.password && 
 
-      this.touch.name &&
+      this.touch.names &&
+      this.touch.surnames &&
       this.touch.dni &&
       this.touch.phone &&
       this.touch.email && 

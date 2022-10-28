@@ -1,0 +1,67 @@
+<ion-content>
+  <div class="app-modal-alert">
+    <ion-grid class="app-grid">
+
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <p class="p-ultra">Verifica tu correo</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <p class="p-normal">{{ message }}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-input
+              [(ngModel)]="code"
+              type="text"
+              class="app-input"
+              placeholder="Ingresa tu código"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="2" class="ion-text-center"></ion-col>
+
+        <ion-col size="8" class="ion-text-center">
+          
+          <ion-button
+            class="app-button normal"
+            style="font-family: 'Manrope'; font-weight: normal; height: 40px"
+            expand="full"
+            shape="round"
+            color="warning"
+            mode="ios"
+            (click)="back (true)"
+          >
+            Verificar
+          </ion-button>
+
+          <ion-button
+            class="app-button normal"
+            style="font-family: 'Manrope'; font-weight: normal; height: 40px; --border-width: 0px;"
+            expand="full"
+            fill="outline"
+            shape="round"
+            color="warning"
+            mode="ios"
+            (click)="back (false)"
+          >
+            Editar datos
+          </ion-button>
+
+        </ion-col>
+
+        <ion-col size="2" class="ion-text-center"></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+

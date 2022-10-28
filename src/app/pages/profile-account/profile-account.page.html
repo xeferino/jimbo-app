@@ -1,0 +1,139 @@
+<ion-content class="">
+
+  <div class="app-head">
+    <ion-grid style="padding: 20px;">
+      
+      <ion-row>
+        <ion-col size="12" class="" style="padding: 0px;">
+          <ion-row>
+            <ion-col size="10" class="ion-text-left" style="padding: 0px;">
+              <p class="app-title">
+                {{ profile.names }} {{ profile.surnames }}
+                <br />
+                {{ profile.email }}
+              </p>
+            </ion-col>
+            <ion-col size="2" class="ion-text-center" style="padding: 0px;">
+              <p class="app-head-button" (click)="routes('setting')">
+                <ion-icon name="options-outline"></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="profile.role == 'seller'">
+            <ion-col size="8" class="ion-text-left" style="padding: 0px;">
+              <p class="p-normal" style="font-weight: bold;">
+                Vendedor clásico
+              </p>
+            </ion-col>
+            <ion-col size="4" class="ion-text-right" style="padding: 0px;">
+              <ion-badge color="success" style="
+              font-size: 10px;
+              padding: 5px;
+              padding-left: 15px;
+              padding-right: 15px;"
+              >Activo</ion-badge>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="3" class="ion-text-left" style="padding: 0px;"></ion-col>
+      </ion-row>
+
+      <ion-row style="padding-top: 10px; padding-bottom: 15px;">
+
+        <ion-col size="12" class="ion-text-left">
+          <p class="p-normal" style="padding-top: 0px; font-weight: bold;">Balance</p>
+        </ion-col>
+
+        <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold;">{{ profile.jib }}</p>
+              <p class="p-info" style="padding-top: 0px;">MI JIB</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  
+        <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold;">${{ profile.usd }}</p>
+              <p class="p-info" style="padding-top: 0px;">EFECTIVO</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="3" class="ion-text-center" *ngIf="profile.role == 'seller'">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold;">$0</p>
+              <p class="p-info" style="padding-top: 0px;">VENTAS</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  
+        <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold;">0</p>
+              <p class="p-info" style="padding-top: 0px;">INVITADOS</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col size="6" class="ion-text-center">
+          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
+            <ion-icon name="create-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Editar perfil
+          </ion-button>
+        </ion-col>
+  
+        <ion-col size="6" class="ion-text-center">
+          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
+            <ion-icon name="person-add-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Añadir invitado
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="12" class="ion-text-center" *ngIf="profile.role == 'seller'">
+          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
+            <ion-icon name="shirt-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Ranking generar de vendedores
+          </ion-button>
+        </ion-col>
+  
+      </ion-row>
+
+      <br />
+
+      <ion-row *ngIf="profile.role == 'seller'">
+
+        <ion-col size="12">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <canvas #mySalesChart></canvas>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  
+        <ion-col size="12">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <canvas #yourSalesChart></canvas>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+  
+      </ion-row>
+
+      <br />
+      <br />
+      <br />
+
+    </ion-grid>
+  </div>
+
+</ion-content>

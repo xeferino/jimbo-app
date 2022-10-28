@@ -103,17 +103,35 @@ export class ForgotPage implements OnInit {
   }
 
   send () {
-    this.load = true;
-    setTimeout(() => { this.load = false; this.view = 2; }, 2000);
+    if(this.view == 1) { this.consult(); }
+    if(this.view == 2) { this.change(); }
   }
 
-  change() {
+  consult () {
     this.load = true;
     this.api
       .post(`forgot`, this.form)
       .then((response: any) => {
         this.load = false;
-        this.helper.toast('Se ha cambiado la contraseña correctamente', 'Bien hecho');
+        this.view = 2;
+        this.helper.toast(response.message, 'Bien hecho');
+      })
+      .catch((danger: any) => {
+        this.load = false;
+        if (danger.error.errors) {
+          this.errors = danger.error.errors;
+        }
+        this.helper.toast(danger.error.message, 'Lo siento');
+      });
+  }
+
+  change() {
+    this.load = true;
+    this.api
+      .post(`recovery-password`, this.form)
+      .then((response: any) => {
+        this.load = false;
+        this.helper.toast(response.message, 'Bien hecho');
         this.routes('login');
       })
       .catch((danger: any) => {

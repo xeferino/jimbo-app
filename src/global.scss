@@ -57,6 +57,11 @@
   --background: none;
 }
 
+.bg {
+  background: #f4f4f4;
+  --background: #f4f4f4;
+}
+
 .app-header ion-toolbar {
   padding-top: 10px !important;
   padding-left: 10px;

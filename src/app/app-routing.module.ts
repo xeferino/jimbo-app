@@ -45,7 +45,12 @@ const routes: Routes = [
     canActivate: [GuardService],
   },
   {
-    path: 'profile',
+    path: 'profile/account',
+    loadChildren: () => import('./pages/profile-account/profile-account.module').then( m => m.ProfileAccountPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'profile/edit',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
     canActivate: [GuardService],
   },
@@ -71,6 +76,15 @@ const routes: Routes = [
   {
     path: 'modal-alert',
     loadChildren: () => import('./modals/modal-alert/modal-alert.module').then( m => m.ModalAlertPageModule)
+  },
+  {
+    path: 'modal-verified',
+    loadChildren: () => import('./modals/modal-verified/modal-verified.module').then( m => m.ModalVerifiedPageModule)
+  },
+  {
+    path: 'raffles/:id',
+    loadChildren: () => import('./pages/raffles-show/raffles-show.module').then( m => m.RafflesShowPageModule),
+    canActivate: [GuardService],
   },
 ];
 
