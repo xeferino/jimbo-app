@@ -82,10 +82,31 @@ const routes: Routes = [
     loadChildren: () => import('./modals/modal-verified/modal-verified.module').then( m => m.ModalVerifiedPageModule)
   },
   {
+    path: 'modal-sale',
+    loadChildren: () => import('./modals/modal-sale/modal-sale.module').then( m => m.ModalSalePageModule),
+    canActivate: [GuardService],
+  },
+  {
     path: 'raffles/:id',
     loadChildren: () => import('./pages/raffles-show/raffles-show.module').then( m => m.RafflesShowPageModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'raffles/:id/summary',
+    loadChildren: () => import('./pages/raffles-summary/raffles-summary.module').then( m => m.RafflesSummaryPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'methods',
+    loadChildren: () => import('./pages/methods/methods.module').then( m => m.MethodsPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'methods/add',
+    loadChildren: () => import('./pages/methods-add/methods-add.module').then( m => m.MethodsAddPageModule),
+    canActivate: [GuardService],
+  },
+  
 ];
 
 @NgModule({

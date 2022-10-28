@@ -47,6 +47,9 @@ export class RafflesShowPage implements OnInit {
   buyData() {
     if(!this.profile.email_verified_at) {
       this.verified();
+    } else {
+      localStorage.setItem('ticket', JSON.stringify(this.form));
+      this.routes(`raffles/${this.raffles.id}/summary`);
     }
   }
 
@@ -61,6 +64,7 @@ export class RafflesShowPage implements OnInit {
       .then((response: any) => {
         this.load = false;
         this.raffles = response.raflle;
+        localStorage.setItem('raffle', JSON.stringify(this.raffles));
       })
       .catch((danger: any) => {
         this.load = false;

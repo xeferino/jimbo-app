@@ -1,0 +1,172 @@
+<ion-progress-bar *ngIf="load" class="app-indeterminate" color="warning" type="indeterminate"></ion-progress-bar>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="routes('methods')">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+  
+  <ion-grid class="app-grid" style="padding: 20px;">
+    <ion-row>
+      <ion-col size="12">
+        <div class="cards">
+          <ion-row>
+            <ion-col size="12" class="ion-text-right">
+              <img src="assets/icon/logo-visa-blanco.png" style="width: 50px;"/>
+            </ion-col>
+            <ion-col size="12" class="ion-text-left">
+              <img src="assets/icon/card-chip.png" style="width: 30px;"/>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="3" class="ion-text-left">
+              <p class="p-title" style="font-weight: bold;">0000</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <p class="p-title" style="font-weight: bold;">0000</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <p class="p-title" style="font-weight: bold;">0000</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-right">
+              <p class="p-title" style="font-weight: bold;">0000</p>
+            </ion-col>
+            <ion-col size="12" class="ion-text-right">
+              <p class="p-info">15/22</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="ion-text-left">
+              <p class="p-info" style="font-weight: bold;">Nombre Apellido</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+    
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Número de tarjeta</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="card-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="10">
+              <ion-input class="app-form-input"></ion-input>
+            </ion-col>
+            <ion-col size="1" class="ion-text-right">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="camera-outline"></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      
+      <ion-col size="6">
+        <p class="p-normal" style="font-weight: bold;">Vencimiento</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="10">
+              <ion-input class="app-form-input"></ion-input>
+            </ion-col>
+            <ion-col size="2" class="ion-text-right">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="calendar-outline"></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <p class="p-normal" style="font-weight: bold;">CVV</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="10">
+              <ion-input class="app-form-input"></ion-input>
+            </ion-col>
+            <ion-col size="2" class="ion-text-right">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="barcode-outline"></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Nombre del titular</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="person-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input class="app-form-input"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-info" style="font-weight: bold; padding-top: 10px;">
+          <ion-icon name="alert-circle-outline" style="color: #f5933b; position: relative; top: 2px; font-size: 14px;"></ion-icon>&nbsp;
+          Cobraremos un monto aleatorio para validar tu tarjeta. Este será devuelto de inmediato.
+        </p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <br />
+  <br />
+  <br />
+
+</ion-content>
+
+<ion-footer class="">
+  <ion-toolbar class="">
+    <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-button [disabled]="load" (click)="sendData()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Agregar tarjeta</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -85,6 +85,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 10000;
 }
 
 .app-load {
@@ -206,4 +207,12 @@ body {
 
 .modal-alert {
   --background: none;
+}
+
+.modal-sale {
+  --background: rgb(52,74,152);
+}
+
+.disabled {
+  opacity: 0.3;
 }
