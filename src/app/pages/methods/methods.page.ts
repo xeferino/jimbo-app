@@ -68,7 +68,7 @@ export class MethodsPage implements OnInit {
   loadData() {
     this.load = true;
     this.api
-      .get(`payment/methods/all`)
+      .get(`payment/methods/all?user_id=${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
         this.methods = response.methods;

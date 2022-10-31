@@ -75,13 +75,16 @@
                 <ion-icon name="card-outline"></ion-icon>
               </p>
             </ion-col>
-            <ion-col size="10">
-              <ion-input class="app-form-input"></ion-input>
-            </ion-col>
-            <ion-col size="1" class="ion-text-right">
-              <p class="p-title" style="padding-top: 5px; color: #666;">
-                <ion-icon name="camera-outline"></ion-icon>
-              </p>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.number"
+                (ionFocus)="validate('number')"
+                (ionChange)="validate('number')"
+                type="number"
+                class="app-form-input"
+                placeholder="Número de tarjeta"
+              ></ion-input>
             </ion-col>
           </ion-row>
         </div>
@@ -94,13 +97,16 @@
         <p class="p-normal" style="font-weight: bold;">Vencimiento</p>
         <div class="app-input">
           <ion-row>
-            <ion-col size="10">
-              <ion-input class="app-form-input"></ion-input>
-            </ion-col>
-            <ion-col size="2" class="ion-text-right">
-              <p class="p-title" style="padding-top: 5px; color: #666;">
-                <ion-icon name="calendar-outline"></ion-icon>
-              </p>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.date_expire"
+                (ionFocus)="validate('date_expire')"
+                (ionChange)="validate('date_expire')"
+                type="month"
+                class="app-form-input"
+                placeholder="Fecha"
+              ></ion-input>
             </ion-col>
           </ion-row>
         </div>
@@ -110,13 +116,16 @@
         <p class="p-normal" style="font-weight: bold;">CVV</p>
         <div class="app-input">
           <ion-row>
-            <ion-col size="10">
-              <ion-input class="app-form-input"></ion-input>
-            </ion-col>
-            <ion-col size="2" class="ion-text-right">
-              <p class="p-title" style="padding-top: 5px; color: #666;">
-                <ion-icon name="barcode-outline"></ion-icon>
-              </p>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.code"
+                (ionFocus)="validate('code')"
+                (ionChange)="validate('code')"
+                type="cvv"
+                class="app-form-input"
+                placeholder="CVV"
+              ></ion-input>
             </ion-col>
           </ion-row>
         </div>
@@ -124,7 +133,7 @@
 
     </ion-row>
 
-    <ion-row>
+    <ion-row style="display: none;">
       <ion-col size="12">
         <p class="p-normal" style="font-weight: bold;">Nombre del titular</p>
         <div class="app-input">

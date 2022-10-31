@@ -35,10 +35,28 @@ export class ProfileAccountPage implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.yourSalesChartCreate ();
-      this.mySalesChartCreate ();
-    }, 1000);
+    this.loadData();
+    if(this.profile.role == 'seller') {
+      setTimeout(() => {
+        this.yourSalesChartCreate ();
+        this.mySalesChartCreate ();
+      }, 1000);
+    }
+  }
+
+  loadData() {
+    //this.load = true;
+    this.api
+      .get(`user/profile/${this.profile.id}`)
+      .then((response: any) => {
+        this.load = false;
+        this.profile = response.profile;
+        localStorage.setItem('profile', JSON.stringify(this.profile));
+      })
+      .catch((danger: any) => {
+        this.load = false;
+        this.helper.toast(danger.error.message, 'Lo siento');
+      });
   }
 
   yourSalesChartCreate () {
