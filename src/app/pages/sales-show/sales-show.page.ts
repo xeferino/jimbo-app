@@ -1,6 +1,6 @@
 /**
  *
- * @fileoverview MethodsPage
+ * @fileoverview SalesShowPage
  *
  * @version 1.0
  *
@@ -13,11 +13,11 @@
  import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
-  selector: 'app-methods',
-  templateUrl: './methods.page.html',
-  styleUrls: ['./methods.page.scss'],
+  selector: 'app-sales-show',
+  templateUrl: './sales-show.page.html',
+  styleUrls: ['./sales-show.page.scss'],
 })
-export class MethodsPage implements OnInit {
+export class SalesShowPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
@@ -38,41 +38,22 @@ export class MethodsPage implements OnInit {
 
   cards: any = [];
 
+  sale: any = JSON.parse(localStorage.getItem('sale'));
+
   constructor(private api: ApiService, private helper: HelperService) {}
 
   ngOnInit() {
     this.loadData();
   }
 
-  setData(tickets, promotions) {
-    
-  }
-
-  buyData() {
-    
-  }
-
-  saleData() {
-
-  }
-
-  setMethod(item) {
-    if(item.valid) {
-      localStorage.setItem('method', JSON.stringify(item));
-      this.back ();
-    } else {
-      this.helper.toast('Este método de pago no está disponible', 'Lo siento');
-    }
-  }
-
   loadData() {
     this.load = true;
     this.api
-      .get(`payment/methods/all?user_id=${this.profile.id}`)
+      .get(`shoppings/tickets/${this.sale.id}`)
       .then((response: any) => {
         this.load = false;
-        this.methods = response.methods;
-        this.cards   = response.cards;
+        //this.methods = response.methods;
+        //this.cards   = response.cards;
       })
       .catch((danger: any) => {
         this.load = false;
@@ -80,12 +61,7 @@ export class MethodsPage implements OnInit {
   }
 
   back () {
-    if(this.ticket && this.raffles) {
-      this.routes(`raffles/${this.raffles.id}/summary`);
-    }
-    else {
-      this.routes(`profile/account`);
-    }
+    this.routes(`profile/account`);
   }
 
   routes(route){

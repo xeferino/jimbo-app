@@ -1,0 +1,128 @@
+<ion-progress-bar *ngIf="load" class="app-indeterminate" color="warning" type="indeterminate"></ion-progress-bar>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="routes('beads')">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+    
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Nombre del banco</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="storefront-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.bank"
+                (ionFocus)="validate('bank')"
+                (ionChange)="validate('bank')"
+                type="text"
+                class="app-form-input"
+                placeholder="BCP"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.bank">{{ errors.bank }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Número de cuenta</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="barcode-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.number"
+                (ionFocus)="validate('number')"
+                (ionChange)="validate('number')"
+                type="number"
+                class="app-form-input"
+                placeholder="Número de cuenta"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.number">{{ errors.number }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Tipo de cuenta</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="list-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.type"
+                (ionFocus)="validate('type')"
+                (ionChange)="validate('type')"
+                type="text"
+                class="app-form-input"
+                placeholder="Ahorros"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.type">{{ errors.type }}</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <br />
+  <br />
+  <br />
+
+</ion-content>
+
+<ion-footer class="">
+  <ion-toolbar class="">
+    <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-button [disabled]="load" (click)="sendData()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Agregar cuenta</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

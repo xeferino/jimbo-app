@@ -106,6 +106,46 @@ const routes: Routes = [
     loadChildren: () => import('./pages/methods-add/methods-add.module').then( m => m.MethodsAddPageModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'beads',
+    loadChildren: () => import('./pages/beads/beads.module').then( m => m.BeadsPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'beads/add',
+    loadChildren: () => import('./pages/beads-add/beads-add.module').then( m => m.BeadsAddPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'sales',
+    loadChildren: () => import('./pages/sales/sales.module').then( m => m.SalesPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'beads/:id/show',
+    loadChildren: () => import('./pages/beads-show/beads-show.module').then( m => m.BeadsShowPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'sales/:id/show',
+    loadChildren: () => import('./pages/sales-show/sales-show.module').then( m => m.SalesShowPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'balances',
+    loadChildren: () => import('./pages/balances/balances.module').then( m => m.BalancesPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'histories',
+    loadChildren: () => import('./pages/histories/histories.module').then( m => m.HistoriesPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'recharge',
+    loadChildren: () => import('./pages/recharge/recharge.module').then( m => m.RechargePageModule),
+    canActivate: [GuardService],
+  },
   
 ];
 

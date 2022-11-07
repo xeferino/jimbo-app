@@ -8,10 +8,13 @@
  *
  */
 
- import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
- import { HelperService } from 'src/app/services/helper/helper.service';
- import { ApiService } from 'src/app/services/api/api.service';
- import { Chart, registerables } from 'chart.js';
+import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { HelperService } from 'src/app/services/helper/helper.service';
+import { ApiService } from 'src/app/services/api/api.service';
+import { Chart, registerables } from 'chart.js';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ModalController } from '@ionic/angular';
+import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
 
 @Component({
   selector: 'app-profile-account',
@@ -30,7 +33,7 @@ export class ProfileAccountPage implements OnInit {
   
   load: boolean = false;
 
-  constructor(private helper: HelperService, private api: ApiService) {
+  constructor(private helper: HelperService, private auth: AuthService, private api: ApiService, private modal: ModalController) { 
     Chart.register(...registerables);
   }
 
@@ -94,5 +97,36 @@ export class ProfileAccountPage implements OnInit {
   }
 
   routes(route: string) { this.helper.routes(route); }
+
+  async logout() {
+    const modal = await this.modal.create({
+      component: ModalAlertPage,
+      cssClass: 'app-modal modal-alert',
+      componentProps: {
+        title: 'Cerrar sesión',
+        message: 'Está seguro que desea terminar la sesión',
+        icon: 'log-out-outline',
+        confirm: 'Cerrar sesion',
+        cancel: 'Continuar'
+      },
+      backdropDismiss: false,
+      swipeToClose: false,
+      keyboardClose: false,
+    });
+
+    await modal.present();
+
+    modal.onDidDismiss().then((success) => {
+      console.log(success);
+      if(success.data.confirm) {
+        this.load = true;
+        setTimeout(() => {
+          this.auth.logout();
+          this.routes('welcome');
+          this.helper.toast('Se ha cerrado la sesión correctamente', 'Hasta luego');
+        }, 1000);
+      }
+    });
+  }
 
 }

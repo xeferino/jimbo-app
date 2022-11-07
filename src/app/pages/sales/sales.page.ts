@@ -1,6 +1,6 @@
 /**
  *
- * @fileoverview MethodsPage
+ * @fileoverview SalesPage
  *
  * @version 1.0
  *
@@ -11,13 +11,13 @@
  import { Component, OnInit } from '@angular/core';
  import { ApiService } from 'src/app/services/api/api.service';
  import { HelperService } from 'src/app/services/helper/helper.service';
-
+ 
 @Component({
-  selector: 'app-methods',
-  templateUrl: './methods.page.html',
-  styleUrls: ['./methods.page.scss'],
+  selector: 'app-sales',
+  templateUrl: './sales.page.html',
+  styleUrls: ['./sales.page.scss'],
 })
-export class MethodsPage implements OnInit {
+export class SalesPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
@@ -44,35 +44,22 @@ export class MethodsPage implements OnInit {
     this.loadData();
   }
 
-  setData(tickets, promotions) {
-    
-  }
-
-  buyData() {
-    
-  }
-
-  saleData() {
-
-  }
-
-  setMethod(item) {
-    if(item.valid) {
-      localStorage.setItem('method', JSON.stringify(item));
-      this.back ();
-    } else {
-      this.helper.toast('Este método de pago no está disponible', 'Lo siento');
-    }
+  setSale(item) {
+    localStorage.setItem('sale', JSON.stringify(item));
+    this.routes(`sales/${item.id}/show`);
   }
 
   loadData() {
     this.load = true;
     this.api
-      .get(`payment/methods/all?user_id=${this.profile.id}`)
+      .get(`shoppings/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        this.methods = response.methods;
-        this.cards   = response.cards;
+        //this.methods = response.methods;
+        //this.cards   = response.cards;
+        if(response.shoppings.length){
+          this.setSale(response.shoppings[0]);
+        }
       })
       .catch((danger: any) => {
         this.load = false;
@@ -80,12 +67,7 @@ export class MethodsPage implements OnInit {
   }
 
   back () {
-    if(this.ticket && this.raffles) {
-      this.routes(`raffles/${this.raffles.id}/summary`);
-    }
-    else {
-      this.routes(`profile/account`);
-    }
+    this.routes(`profile/account`);
   }
 
   routes(route){

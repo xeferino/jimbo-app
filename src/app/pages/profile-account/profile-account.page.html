@@ -1,3 +1,271 @@
+
+<ion-menu contentId="main-content">
+  
+  <ion-header class="ion-no-border" style="--background: #FFFFFF;">
+    <ion-toolbar style="--background: #FFFFFF;">
+      <ion-grid class="app-grid">
+        <ion-row>
+          <ion-col size="1"></ion-col>
+          <ion-col size="10" class="ion-text-center">
+            <img src="../../../assets/img/jimbo.png" style="width: 100%;" class="app-profile-logo" />
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    
+    <ion-grid class="app-grid">
+      
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('home')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="home-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Inicio</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        display: none;
+      "
+      (click)="routes('profile/account')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="person-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Mis datos</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('histories')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="list-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Pagos</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('balances')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="cash-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Balance</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('sales')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="cart-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Mis compras</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('methods')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="card-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Métodos de pago</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('beads')"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="cash-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Cuentas de retiro</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        opacity: 0.5;
+      "
+      (click)="developing()"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="heart-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Mis favoritos</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        opacity: 0.5;
+      "
+      (click)="developing()"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="share-social-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Gana 10 JIB gratis</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        opacity: 0.5;
+      "
+      (click)="developing()"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="person-add-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">¿Quieres vender con nosotros?</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        opacity: 0.5;
+      "
+      (click)="developing()"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="headset-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Contactar a soporte</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        opacity: 0.5;
+      "
+      (click)="developing()"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Información legal</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="logout()"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Cerrar sesión</p>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </ion-content>
+
+</ion-menu>
+
+<div class="ion-page" id="main-content"></div>
+
 <ion-content class="">
 
   <div class="app-head">
@@ -14,8 +282,10 @@
               </p>
             </ion-col>
             <ion-col size="2" class="ion-text-center" style="padding: 0px;">
-              <p class="app-head-button" (click)="routes('setting')">
-                <ion-icon name="options-outline"></ion-icon>
+              <p class="app-head-button">
+                <ion-menu-toggle> 
+                  <ion-icon name="options-outline" style="cursor: pointer;"></ion-icon>
+                </ion-menu-toggle>
               </p>
             </ion-col>
           </ion-row>
