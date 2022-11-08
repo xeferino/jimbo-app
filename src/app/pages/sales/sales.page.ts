@@ -21,22 +21,9 @@ export class SalesPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
-  raffles: any = JSON.parse(localStorage.getItem('raffle'));
-
-  ticket: any = JSON.parse(localStorage.getItem('ticket'));
-
   load: boolean = true;
 
-  method: any = JSON.parse(localStorage.getItem('method')) || {
-    id: 0,
-    name: 'Pagar con mis JIB',
-    icon: 'assets/icon/jib.png',
-    type: 'jib'
-  };
-
-  methods: any = [];
-
-  cards: any = [];
+  shoppings: any = [];
 
   constructor(private api: ApiService, private helper: HelperService) {}
 
@@ -55,11 +42,7 @@ export class SalesPage implements OnInit {
       .get(`shoppings/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        //this.methods = response.methods;
-        //this.cards   = response.cards;
-        if(response.shoppings.length){
-          this.setSale(response.shoppings[0]);
-        }
+        this.shoppings = response.shoppings;
       })
       .catch((danger: any) => {
         this.load = false;

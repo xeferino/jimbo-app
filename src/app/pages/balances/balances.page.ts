@@ -23,8 +23,6 @@ export class BalancesPage implements OnInit {
 
   load: boolean = true;
 
-  methods: any = [];
-
   balances: any = [];
 
   constructor(private api: ApiService, private helper: HelperService) {}
@@ -39,8 +37,7 @@ export class BalancesPage implements OnInit {
       .get(`user/balance/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        //this.methods = response.methods;
-        //this.cards   = response.cards;
+        this.balances = response.balances;
       })
       .catch((danger: any) => {
         this.load = false;
