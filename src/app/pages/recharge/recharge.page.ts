@@ -23,7 +23,7 @@ export class RechargePage implements OnInit {
 
   load: boolean = true;
 
-  cards: any = [];
+  jibs: any = [];
 
   constructor(private api: ApiService, private helper: HelperService) {}
 
@@ -37,8 +37,7 @@ export class RechargePage implements OnInit {
       .get(`jibs`)
       .then((response: any) => {
         this.load = false;
-        //this.methods = response.methods;
-        //this.cards   = response.cards;
+        this.jibs = response.jibs;
       })
       .catch((danger: any) => {
         this.load = false;

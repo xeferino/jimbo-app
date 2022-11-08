@@ -64,7 +64,7 @@
     <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load">
       
       <ion-col size="4" class="ion-text-center">
-        <ion-fab-button class="fab-button" color="warning" style="margin: auto; margin-bottom: 5px;">
+        <ion-fab-button class="fab-button" color="warning" style="margin: auto; margin-bottom: 5px;" (click)="routes('recharge')">
           <ion-icon name="cloud-upload-outline"></ion-icon>
         </ion-fab-button>
         <p class="p-info" style="color: #000000;">Recargar</p>
