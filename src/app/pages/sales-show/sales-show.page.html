@@ -1,9 +1,180 @@
+<ion-progress-bar *ngIf="load" class="app-indeterminate" color="warning" type="indeterminate"></ion-progress-bar>
+
 <ion-header>
   <ion-toolbar>
-    <ion-title>sales-show</ion-title>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="back()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+    
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;">
+      <ion-col size="12">
+        <p class="p-info" style="color: #666666;">
+          <span *ngIf="load">Cargando detalles  ...</span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!load">
+
+      <ion-col size="12" >
+        <ion-card class="app-card-raffles">
+          <ion-card-content>
+  
+            <ion-row style="
+            height: 46px;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal" style="font-weight: bold; color: #344a98;">PRIMER PREMIO:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.raffle.first_prize }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Estado del sorteo:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.raffle.status }}/{{ shopping.raffle.finish }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Boletos comprados:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.quantity }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Monto pagado:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.amount }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Código de boleto:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.number_operation }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Fecha de compra:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.date }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Hora de compra:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.hour }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal" style="position: relative; top: -10px;">Fecha inicio para el sorteo:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.raffle.date_release }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal" style="position: relative; top: -10px;">Fecha límite para ingresar:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.raffle.date_end }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row style="
+            height: 46px;
+            border-top: solid 1px #eeeeee;
+            padding-top: 10px;
+            ">
+              <ion-col size="6">
+                <p class="p-normal">Número de operación:</p>
+              </ion-col>
+              <ion-col size="6" class="ion-text-right">
+                <p class="p-normal">{{ shopping.number_operation }}</p>
+              </ion-col>
+            </ion-row>
+  
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
 
 </ion-content>

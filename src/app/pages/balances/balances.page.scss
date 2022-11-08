@@ -77,3 +77,22 @@ height: 20px;
 -moz-border-radius: 50px;
 border-radius: 50px;
 }
+
+.app-card {
+  margin: 0px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border: solid 1px #d7d8da;
+  background: #f4f4f4;
+  padding: 0px;
+}
+
+.app-card ion-card-content {
+  padding: 5px;
+}
+
+.fab-button {
+  --ion-color-base: linear-gradient(90deg, rgba(52,74,152,1) 5%, rgba(245,147,59,1) 100%) !important;
+  --ion-color-contrast: #FFFFFF !important;
+}
