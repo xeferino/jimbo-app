@@ -105,6 +105,24 @@ export class BeadsShowPage implements OnInit {
       });
   }
 
+  deleteData() {
+    this.load = true;
+    this.api
+      .delete(`user/accounts/${this.bead.id}`)
+      .then((response: any) => {
+        this.load = false;
+        this.helper.toast(response.message, 'Bien hecho');
+        this.routes('beads');
+      })
+      .catch((danger: any) => {
+        this.load = false;
+        if (danger.error.errors) {
+          this.errors = danger.error.errors;
+        }
+        this.helper.toast(danger.error.message, 'Lo siento');
+      });
+  }
+
   routes(route){
     this.helper.routes(route);
   }

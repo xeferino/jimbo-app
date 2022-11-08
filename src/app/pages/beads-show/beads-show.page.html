@@ -107,6 +107,14 @@
       </ion-col>
     </ion-row>
 
+    <br />
+
+    <ion-row *ngIf="!load">
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal" style="color: #f5933b; font-weight: bold;" (click)="deleteData()">Eliminar cuenta de cobro</p>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
   <br />
