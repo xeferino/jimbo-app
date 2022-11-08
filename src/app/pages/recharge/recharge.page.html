@@ -40,6 +40,19 @@
       </ion-col>
     </ion-row>
 
+    <ion-row style="margin-top: 5px; margin-bottom: 10px;" >
+      <ion-col size="6">
+        <p class="p-normal" style="color: #000000; font-weight: bold; padding-top: 8px;">
+          <ion-icon src="../../../assets/icon/jib.svg" style="font-size: 20px !important; position: relative; top: 4px;"></ion-icon> JIB disponibles
+        </p>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right">
+        <p class="p-normal" style="color: #000000; font-weight: bold; padding-top: 16px;">
+          {{ profile.jib }}
+        </p>
+      </ion-col>
+    </ion-row>
+
     <ion-row style="margin-top: 10px; margin-bottom: 10px; border-top: solid 1px #EEEEEE;" *ngFor="let item of jibs">
       <ion-col size="6">
         <p class="p-title" style="color: #000000; font-weight: bold; padding-top: 8px;">
