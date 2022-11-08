@@ -101,3 +101,14 @@ border-radius: 50px;
   position: relative;
   top: 4px;
 }
+
+.app-recharge {
+  margin-top: 0px; padding-bottom: 10px; border-top: solid 1px #EEEEEE;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.app-recharge.selected {
+  background: #EEEEEE;
+}

@@ -80,12 +80,23 @@ export class MethodsPage implements OnInit {
   }
 
   back () {
-    if(this.ticket && this.raffles) {
-      this.routes(`raffles/${this.raffles.id}/summary`);
+    const back : string = localStorage.getItem('route_method');
+
+    if(back) {
+      if(back == 'recharge') { this.routes('recharge'); }
+      else if(back == 'summary') { 
+        if(this.ticket && this.raffles) {
+          this.routes(`raffles/${this.raffles.id}/summary`);
+        }
+        else {
+          this.routes(`profile/account`);
+        }
+      }
     }
     else {
       this.routes(`profile/account`);
     }
+    
   }
 
   routes(route){

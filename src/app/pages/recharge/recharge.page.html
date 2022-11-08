@@ -40,7 +40,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-top: 5px; margin-bottom: 10px;" >
+    <ion-row style="margin-top: 5px; margin-bottom: 10px;" *ngIf="!load">
       <ion-col size="6">
         <p class="p-normal" style="color: #000000; font-weight: bold; padding-top: 8px;">
           <ion-icon src="../../../assets/icon/jib.svg" style="font-size: 20px !important; position: relative; top: 4px;"></ion-icon> JIB disponibles
@@ -53,17 +53,51 @@
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-top: 10px; margin-bottom: 10px; border-top: solid 1px #EEEEEE;" *ngFor="let item of jibs">
+    <ion-row class="app-recharge" [ngClass]="{ 'selected': item.jib == form.amout_jib }" *ngFor="let item of jibs" (click)="setAmout(item)">
       <ion-col size="6">
         <p class="p-title" style="color: #000000; font-weight: bold; padding-top: 8px;">
           <ion-icon src="../../../assets/icon/jib.svg" style="font-size: 20px !important; position: relative; top: 4px;"></ion-icon> {{ item.jib }}
         </p>
       </ion-col>
       <ion-col size="6" class="ion-text-right">
-        <ion-button class="button_usd">${{ item.jib }}</ion-button>
+        <ion-button class="button_usd">${{ item.usd }}</ion-button>
       </ion-col>
     </ion-row>
 
   </ion-grid>
 
 </ion-content>
+
+<ion-footer class="" *ngIf="form.amout_jib">
+  <ion-toolbar>
+    <ion-grid style="padding-left: 30px; padding-right: 30px;">
+      <ion-row style="height: auto;" (click)="setMethod()">
+        <ion-col size="2" class="ion-text-left">
+          <img [src]="method.icon" style="width: 30px; height: 30px;" *ngIf="method.type != 'card'">
+          <img [src]="method.icon" style="width: 60px; height: 30px;" *ngIf="method.type == 'card'">
+        </ion-col>
+        <ion-col size="9" class="ion-text-left">
+          <p class="p-normal" style="font-weight: bold; padding-top: 5px;">{{ method.name }}</p>
+        </ion-col>
+        <ion-col size="1" class="ion-text-right">
+          <p class="p-normal" style="font-weight: bold; padding-top: 6px;">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row style="height: auto;" *ngIf="!load">
+        <ion-col size="6" class="ion-text-left">
+          <p class="p-normal" style="font-weight: bold;">TOTAL</p>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <p class="p-normal" style="font-weight: bold;">${{ form.amout_usd }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-button [disabled]="load || !method.id" (click)="alert()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Pagar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

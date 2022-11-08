@@ -37,7 +37,10 @@ export class BalancesPage implements OnInit {
       .get(`user/balance/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        this.balances = response.balances;
+        this.balances    = response.balances;
+        this.profile.usd = response.balance_usd;
+        this.profile.jib = response.balance_jib;
+        localStorage.setItem('profile', JSON.stringify(this.profile));
       })
       .catch((danger: any) => {
         this.load = false;

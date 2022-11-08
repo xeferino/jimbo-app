@@ -40,7 +40,13 @@ export class RafflesSummaryPage implements OnInit {
   constructor(private api: ApiService, private helper: HelperService, private modal: ModalController) {}
 
   ngOnInit() {
+    localStorage.removeItem('route_method');
     this.loadData();
+  }
+
+  setMethod() {
+    localStorage.setItem('route_method', 'summary');
+    this.routes('methods');
   }
 
   setData(tickets, promotions) {
@@ -72,6 +78,7 @@ export class RafflesSummaryPage implements OnInit {
       })
       .catch((danger: any) => {
         this.load = false;
+        this.helper.toast(danger.error.message, 'Lo siento');
       });
   }
 
