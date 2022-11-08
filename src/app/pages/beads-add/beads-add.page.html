@@ -107,6 +107,114 @@
       </ion-col>
     </ion-row>
 
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Nombre</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="person-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.name"
+                (ionFocus)="validate('name')"
+                (ionChange)="validate('name')"
+                type="text"
+                class="app-form-input"
+                placeholder="Nombre"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.name">{{ errors.name }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">DNI</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="reader-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.dni"
+                (ionFocus)="validate('dni')"
+                (ionChange)="validate('dni')"
+                type="text"
+                class="app-form-input"
+                placeholder="DNI"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.dni">{{ errors.dni }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Teléfono</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="call-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.phone"
+                (ionFocus)="validate('phone')"
+                (ionChange)="validate('phone')"
+                type="text"
+                class="app-form-input"
+                placeholder="Teléfono"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.phone">{{ errors.phone }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-normal" style="font-weight: bold;">Correo</p>
+        <div class="app-input">
+          <ion-row>
+            <ion-col size="1">
+              <p class="p-title" style="padding-top: 5px; color: #666;">
+                <ion-icon name="mail-outline"></ion-icon>
+              </p>
+            </ion-col>
+            <ion-col size="11">
+              <ion-input
+                [disabled]="load"
+                [(ngModel)]="form.email"
+                (ionFocus)="validate('email')"
+                (ionChange)="validate('email')"
+                type="text"
+                class="app-form-input"
+                placeholder="Correo"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <p class="app-input-error" *ngIf="errors.email">{{ errors.email }}</p>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
   <br />
