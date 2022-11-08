@@ -39,7 +39,7 @@ export class HistoriesPage implements OnInit {
       .get(`payment/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        //this.histories = response.histories;
+        this.histories = response.payment_histories;
       })
       .catch((danger: any) => {
         this.load = false;
