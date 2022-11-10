@@ -51,7 +51,7 @@ export class RafflesComponent implements OnInit {
       .then((response: any) => {
         this.load = false;
         this.helper.toast(response.message, 'Bien hecho');
-        //this.raffles = response.raffles;
+        this.raffles = response.raffles;
       })
       .catch((danger: any) => {
         this.load = false;
