@@ -146,6 +146,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/recharge/recharge.module').then( m => m.RechargePageModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'policies',
+    loadChildren: () => import('./pages/policies/policies.module').then( m => m.PoliciesPageModule)
+  },
   
 ];
 
