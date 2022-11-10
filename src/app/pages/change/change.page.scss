@@ -1,0 +1,126 @@
+
+.app-card-raffles {
+  margin: 0px;
+  margin-bottom: 5px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border: solid 1px #eeeeee;
+}
+
+.app-card-raffles ion-card-content {
+  padding: 10px;
+  background: #f4f5f87d;
+}
+
+.img-raffles {
+  margin: auto;
+  width: 100%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+ion-header { background: #FFFFFF; }
+ion-toolbar { --background: #FFFFFF; }
+
+.app-profile-avatar {
+margin: auto;
+width: 100px;
+height: 100px;
+-webkit-border-radius: 500px;
+-moz-border-radius: 500px;
+border-radius: 500px;
+background-repeat: no-repeat;
+background-size: cover;
+cursor: pointer;
+}
+
+.app-profile-avatar-button {
+width: 30px;
+height: 30px;
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+background: #f5933b;
+color: #FFFFFF;
+font-size: 16px;
+text-align: center;
+padding-top: 6px;
+position: relative;
+bottom: -75px;
+right: -70px;
+}
+
+.app-profile-logo {
+width: 150px;
+}
+
+.app-signup {
+color: #344a98;
+font-size: 12px !important;
+font-weight: bold;
+}
+
+.app-forgot {
+color: #f5933b;
+cursor: pointer;
+}
+
+ion-footer ion-toolbar {
+--background: #FFFFFF !important;
+}
+
+.app-progress-bar {
+height: 20px;
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+
+.app-card {
+  margin: 0px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border: solid 1px #d7d8da;
+  background: #f4f4f4;
+  padding: 0px;
+}
+
+.app-card ion-card-content {
+  padding: 5px;
+}
+
+.button_usd {
+  --background: linear-gradient(90deg, rgba(52,74,152,1) 39%, rgba(245,147,59,1) 100%);
+  height: 30px;
+  font-size: 12px;
+  width: 50px;
+  font-weight: bold;
+  position: relative;
+  top: 4px;
+}
+
+.app-recharge {
+  margin-top: 0px; padding-bottom: 10px; border-top: solid 1px #EEEEEE;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.app-recharge.selected {
+  background: #EEEEEE;
+}
+
+ion-range {
+  --bar-background: #CCCCCC;
+  --bar-background-active: #f5933b;
+  --bar-height: 8px;
+  --bar-border-radius: 8px;
+  --knob-background: #f5933b;
+  --knob-size: 20px;
+  --pin-background: #f5933b;
+  --pin-color: #fff;
+  cursor: pointer;
+}

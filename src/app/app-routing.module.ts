@@ -150,6 +150,14 @@ const routes: Routes = [
     path: 'policies',
     loadChildren: () => import('./pages/policies/policies.module').then( m => m.PoliciesPageModule)
   },
+  {
+    path: 'retire',
+    loadChildren: () => import('./pages/retire/retire.module').then( m => m.RetirePageModule)
+  },
+  {
+    path: 'change',
+    loadChildren: () => import('./pages/change/change.module').then( m => m.ChangePageModule)
+  },
   
 ];
 
