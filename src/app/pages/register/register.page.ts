@@ -32,6 +32,7 @@ export class RegisterPage implements OnInit {
     password: null,
     cpassword: null,
     country_id: null,
+    code_referral: null
   };
 
   errors: any = {

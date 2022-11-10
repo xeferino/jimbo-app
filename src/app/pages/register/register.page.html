@@ -172,6 +172,36 @@
       <ion-col size="2" class="ion-text-center"></ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+      <ion-col size="8" style="
+        border: solid 0px #f5933b;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+      ">
+        <p class="p-info ion-text-center" style="color: #344a98;">¿Tienes un código de referido?</p>
+        <ion-item
+          [ngClass]="{ 'app-input-danger': (errors.code_referral) }"
+          lines="none"
+        >
+          <ion-input
+            [disabled]="load"
+            [(ngModel)]="form.code_referral"
+            (ionFocus)="validate('code_referral')"
+            (ionChange)="validate('code_referral')"
+            type="text"
+            class="app-input"
+            placeholder="Escríbelo aquí"
+          ></ion-input>
+        </ion-item>
+        <p class="app-input-error" *ngIf="errors.code_referral">{{ errors.code_referral }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center"></ion-col>
+    </ion-row>
+  </ion-grid>
   
   <ion-grid>
     <ion-row>
