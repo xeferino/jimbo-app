@@ -26,7 +26,111 @@
 
   <ion-grid class="app-grid" style="padding-left: 10px; padding-right: 10px;">
     
-    <ion-row>
+    <ion-grid>
+
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <p class="p-info">
+            Completa los datos necesarios para configurar tu tiket
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <p class="p-info">Nombre:</p>
+          <div class="form-input">
+            <ion-input
+              [disabled]="load"
+              [(ngModel)]="form.name"
+              (ionFocus)="validate('name')"
+              (ionChange)="validate('name')"
+              type="text"
+              class="app-input"
+              placeholder="Nombre"
+            ></ion-input>
+          </div>
+          <p class="app-input-error" *ngIf="errors.name">{{ errors.name }}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <p class="p-info">DNI:</p>
+          <div class="form-input">
+            <ion-input
+              [disabled]="load"
+              [(ngModel)]="form.dni"
+              (ionFocus)="validate('dni')"
+              (ionChange)="validate('dni')"
+              type="text"
+              class="app-input"
+              placeholder="Correo"
+            ></ion-input>
+          </div>
+          <p class="app-input-error" *ngIf="errors.dni">{{ errors.dni }}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <p class="p-info">Teléfono:</p>
+          <div class="form-input">
+            <img [src]="country.icon" style="width: 30px; margin-top: 9px; float: left;" *ngIf="country" slot="start" (click)="openCountries()" />
+            <ion-input
+              [disabled]="load"
+              [(ngModel)]="form.phone"
+              (ionFocus)="validate('phone')"
+              (ionChange)="validate('phone')"
+              type="text"
+              class="app-input"
+              placeholder="Teléfono"
+              style="float: left; width: calc(100% - 35px); margin-left: 5px;"
+            ></ion-input>
+          </div>
+          <p class="app-input-error" *ngIf="errors.phone">{{ errors.phone }}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <p class="p-info">Correo:</p>
+          <div class="form-input">
+            <ion-input
+              [disabled]="load"
+              [(ngModel)]="form.email"
+              (ionFocus)="validate('email')"
+              (ionChange)="validate('email')"
+              type="text"
+              class="app-input"
+              placeholder="Documento"
+            ></ion-input>
+          </div>
+          <p class="app-input-error" *ngIf="errors.email">{{ errors.email }}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <p class="p-info">Dirección:</p>
+          <div class="form-input">
+            <ion-input
+              [disabled]="load"
+              [(ngModel)]="form.address"
+              (ionFocus)="validate('address')"
+              (ionChange)="validate('address')"
+              type="text"
+              class="app-input"
+              placeholder="Dirección"
+            ></ion-input>
+          </div>
+          <p class="app-input-error" *ngIf="errors.address">{{ errors.address }}</p>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <ion-row style="display: none;">
 
       <ion-col size="12" *ngIf="raffles">
         <ion-card class="app-card-raffles">

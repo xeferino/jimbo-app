@@ -14,6 +14,7 @@
  import { ModalController } from '@ionic/angular';
  import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
  import { ModalSalePage } from '../../modals/modal-sale/modal-sale.page';
+ import { ModalCountriesPage } from '../../modals/modal-countries/modal-countries.page';
 
 @Component({
   selector: 'app-raffles-summary',
@@ -35,6 +36,25 @@ export class RafflesSummaryPage implements OnInit {
     name: `${this.profile.jib} JIB`,
     icon: 'assets/icon/jib.png',
     type: 'jib'
+  };
+
+  errors: any = {};
+
+  country: any = this.profile.country;
+
+  form: any = {
+    name: this.profile.names,
+    email: this.profile.email,
+    dni: this.profile.dni,
+    phone: this.profile.phone,
+    address: null,
+    seller_id: this.profile.id,
+    ticket_id: this.ticket.ticket_id,
+    raffle_id: this.raffles.id,
+    user_id: this.profile.id,
+    method_id: this.method.id,
+    method_type: this.method.type,
+    country_id: this.country.id,
   };
 
   constructor(private api: ApiService, private helper: HelperService, private modal: ModalController) {}
@@ -60,14 +80,7 @@ export class RafflesSummaryPage implements OnInit {
   buyData() {
     this.load = true;
     this.api
-      .post(`sales/payment`, {
-        ticket_id: this.ticket.ticket_id,
-        raffle_id: this.raffles.id,
-        user_id: this.profile.id,
-        method_id: this.method.id,
-        method_type: this.method.type,
-        country_id: this.profile.country.id,
-      })
+      .post(`sales/payment`, this.form)
       .then((response: any) => {
         this.load = false;
         this.sale(response.details);
@@ -99,6 +112,8 @@ export class RafflesSummaryPage implements OnInit {
     localStorage.setItem('raffle', JSON.stringify(item));
     this.routes(`raffles/${item.id}`);
   }
+
+  validate(input) {}
 
   async alert () {
     const modal = await this.modal.create({
@@ -168,6 +183,24 @@ export class RafflesSummaryPage implements OnInit {
 
     modal.onDidDismiss().then((success) => {
       this.routes('home');
+    });
+  }
+
+  async openCountries() {
+    const modal = await this.modal.create({
+      component: ModalCountriesPage,
+      cssClass: 'app-modal modal-countries',
+      componentProps: {},
+      backdropDismiss: false,
+      swipeToClose: false,
+      keyboardClose: false,
+    });
+
+    await modal.present();
+
+    modal.onDidDismiss().then((success) => {
+      this.country = success.data.country;
+      this.form.country_id = success.data.country.id;
     });
   }
 
