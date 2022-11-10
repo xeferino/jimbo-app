@@ -261,8 +261,8 @@
         <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold;">{{ profile.jib }}</p>
-              <p class="p-info" style="padding-top: 0px;">MI JIB</p>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">MI JIB</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.jib }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -270,8 +270,8 @@
         <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold;">${{ profile.usd }}</p>
-              <p class="p-info" style="padding-top: 0px;">EFECTIVO</p>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">EFECTIVO</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.usd }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -279,8 +279,8 @@
         <ion-col size="3" class="ion-text-center" *ngIf="profile.role == 'seller'">
           <ion-card class="app-card">
             <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold;">$0</p>
-              <p class="p-info" style="padding-top: 0px;">VENTAS</p>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">VENTAS</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">$0</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -288,8 +288,8 @@
         <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold;">0</p>
-              <p class="p-info" style="padding-top: 0px;">INVITADOS</p>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">INVITADOS</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.guests }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -298,15 +298,9 @@
 
       <ion-row>
 
-        <ion-col size="6" class="ion-text-center">
+        <ion-col size="12" class="ion-text-center">
           <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
             <ion-icon name="create-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Editar perfil
-          </ion-button>
-        </ion-col>
-  
-        <ion-col size="6" class="ion-text-center">
-          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
-            <ion-icon name="person-add-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Añadir invitado
           </ion-button>
         </ion-col>
 
