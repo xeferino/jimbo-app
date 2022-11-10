@@ -1,0 +1,49 @@
+ion-header { background: #FFFFFF; }
+ion-toolbar { --background: #FFFFFF; }
+
+.app-profile-avatar {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.app-profile-avatar-button {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #f5933b;
+  color: #FFFFFF;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 6px;
+  position: relative;
+  bottom: -75px;
+  right: -70px;
+}
+
+.app-profile-logo {
+  width: 150px;
+}
+
+.app-signup {
+  color: #344a98;
+  font-size: 12px !important;
+  font-weight: bold;
+}
+
+.app-forgot {
+  color: #f5933b;
+  cursor: pointer;
+}
+
+ion-footer ion-toolbar {
+  --background: #FFFFFF !important;
+}

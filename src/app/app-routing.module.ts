@@ -152,11 +152,18 @@ const routes: Routes = [
   },
   {
     path: 'retire',
-    loadChildren: () => import('./pages/retire/retire.module').then( m => m.RetirePageModule)
+    loadChildren: () => import('./pages/retire/retire.module').then( m => m.RetirePageModule),
+    canActivate: [GuardService],
   },
   {
     path: 'change',
-    loadChildren: () => import('./pages/change/change.module').then( m => m.ChangePageModule)
+    loadChildren: () => import('./pages/change/change.module').then( m => m.ChangePageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'refer',
+    loadChildren: () => import('./pages/refer/refer.module').then( m => m.ReferPageModule),
+    canActivate: [GuardService],
   },
   
 ];

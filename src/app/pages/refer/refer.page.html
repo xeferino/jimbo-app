@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="routes('profile/account')">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #344a98;">
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <ion-grid style="padding: 20px;">
+    
+    <ion-row>
+      <ion-col size="12">
+        <p class="p-title" style="color: #FFFFFF; font-weight: bold;">
+          Comparte tu código de invitación y gana 10 JIB gratis.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <br />
+
+    <ion-row>
+      <ion-col size="2">
+        <img src="assets/img/jib.png" style="width: 40px; height: 40px;" />
+      </ion-col>
+      <ion-col size="10">
+        <p class="p-normal" style="color: #FFFFFF; font-weight: normal;">
+          1.- Envía tu código por correo o compartelo en las redes de tus amigos.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="2">
+        <img src="assets/img/jib.png" style="width: 40px; height: 40px;" />
+      </ion-col>
+      <ion-col size="10">
+        <p class="p-normal" style="color: #FFFFFF; font-weight: normal;">
+          2.- La persona que invites tiene que descargar la aplicación para obtener 10 JIB.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="2">
+        <img src="assets/img/jib.png" style="width: 40px; height: 40px;" />
+      </ion-col>
+      <ion-col size="10">
+        <p class="p-normal" style="color: #FFFFFF; font-weight: normal;">
+          3.- ¡Y listo! Tú y esa persona reciben 10 JIB gratis en su billetera.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-mega" style="color: #FFFFFF; font-weight: bold;">
+         {{ profile.code_referral || "SIN-CODIGO" }}
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button color="warning" shape="round" expand="full" style="height: 40px; font-size: 14px; --ion-color-contrast: #FFFFFF !important;">Copiar código</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button color="warning" shape="round" fill="outline" expand="full" style="height: 40px; font-size: 14px; --ion-color-contrast: #FFFFFF !important;">Compartir en redes</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
