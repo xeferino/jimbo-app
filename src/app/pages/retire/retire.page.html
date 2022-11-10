@@ -36,66 +36,99 @@
 
     <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load">
       <ion-col size="12">
-        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Recargar JIB:</p>
+        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Retirar efectivo:</p>
       </ion-col>
     </ion-row>
 
     <ion-row style="margin-top: 5px; margin-bottom: 10px;" *ngIf="!load">
       <ion-col size="6">
         <p class="p-normal" style="color: #000000; font-weight: bold; padding-top: 8px;">
-          <ion-icon src="../../../assets/icon/jib.svg" style="font-size: 20px !important; position: relative; top: 4px;"></ion-icon> JIB disponibles
+          <ion-icon name="cash-outline" style="font-size: 20px !important; position: relative; top: 4px;"></ion-icon> Efectivo disponible
         </p>
       </ion-col>
       <ion-col size="6" class="ion-text-right">
         <p class="p-normal" style="color: #000000; font-weight: bold; padding-top: 16px;">
-          {{ profile.jib }}
+          {{ profile.usd }}
         </p>
       </ion-col>
     </ion-row>
 
-    <ion-row class="app-recharge" [ngClass]="{ 'selected': item.jib == form.amout_jib }" *ngFor="let item of jibs" (click)="setAmout(item)">
-      <ion-col size="6">
-        <p class="p-title" style="color: #000000; font-weight: bold; padding-top: 8px;">
-          <ion-icon src="../../../assets/icon/jib.svg" style="font-size: 20px !important; position: relative; top: 4px;"></ion-icon> {{ item.jib }}
-        </p>
+    <ion-row style="padding-top: 10px; padding-bottom: 15px;">
+      <ion-col size="12">
+        <ion-card class="app-card">
+          <ion-card-content>
+            <ion-row>
+
+              <ion-col size="12" style="border-bottom: solid 1px #EEEEEE;">
+                <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">Simulación:</p>
+              </ion-col>
+
+              <ion-col size="12" class="ion-text-center">
+                <p class="p-info" style="padding-top: 0px; color: #666666;">
+                  EFECTIVO (USD)
+                </p>
+                <p class="p-title" style="padding-top: 0px; color: #000000;">
+                  ${{ amount }}
+                </p>
+              </ion-col>
+
+              <ion-col size="2" class="ion-text-center">
+                <p class="p-info" style="padding-top: 21px; color: #000000; font-size: 8px !important;">
+                  Minimo
+                </p>
+              </ion-col>
+
+              <ion-col size="8" class="ion-text-center">
+                <ion-range [min]="min" [max]="max" [disabled]="load" (ionChange)="setAmount($event)"></ion-range>
+              </ion-col>
+
+              <ion-col size="2" class="ion-text-center">
+                <p class="p-info" style="padding-top: 21px; color: #000000; font-size: 8px !important;">
+                  Máximo
+                </p>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
-      <ion-col size="6" class="ion-text-right">
-        <ion-button class="button_usd">${{ item.usd }}</ion-button>
+
+      <ion-col size="12" *ngIf="!account_load">
+
+        <ion-row style="height: auto; border-top: 1px solid #f4f5f8; padding-top: 5px;" *ngFor="let item of accounts" (click)="setAccount(item.id)">
+          <ion-col size="11" class="ion-text-left">
+            <p class="p-normal" style="font-weight: bold; padding-top: 5px;">{{ item.bank }}</p>
+            <p class="p-info" style="font-weight: normal; padding-top: 5px;">{{ item.number }}</p>
+          </ion-col>
+          <ion-col size="1" class="ion-text-right">
+            <p class="p-title" style="font-weight: bold; padding-top: 10px; font-size: 20px !important;">
+              <ion-icon name="radio-button-off-outline" *ngIf="item.id != account"></ion-icon>
+              <ion-icon name="radio-button-on-outline" *ngIf="item.id == account"></ion-icon>
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col size="12" class="ion-text-center">
+            <p class="p-info" *ngIf="accounts.length == 0">Parece que no tienes cuentas de retiro registradas</p>
+            <p class="p-info" style="cursor: pointer; color: #f5933b; font-weight: bold;" (click)="routes('beads')">Agregar cuenta de cobro</p>
+          </ion-col>
+        </ion-row>
+
       </ion-col>
+
     </ion-row>
 
   </ion-grid>
 
 </ion-content>
 
-<ion-footer class="" *ngIf="form.amout_jib">
+<ion-footer class="">
   <ion-toolbar>
     <ion-grid style="padding-left: 30px; padding-right: 30px;">
-      <ion-row style="height: auto;" (click)="setMethod()">
-        <ion-col size="2" class="ion-text-left">
-          <img [src]="method.icon" style="width: 30px; height: 30px;" *ngIf="method.type != 'card'">
-          <img [src]="method.icon" style="width: 60px; height: 30px;" *ngIf="method.type == 'card'">
-        </ion-col>
-        <ion-col size="9" class="ion-text-left">
-          <p class="p-normal" style="font-weight: bold; padding-top: 5px;">{{ method.name }}</p>
-        </ion-col>
-        <ion-col size="1" class="ion-text-right">
-          <p class="p-normal" style="font-weight: bold; padding-top: 6px;">
-            <ion-icon name="chevron-forward-outline"></ion-icon>
-          </p>
-        </ion-col>
-      </ion-row>
-      <ion-row style="height: auto;" *ngIf="!load">
-        <ion-col size="6" class="ion-text-left">
-          <p class="p-normal" style="font-weight: bold;">TOTAL</p>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right">
-          <p class="p-normal" style="font-weight: bold;">${{ form.amout_usd }}</p>
-        </ion-col>
-      </ion-row>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
-          <ion-button [disabled]="load || !method.id" (click)="alert()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Pagar</ion-button>
+          <ion-button [disabled]="load || amount < min || !account" (click)="alert()" mode="ios" class="app-button-jimbo" shape="round" expand="full">Solicitar retiro</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

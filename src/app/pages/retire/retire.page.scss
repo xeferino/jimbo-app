@@ -112,3 +112,15 @@ border-radius: 50px;
 .app-recharge.selected {
   background: #EEEEEE;
 }
+
+ion-range {
+  --bar-background: #CCCCCC;
+  --bar-background-active: #f5933b;
+  --bar-height: 8px;
+  --bar-border-radius: 8px;
+  --knob-background: #f5933b;
+  --knob-size: 20px;
+  --pin-background: #f5933b;
+  --pin-color: #fff;
+  cursor: pointer;
+}
