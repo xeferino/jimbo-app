@@ -43,6 +43,7 @@ export class RegisterPage implements OnInit {
     email: null,
     password: null,
     cpassword: null,
+    code_referral: null
   };
 
   touch: any = {
@@ -53,6 +54,7 @@ export class RegisterPage implements OnInit {
     email: false,
     password: false,
     cpassword: false,
+    code_referral: false
   };
 
   load: boolean = false;
@@ -159,6 +161,9 @@ export class RegisterPage implements OnInit {
     this.load = true;
     this.form.cpassword = this.form.password;
     this.form.phone = this.form.phone.toString();
+    if(this.form.code_referral == null || this.form.code_referral == ''){
+      delete this.form.code_referral;
+    }
     this.api
       .post(`signup`, this.form)
       .then((response: any) => {

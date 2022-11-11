@@ -48,7 +48,7 @@ export class ProfileAccountPage implements OnInit {
   }
 
   loadData() {
-    //this.load = true;
+    this.load = true;
     this.api
       .get(`user/profile/${this.profile.id}`)
       .then((response: any) => {

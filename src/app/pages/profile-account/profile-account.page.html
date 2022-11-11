@@ -212,6 +212,8 @@
 
 <ion-content class="">
 
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
   <div class="app-head">
     <ion-grid style="padding: 20px;">
       
@@ -322,7 +324,7 @@
 
       <ion-row *ngIf="profile.role == 'seller'">
 
-        <ion-col size="12">
+        <ion-col size="12" *ngIf="profile.role == 'seller'">
           <ion-card class="app-card">
             <ion-card-content>
               <canvas #mySalesChart></canvas>
@@ -330,7 +332,7 @@
           </ion-card>
         </ion-col>
   
-        <ion-col size="12">
+        <ion-col size="12" *ngIf="profile.role == 'seller'">
           <ion-card class="app-card">
             <ion-card-content>
               <canvas #yourSalesChart></canvas>
@@ -338,6 +340,46 @@
           </ion-card>
         </ion-col>
   
+      </ion-row>
+
+      <ion-row *ngIf="!load">
+        
+        <ion-col size="12">
+          <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Invitados:</p>
+        </ion-col>
+
+        <ion-col size="12" class="ion-text-center"  *ngIf="!profile.guests_list.length">
+          <p class="p-normal">Parece que no no tienes invitados todavía</p>
+        </ion-col>
+
+        <ion-col size="12" class="ion-text-center"  *ngFor="let item of profile.guests_list">
+
+          <ion-row style="height: auto; border-top: 1px solid #f4f5f8; padding-top: 5px;">
+            <ion-col size="12" class="ion-text-left">
+              <ion-row>
+                <ion-col size="2">
+                  <p class="p-super" style="font-weight: normal; padding-top: 0px;">
+                    <img [src]="item.avatar" style="width: 30px;" />
+                  </p>
+                </ion-col>
+                <ion-col size="8">
+                  <p class="p-normal" style="font-weight: normal; padding-top: 0px;">{{ item.fullnames }}</p>
+                  <p class="p-info" style="font-weight: normal; padding-top: 0px; font-size: 8px !important;">
+                    {{ item.email }}
+                  </p>
+                </ion-col>
+                <ion-col size="2" class="ion-text-right">
+                  <p class="p-super" style="font-weight: normal; padding-top: 0px;">
+                    <img [src]="item.country.icon" style="width: 30px;" />
+                  </p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+              
+          </ion-row>
+
+        </ion-col>
+        
       </ion-row>
 
       <br />
