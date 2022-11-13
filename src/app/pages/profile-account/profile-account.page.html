@@ -339,9 +339,8 @@
         
         <ion-col size="12">
           <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">
-            Invitados:
+            Invitados: {{ profile.guests_month }}
           </p>
-          <p class="p-info" *ngIf="profile.guests_list.length">Se encontraron {{ profile.guests_list.length }} invitados</p>
         </ion-col>
 
         <ion-col size="12" class="ion-text-center"  *ngIf="!profile.guests_list.length">
