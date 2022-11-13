@@ -43,6 +43,7 @@
     </ion-row>
 
     <ion-row style="height: auto; border-top: 1px solid #f4f5f8; padding-top: 5px;" *ngFor="let item of sellers">
+      
       <ion-col size="12" class="ion-text-left">
         <ion-row>
           <ion-col size="2">
@@ -52,7 +53,7 @@
           </ion-col>
           <ion-col size="6">
             <p class="p-info" style="font-weight: bold; padding-top: 0px;">
-              {{ item.fullnames }}
+              {{ item.name }}
             </p>
             <p class="p-normal" style="font-weight: normal; padding-top: 0px;">
               {{ item.level }}

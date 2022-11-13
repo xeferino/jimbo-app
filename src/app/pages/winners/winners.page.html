@@ -16,22 +16,53 @@
             
             <ion-row>
               <ion-col size="12">
-                <img src="https://via.placeholder.com/400x200" class="img-raffles" alt="">
+                <img [src]="item.logo" class="img-raffles" alt="">
               </ion-col>
             </ion-row>
   
             <ion-row>
               <ion-col size="12" class="ion-text-center">
-                <p class="p-ultra" style="color: #92949c;">PREMIO <b style="color: #f5933b;">$1000</b></p>
+                <p class="p-ultra" style="color: #92949c;">PREMIO <b style="color: #f5933b;">{{ item.cash_to_draw }}</b></p>
               </ion-col>
             </ion-row>
   
             <ion-row>
               <ion-col size="6">
-                <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Hace 25 días</ion-button>
+                <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Hace {{ item.days_ago }} días</ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;">Ver ganador</ion-button>
+                <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;" (click)="setWinner(item)">Ver ganador</ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="item.id == show">
+              <ion-col size="12" *ngFor="let winner of item.winners">
+
+                <ion-row style="height: auto; border-top: 1px solid #f4f5f8; padding-top: 5px;" >
+      
+                  <ion-col size="12" class="ion-text-left">
+                    <ion-row>
+                      <ion-col size="2">
+                        <p class="p-super" style="font-weight: normal; padding-top: 0px;">
+                          <img [src]="winner.image" style="width: 30px;" />
+                        </p>
+                      </ion-col>
+                      <ion-col size="6">
+                        <p class="p-info" style="font-weight: bold; padding-top: 0px;">
+                          {{ winner.name }}
+                        </p>
+                        <p class="p-normal" style="font-weight: normal; padding-top: 0px;">
+                          {{ winner.country.name }}
+                        </p>
+                      </ion-col>
+                      <ion-col size="4">
+                        <p class="p-info ion-text-right" style="font-weight: normal; padding-top: 0px;">{{ winner.amount }}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                    
+                </ion-row>
+
               </ion-col>
             </ion-row>
   
@@ -41,7 +72,7 @@
   
     </ion-row>
 
-    <ion-row *ngIf="!load && !winners.lenght" style="margin-top: 50px;">
+    <ion-row *ngIf="!load && !winners.length" style="margin-top: 50px;">
       <ion-col size="12" class="ion-text-center">
         <p class="p-normal" style="font-size: 50px !important;">
           <ion-icon name="alert-outline"></ion-icon>
