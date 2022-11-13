@@ -1,7 +1,8 @@
+<ion-content>
 
 <ion-menu contentId="main-content">
   
-  <ion-header class="ion-no-border" style="--background: #FFFFFF;">
+  <ion-header class="ion-no-border" style="--background: #FFFFFF; display: none;">
     <ion-toolbar style="--background: #FFFFFF;">
       <ion-grid class="app-grid">
         <ion-row>
@@ -212,6 +213,12 @@
 
 <ion-content class="">
 
+  <app-top></app-top>
+
+  <app-head></app-head>
+
+  <app-menu [active]="'profile'"></app-menu>
+
   <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
 
   <div class="app-head">
@@ -260,7 +267,7 @@
           <p class="p-normal" style="padding-top: 0px; font-weight: bold;">Balance</p>
         </ion-col>
 
-        <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
+        <ion-col [size]="4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
               <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">MI JIB</p>
@@ -269,7 +276,7 @@
           </ion-card>
         </ion-col>
   
-        <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
+        <ion-col [size]="4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
               <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">EFECTIVO</p>
@@ -278,20 +285,11 @@
           </ion-card>
         </ion-col>
 
-        <ion-col size="3" class="ion-text-center" *ngIf="profile.role == 'seller'">
+        <ion-col [size]="4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">VENTAS</p>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">$0</p>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-  
-        <ion-col [size]="profile.role == 'seller' ? 3 : 4" class="ion-text-center">
-          <ion-card class="app-card">
-            <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">INVITADOS</p>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.guests }}</p>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">{{ profile.role == 'seller' ? 'VENTAS' : 'COMPRAS' }}</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.amount_shopping }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -359,7 +357,7 @@
               <ion-row>
                 <ion-col size="2">
                   <p class="p-super" style="font-weight: normal; padding-top: 0px;">
-                    <img [src]="item.avatar" style="width: 30px;" />
+                    <img [src]="item.image" style="width: 30px;" />
                   </p>
                 </ion-col>
                 <ion-col size="8">

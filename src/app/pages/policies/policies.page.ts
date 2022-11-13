@@ -19,10 +19,27 @@
 })
 export class PoliciesPage implements OnInit {
 
+  load: boolean = false;
+
+  legality: any;
+
   constructor(private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
-    
+    this.loadData();
+  }
+
+  loadData() {
+    this.load = true;
+    this.api
+      .get(`terms-conditions`)
+      .then((response: any) => {
+        this.load = false;
+        this.legality = response.legality;
+      })
+      .catch((danger: any) => {
+        this.load = false;
+      });
   }
 
   routes(route) {

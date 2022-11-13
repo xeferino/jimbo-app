@@ -8,12 +8,15 @@ import { ProfileAccountPageRoutingModule } from './profile-account-routing.modul
 
 import { ProfileAccountPage } from './profile-account.page';
 
+import { SharedModule } from '../../components/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfileAccountPageRoutingModule
+    ProfileAccountPageRoutingModule,
+    SharedModule
   ],
   declarations: [ProfileAccountPage]
 })
