@@ -29,10 +29,10 @@ VE
 keytool -list -v -alias jimbo -keystore build.keystore
 
 Huellas digitales del certificado:
-SHA1: 4E:4D:E9:78:C8:C2:BD:6E:0D:41:92:56:6D:28:EF:57:E3:B5:8C:3D
-SHA256: 5C:35:5F:35:0E:19:38:04:3A:28:5E:4E:BD:02:7A:5C:52:18:7B:CE:F3:D2:DD:1A:21:E6:F2:9B:6E:03:7B:AA
+SHA1: 9B:5F:72:0A:44:D8:D6:3D:4C:A2:7D:00:1F:F7:29:55:5D:D8:7B:BE
+SHA256: FB:87:8D:E8:29:92:CC:FE:C7:F7:B6:96:D2:33:A1:0E:18:6B:D6:C0:DC:F1:70:7F:7E:5F:91:68:13:6C:6D:52
 
 
 keytool -exportcert -alias jimbo -keystore build.keystore | openssl sha1 -binary | openssl base64 
 
-Tk3peMjCvW4NQZJWbSjvV+O1jD0=
+m19yCkTY1j1Mon0AH/cpVV3Ye74=
