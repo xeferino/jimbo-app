@@ -61,7 +61,7 @@ export class ProfileAccountPage implements OnInit {
   mySalesChartCreate () {
 
     this.api
-      .get( this.profile.role == 'seller' ? `user/sales/graphics/${this.profile.id}` : `user/sales/shoppings/${this.profile.id}`)
+      .get( this.profile.role == 'seller' ? `user/sales/graphics/${this.profile.id}` : `user/shoppings/graphics/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
         this.grafics = response.grafics;
