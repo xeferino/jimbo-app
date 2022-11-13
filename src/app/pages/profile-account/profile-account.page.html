@@ -227,8 +227,13 @@
       <ion-row>
         <ion-col size="12" class="" style="padding: 0px;">
           <ion-row>
-            <ion-col size="10" class="ion-text-left" style="padding: 0px;">
-              <p class="p-title" style="padding-top: 10px;">{{ profile.names }} {{ profile.surnames }}</p>
+            <ion-col size="2">
+              <p class="p-super" style="font-weight: normal; padding-top: 0px;">
+                <img [src]="profile.image" style="width: 30px;" />
+              </p>
+            </ion-col>
+            <ion-col size="8" class="ion-text-left" style="padding: 0px;">
+              <p class="p-title" style="padding-top: 0px;">{{ profile.names }}</p>
               <p class="p-info">{{ profile.email }}</p>
             </ion-col>
             <ion-col size="2" class="ion-text-center" style="padding: 0px;">
@@ -310,7 +315,7 @@
           </ion-button>
         </ion-col>
 
-        <ion-col size="12" class="ion-text-center" *ngIf="profile.role == 'seller'">
+        <ion-col size="12" class="ion-text-center" *ngIf="profile.role == 'seller'" (click)="routes('ranking')">
           <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
             <ion-icon name="shirt-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Ranking generar de vendedores
           </ion-button>

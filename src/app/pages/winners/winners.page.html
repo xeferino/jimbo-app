@@ -40,6 +40,17 @@
       </ion-col>
   
     </ion-row>
+
+    <ion-row *ngIf="!load && !winners.lenght" style="margin-top: 50px;">
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal" style="font-size: 50px !important;">
+          <ion-icon name="alert-outline"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal">No se encontraron registros de ganadores</p>
+      </ion-col>
+    </ion-row>
   
     <ion-row *ngIf="load">
       

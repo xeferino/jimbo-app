@@ -148,7 +148,8 @@ const routes: Routes = [
   },
   {
     path: 'policies',
-    loadChildren: () => import('./pages/policies/policies.module').then( m => m.PoliciesPageModule)
+    loadChildren: () => import('./pages/policies/policies.module').then( m => m.PoliciesPageModule),
+    canActivate: [GuardService],
   },
   {
     path: 'retire',
@@ -163,6 +164,11 @@ const routes: Routes = [
   {
     path: 'refer',
     loadChildren: () => import('./pages/refer/refer.module').then( m => m.ReferPageModule),
+    canActivate: [GuardService],
+  },
+  {
+    path: 'ranking',
+    loadChildren: () => import('./pages/ranking/ranking.module').then( m => m.RankingPageModule),
     canActivate: [GuardService],
   },
   

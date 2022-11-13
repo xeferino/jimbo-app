@@ -30,9 +30,19 @@
       <ion-col size="12">
         <p class="p-info" style="color: #666666;">
           <span *ngIf="load">Cargando movimientos  ...</span>
-          <span *ngIf="!load && !histories.length">No tienes movimientos regsitrados</span>
           <span *ngIf="!load && histories.length">Se encontraron {{ histories.length }} movimientos</span>
         </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!load && !histories.length" style="margin-top: 50px;">
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal" style="font-size: 50px !important;">
+          <ion-icon name="alert-outline"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal">No tienes movimientos regsitrados</p>
       </ion-col>
     </ion-row>
 

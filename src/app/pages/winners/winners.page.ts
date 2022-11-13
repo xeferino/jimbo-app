@@ -26,20 +26,16 @@ export class WinnersPage implements OnInit {
   constructor(private api: ApiService, private helper: HelperService) {}
 
   ngOnInit() {
-    //this.loadData();
-    setTimeout(() => {
-      this.load = false;
-      this.helper.toast('Se están mostrando datos de prueba', 'Ganadores en construcción');
-    }, 3000);
+    this.loadData();
   }
 
   loadData() {
     this.load = true;
     this.api
-      .get(`winners`)
+      .get(`raffles/winners`)
       .then((response: any) => {
         this.load = false;
-        this.winners = response.winners;
+        this.winners = response.raffles;
       })
       .catch((danger: any) => {
         this.load = false;
