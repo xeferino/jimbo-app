@@ -8,9 +8,52 @@
 
   <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
 
-  <br />
+  <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+    
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;">
+      <ion-col size="12">
+        <p class="p-info" style="color: #666666;">
+          <span *ngIf="load">Cargando notificaciones  ...</span>
+          <span *ngIf="!load && notifications.length">Se encontraron {{ notifications.length }} notificaciones</span>
+        </p>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row style="margin-top: 10px; margin-bottom: 5px;" *ngIf="!load && notifications.length">
+      <ion-col size="12">
+        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Notificaciones:</p>
+      </ion-col>
+    </ion-row>
 
-  <ion-grid class="app-grid" style="color: #CCCCCC;" *ngIf="!load && notifications.length == 0">
+    <ion-row style="height: auto; border-top: 1px solid #f4f5f8; padding-top: 5px;" *ngFor="let item of notifications">
+      
+      <ion-col size="12" class="ion-text-left">
+        <ion-row>
+          <ion-col size="8">
+            <p class="p-normal" style="font-weight: bold; padding-top: 0px;">
+              {{ item.title }}
+            </p>
+            <p class="p-info" style="font-weight: normal; padding-top: 0px;">
+              {{ item.description }}
+            </p>
+          </ion-col>
+          <ion-col size="4">
+            <p class="p-info ion-text-right" style="font-weight: normal; padding-top: 0px;">{{ item.created_at.substr(0, 10) }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+        
+    </ion-row>
+
+    <ion-row style="margin-top: 10px; margin-bottom: 5px;" *ngIf="!load && notifications.length">
+      <ion-col size="12">
+        <p class="p-normal" style="color: #f5933b; font-weight: normal; cursor: pointer;" (click)="loadData(1)">Borrar notificaciones:</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-grid class="app-grid" style="color: #CCCCCC;" *ngIf="!load && !notifications.length">
 
     <ion-row style="margin-top: 50px;">
       <ion-col size="12" class="ion-text-center">
