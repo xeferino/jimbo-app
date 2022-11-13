@@ -19,7 +19,7 @@
 })
 export class ModalSalePage implements OnInit {
 
-  sale: string;
+  sale: any;
   
   constructor(private helper: HelperService, private modal: ModalController) {}
 
