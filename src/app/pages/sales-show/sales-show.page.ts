@@ -34,10 +34,10 @@ export class SalesShowPage implements OnInit {
   loadData() {
     this.load = true;
     this.api
-      .get(`shoppings/tickets/${this.shopping.id}`)
+      .get(this.profile.seller ? `sales/tickets/${this.shopping.id}` : `shoppings/tickets/${this.shopping.id}`)
       .then((response: any) => {
         this.load = false;
-        this.shopping = response.shopping;
+        this.shopping = this.profile.seller ? response.sale : response.shopping;
       })
       .catch((danger: any) => {
         this.load = false;

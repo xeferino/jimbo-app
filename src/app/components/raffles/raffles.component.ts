@@ -47,7 +47,7 @@ export class RafflesComponent implements OnInit {
   favoriteRaffles(item){
     this.load = true;
     this.api
-      .post(`raflles/favorites`, { user_id: this.profile.id, raffle_id: item.id })
+      .post(`raffles/favorites`, { user_id: this.profile.id, raffle_id: item.id })
       .then((response: any) => {
         this.load = false;
         this.helper.toast(response.message, 'Bien hecho');

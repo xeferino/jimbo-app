@@ -39,10 +39,10 @@ export class SalesPage implements OnInit {
   loadData() {
     this.load = true;
     this.api
-      .get(`shoppings/${this.profile.id}`)
+      .get(this.profile.seller ? `sales/${this.profile.id}` : `shoppings/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        this.shoppings = response.shoppings;
+        this.shoppings = this.profile.seller ? response.sales : response.shoppings;
       })
       .catch((danger: any) => {
         this.load = false;
