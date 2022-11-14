@@ -294,7 +294,7 @@
           <ion-card class="app-card">
             <ion-card-content>
               <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">{{ profile.role == 'seller' ? 'VENTAS' : 'COMPRAS' }}</p>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.amount_shopping }}</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.role == 'seller' ? profile.amount_sale : profile.amount_shopping }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -317,7 +317,7 @@
 
         <ion-col size="12" class="ion-text-center" *ngIf="profile.role == 'seller'" (click)="routes('ranking')">
           <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
-            <ion-icon name="shirt-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Ranking generar de vendedores
+            <ion-icon name="shirt-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Ranking general de vendedores
           </ion-button>
         </ion-col>
   

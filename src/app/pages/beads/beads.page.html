@@ -26,6 +26,12 @@
 
   <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
     
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load">
+      <ion-col size="12">
+        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Cuentas de cobro:</p>
+      </ion-col>
+    </ion-row>
+
     <ion-row style="margin-top: 10px; margin-bottom: 10px;">
       <ion-col size="12">
         <p class="p-info" style="color: #666666;">
@@ -59,12 +65,17 @@
     </ion-row>
 
     <ion-row style="margin-top: 10px; margin-bottom: 10px;" (click)="routes('beads/add')" *ngIf="!load">
-      <ion-col size="12">
+      <ion-col size="12" class="ion-text-center">
         <p class="p-info" style="color: #f5933b;">Agregar una cuenta de cobro</p>
       </ion-col>
     </ion-row>
 
-    <br />
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load && requess.length">
+      <ion-col size="12">
+        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Solicitudes pendientes:</p>
+      </ion-col>
+    </ion-row>
+
     <br />
     <br />
 

@@ -25,10 +25,16 @@ export class SalesShowPage implements OnInit {
 
   shopping: any = JSON.parse(localStorage.getItem('sale'));
 
+  show: boolean = false;
+
   constructor(private api: ApiService, private helper: HelperService) {}
 
   ngOnInit() {
     this.loadData();
+  }
+
+  setShow() {
+    this.show = !this.show;
   }
 
   loadData() {

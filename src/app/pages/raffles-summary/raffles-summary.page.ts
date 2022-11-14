@@ -33,7 +33,7 @@ export class RafflesSummaryPage implements OnInit {
 
   method: any = JSON.parse(localStorage.getItem('method')) || {
     id: 0,
-    name: `${this.profile.jib} JIB`,
+    name: `${this.profile.jib}`,
     icon: 'assets/icon/jib.png',
     type: 'jib'
   };
@@ -120,8 +120,8 @@ export class RafflesSummaryPage implements OnInit {
       component: ModalAlertPage,
       cssClass: 'app-modal modal-alert',
       componentProps: {
-        title: 'Confirma tu compra',
-        message: `Estás a punto de realizar una compra de ${this.raffles.promotion.price}`,
+        title: this.profile.seller ? 'Confirma tu venta' : 'Confirma tu comprar' ,
+        message: this.profile.seller ? `Estás a punto de realizar una venta de ${this.raffles.promotion.price}` : `Estás a punto de realizar una comprar de ${this.raffles.promotion.price}`,
         icon: 'alert-outline',
         confirm: 'Confirmar',
         cancel: 'Cancelar'

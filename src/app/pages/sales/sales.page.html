@@ -29,8 +29,8 @@
     <ion-row style="margin-top: 10px; margin-bottom: 10px;">
       <ion-col size="12">
         <p class="p-info" style="color: #666666;">
-          <span *ngIf="load">Cargando movimientos  ...</span>
-          <span *ngIf="!load && shoppings.length">Se encontraron {{ shoppings.length }} compras</span>
+          <span *ngIf="load">Cargando {{ profile.seller ? 'ventas' : 'compras' }}  ...</span>
+          <span *ngIf="!load && shoppings.length">Se encontraron {{ shoppings.length }} {{ profile.seller ? 'ventas' : 'compras' }}</span>
         </p>
       </ion-col>
     </ion-row>
@@ -42,7 +42,7 @@
         </p>
       </ion-col>
       <ion-col size="12" class="ion-text-center">
-        <p class="p-normal">No tienes compras regsitradas</p>
+        <p class="p-normal">No tienes {{ profile.seller ? 'ventas' : 'compras' }} regsitradas</p>
       </ion-col>
     </ion-row>
 
@@ -57,7 +57,7 @@
                 <p class="p-normal" style="font-weight: bold; color: #344a98;">BOLETO</p>
               </ion-col>
               <ion-col size="6" class="ion-text-right">
-                <p class="p-normal">${{ item.amount }}</p>
+                <p class="p-normal" style="color: #f5933b;">${{ item.amount }}</p>
               </ion-col>
             </ion-row>
 
@@ -75,7 +75,7 @@
                 <p class="p-normal">Fecha de compra</p>
               </ion-col>
               <ion-col size="6" class="ion-text-right">
-                <p class="p-normal">{{ item.created_at.substr(0,10) }}</p>
+                <p class="p-normal">{{ item.created_at }}</p>
               </ion-col>
             </ion-row>
   

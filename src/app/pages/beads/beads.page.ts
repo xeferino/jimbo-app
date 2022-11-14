@@ -25,6 +25,8 @@ export class BeadsPage implements OnInit {
 
   accounts: any = [];
 
+  requess: any = [];
+
   constructor(private api: ApiService, private helper: HelperService) {}
 
   ngOnInit() {

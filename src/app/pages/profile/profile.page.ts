@@ -38,6 +38,7 @@ export class ProfilePage implements OnInit {
     address: this.profile.address,
     address_city: this.profile.address_city,
     code: null,
+    become_seller: this.profile.become_seller
   };
 
   errors: any = {

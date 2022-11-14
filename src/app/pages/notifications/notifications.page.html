@@ -38,7 +38,7 @@
             </p>
           </ion-col>
           <ion-col size="4">
-            <p class="p-info ion-text-right" style="font-weight: normal; padding-top: 0px;">{{ item.created_at.substr(0, 10) }}</p>
+            <p class="p-info ion-text-right" style="font-weight: normal; padding-top: 0px;">{{ item.created_at }}</p>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -47,7 +47,7 @@
 
     <ion-row style="margin-top: 10px; margin-bottom: 5px;" *ngIf="!load && notifications.length">
       <ion-col size="12">
-        <p class="p-normal" style="color: #f5933b; font-weight: normal; cursor: pointer;" (click)="loadData(1)">Borrar notificaciones:</p>
+        <p class="p-normal" style="color: #f5933b; font-weight: normal; cursor: pointer;" (click)="loadData(1)">Borrar notificaciones</p>
       </ion-col>
     </ion-row>
 

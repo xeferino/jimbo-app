@@ -48,7 +48,7 @@
                 <p class="p-normal" style="font-weight: bold; color: #344a98;">PRIMER PREMIO:</p>
               </ion-col>
               <ion-col size="6" class="ion-text-right">
-                <p class="p-normal">{{ shopping.raffle.first_prize }}</p>
+                <p class="p-normal" style="color: #f5933b; font-weight: bold;">{{ shopping.raffle.first_prize }}</p>
               </ion-col>
             </ion-row>
 
@@ -73,9 +73,31 @@
               <ion-col size="6">
                 <p class="p-normal">Boletos comprados:</p>
               </ion-col>
-              <ion-col size="6" class="ion-text-right">
+              <ion-col size="4" class="ion-text-right">
                 <p class="p-normal">{{ shopping.quantity }}</p>
               </ion-col>
+              <ion-col size="2" class="ion-text-right">
+                <p class="p-ultra" style="
+                cursor: pointer;
+                color: #f5933b;
+                font-weight: bold;
+                position: relative;
+                top: -3px;
+                "
+                (click)="setShow()"
+                >
+                  <ion-icon [name]="show ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+                </p>
+              </ion-col>
+            </ion-row>
+            <ion-row style="
+            padding-top: 10px;
+            "
+            *ngIf="show"
+            >
+            <ion-col size="4" class="ion-text-center" *ngFor="let ticket of shopping.raffle.tickets" >
+              <p class="p-normal" style="font-weight: bold; color: #344a98;">{{ ticket.serial }}</p>
+            </ion-col>
             </ion-row>
 
             <ion-row style="
