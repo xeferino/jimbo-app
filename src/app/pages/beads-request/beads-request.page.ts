@@ -1,6 +1,6 @@
 /**
  *
- * @fileoverview BeadsPage
+ * @fileoverview BeadsRequestPage
  *
  * @version 1.0
  *
@@ -13,11 +13,11 @@
  import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
-  selector: 'app-beads',
-  templateUrl: './beads.page.html',
-  styleUrls: ['./beads.page.scss'],
+  selector: 'app-beads-request',
+  templateUrl: './beads-request.page.html',
+  styleUrls: ['./beads-request.page.scss'],
 })
-export class BeadsPage implements OnInit {
+export class BeadsRequestPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
@@ -25,13 +25,12 @@ export class BeadsPage implements OnInit {
 
   accounts: any = [];
 
-  request: any = [];
+  requests: any = [];
 
   constructor(private api: ApiService, private helper: HelperService) {}
 
   ngOnInit() {
     this.loadData();
-    //this.loadRequest();
   }
 
   setData(tickets, promotions) {
@@ -43,26 +42,13 @@ export class BeadsPage implements OnInit {
     this.routes(`beads/${item.id}/show`);
   }
 
-  loadRequest() {
-    this.load = true;
-    this.api
-      .get(`user/cash/request/${this.profile.id}`)
-      .then((response: any) => {
-        this.load = false;
-        this.request = response.request;
-      })
-      .catch((danger: any) => {
-        this.load = false;
-      });
-  }
-
   loadData() {
     this.load = true;
     this.api
-      .get(`user/accounts/all/${this.profile.id}`)
+      .get(`cash/request/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        this.accounts = response.accounts;
+        this.requests = response.requests;
       })
       .catch((danger: any) => {
         this.load = false;

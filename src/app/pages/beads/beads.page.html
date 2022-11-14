@@ -70,10 +70,17 @@
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load && requess.length">
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load && request.length">
+      
       <ion-col size="12">
         <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Solicitudes pendientes:</p>
       </ion-col>
+
+      <ion-col size="12" *ngFor="">
+        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Solicitudes pendientes:</p>
+      </ion-col>
+
+
     </ion-row>
 
     <br />

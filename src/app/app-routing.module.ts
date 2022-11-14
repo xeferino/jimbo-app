@@ -171,6 +171,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/ranking/ranking.module').then( m => m.RankingPageModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'beads-request',
+    loadChildren: () => import('./pages/beads-request/beads-request.module').then( m => m.BeadsRequestPageModule),
+    canActivate: [GuardService],
+  },
   
 ];
 

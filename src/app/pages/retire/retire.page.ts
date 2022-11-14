@@ -111,7 +111,7 @@ export class RetirePage implements OnInit {
       .then((response: any) => {
         this.load = false;
         this.helper.toast(response.message, 'Bien hecho');
-        this.routes('balances');
+        this.routes('beads-request');
       })
       .catch((danger: any) => {
         this.load = false;

@@ -1,0 +1,71 @@
+<ion-progress-bar *ngIf="load" class="app-indeterminate" color="warning" type="indeterminate"></ion-progress-bar>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="back()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+
+  <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
+    
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;" *ngIf="!load">
+      <ion-col size="12">
+        <p class="p-normal" style="color: rgb(52,74,152); font-weight: bold;">Solicitudes de retiro:</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-top: 10px; margin-bottom: 10px;">
+      <ion-col size="12">
+        <p class="p-info" style="color: #666666;">
+          <span *ngIf="load">Cargando solicitudes de retiro ...</span>
+          <span *ngIf="!load && accounts.length">Se encontraron {{ requests.length }} solicitudes registradas</span>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!load && !requests.length" style="margin-top: 50px;">
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal" style="font-size: 50px !important;">
+          <ion-icon name="alert-outline"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p class="p-normal">No tienes solicitudes de retiro regsitradas</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: auto; border-top: 1px solid #f4f5f8; padding-top: 5px;" *ngFor="let item of requests">
+      <ion-col size="8" class="ion-text-left">
+        <p class="p-normal" style="font-weight: bold; padding-top: 5px;">{{ item.created_at }}</p>
+        <p class="p-info" style="font-weight: normal; padding-top: 5px;">{{ item.description }}</p>
+      </ion-col>
+      <ion-col size="4" class="ion-text-right">
+        <p class="p-normal" style="font-weight: bold; padding-top: 5px; color: #f5933b;">{{ item.amount }}</p>
+        <p class="p-info" style="font-weight: normal; padding-top: 5px;">{{ item.status }}</p>
+      </ion-col>
+    </ion-row>
+
+    <br />
+    <br />
+
+  </ion-grid>
+
+</ion-content>
