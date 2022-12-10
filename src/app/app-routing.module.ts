@@ -149,7 +149,6 @@ const routes: Routes = [
   {
     path: 'policies',
     loadChildren: () => import('./pages/policies/policies.module').then( m => m.PoliciesPageModule),
-    canActivate: [GuardService],
   },
   {
     path: 'retire',

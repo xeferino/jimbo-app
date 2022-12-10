@@ -24,6 +24,8 @@ import { HelperService } from './services/helper/helper.service';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
@@ -33,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     GuardService,
     ApiService,
     HelperService,
+    SocialSharing,
   ],
   bootstrap: [AppComponent],
 })

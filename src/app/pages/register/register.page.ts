@@ -67,6 +67,8 @@ export class RegisterPage implements OnInit {
 
   country: any;
 
+  confirm: boolean = false;
+
   constructor(private auth: AuthService, private api: ApiService, private helper: HelperService, private modal: ModalController) { }
 
   ngOnInit() {

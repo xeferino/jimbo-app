@@ -23,6 +23,8 @@ export class PoliciesPage implements OnInit {
 
   legality: any;
 
+  profile: any = JSON.parse(localStorage.getItem('profile')) || null;
+
   constructor(private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
@@ -40,6 +42,14 @@ export class PoliciesPage implements OnInit {
       .catch((danger: any) => {
         this.load = false;
       });
+  }
+
+  back() {
+    if(!this.profile){
+      this.routes('signup');
+    } else {
+      this.routes('profile/account');
+    }
   }
 
   routes(route) {

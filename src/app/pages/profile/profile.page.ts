@@ -77,6 +77,14 @@ export class ProfilePage implements OnInit {
     this.loadData();
   }
 
+  validateData() {
+    if(!this.profile.email_verified_at || (this.profile.email != this.form.email)) {
+      this.verifiedData();
+    } else {
+      this.updateData();
+    }
+  }
+
   loadData() {
     this.load = true;
     this.api
