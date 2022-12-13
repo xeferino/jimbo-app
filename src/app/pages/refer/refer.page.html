@@ -77,13 +77,35 @@
 
     <ion-row>
       <ion-col size="12" class="ion-text-center">
-        <ion-button color="warning" shape="round" expand="full" style="height: 40px; font-size: 14px; --ion-color-contrast: #FFFFFF !important;" (click)="copyCode()">Copiar código</ion-button>
+        <ion-button color="warning" shape="round" expand="full" style="height: 40px; font-size: 14px; --ion-color-contrast: #FFFFFF !important;" (click)="sendShare()">Compartir</ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col size="12" class="ion-text-center">
-        <ion-button color="warning" shape="round" fill="outline" expand="full" style="height: 40px; font-size: 14px; --ion-color-contrast: #FFFFFF !important;" (click)="shareCode()">Compartir en redes</ion-button>
+
+        <a target="_blank" href="https://www.techiediaries.com">Ver </a>
+
+        <ion-fab-button color="secondary" (click)="openUrl()" style="float: left; margin: 5px;">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button color="primary" (click)="openUrl()" style="float: left; margin: 5px;">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button color="medium" (click)="shareViaInstagram()" style="float: left; margin: 5px;">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button color="success" (click)="shareViaWhatsApp()" style="float: left; margin: 5px;">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button color="danger" (click)="shareViaEmail()" style="float: left; margin: 5px;">
+          <ion-icon name="mail-outline"></ion-icon>
+        </ion-fab-button>
+       
       </ion-col>
     </ion-row>
 

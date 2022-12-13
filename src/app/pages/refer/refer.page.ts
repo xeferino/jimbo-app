@@ -9,8 +9,10 @@
  */
 
  import { Component, OnInit } from '@angular/core';
+ import { Platform } from '@ionic/angular';
  import { HelperService } from 'src/app/services/helper/helper.service';
- import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-refer',
@@ -23,26 +25,49 @@ export class ReferPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
-  constructor(private helper: HelperService, private socialSharing: SocialSharing) { }
+  share: string = `Regístrate en Jimbo usando mi código ${this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO'}`;
+
+  constructor(private helper: HelperService, private iab: InAppBrowser, public platform: Platform, private socialSharing: SocialSharing) { }
 
   ngOnInit() {
   }
 
-  async copyCode() {
-    if (navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO');
-        this.helper.toast('Se ha copiado en el porta papels', 'Bien hecho');
-      } catch (err) {}
-    }
+  openUrl() {
+    this.platform.ready().then(() => {
+      this.iab.create("https://www.techiediaries.com",'_blank');
+    });
   }
 
-  shareCode(){
-    this.socialSharing.share(`Regístrate en Jimbo usando mi código ${this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO'}`).then(function() {
-      console.log('Successful share');
-    }).catch(function(error) {
-      console.log('Error sharing:', error)
+  sendShare() {
+    alert(true);
+    this.platform.ready().then(() => {
+      alert(2);
+      this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
+        alert(1);
+      }).catch(() => {
+        alert(0);
+      });
     });
+  }
+
+  shareViaTwitter () {
+    this.iab.create(`https://wa.me/?text=${this.share}`, `_blank`);
+  }
+
+  shareViaFacebook () {
+    this.iab.create(`https://wa.me/?text=${this.share}`, `_blank`);
+  }
+
+  shareViaInstagram () {
+    this.iab.create(`https://wa.me/?text=${this.share}`, `_blank`);
+  } 
+
+  shareViaWhatsApp () {
+    this.iab.create(`https://wa.me/?text=${this.share}`, `_blank`);
+  }
+
+  shareViaEmail () {
+    window.open('https://forum.ionicframework.com/', '_system')
   }
 
   routes(route) {

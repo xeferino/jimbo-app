@@ -25,6 +25,11 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then( (data) => {});
+    alert('initializeApp');
+    this.platform.ready().then(() => {
+      alert('then');
+    }).catch(() => {
+      alert('catch');
+    });
   }
 }

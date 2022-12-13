@@ -22,6 +22,9 @@ export class PoliciesPage implements OnInit {
   load: boolean = false;
 
   legality: any;
+  termins: any;
+
+  view: number = 1;
 
   profile: any = JSON.parse(localStorage.getItem('profile')) || null;
 
@@ -31,6 +34,10 @@ export class PoliciesPage implements OnInit {
     this.loadData();
   }
 
+  setView(view: number) {
+    this.view = view;
+  }
+
   loadData() {
     this.load = true;
     this.api
@@ -38,6 +45,7 @@ export class PoliciesPage implements OnInit {
       .then((response: any) => {
         this.load = false;
         this.legality = response.legality;
+        this.termins = response.termins;
       })
       .catch((danger: any) => {
         this.load = false;
