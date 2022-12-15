@@ -77,3 +77,13 @@ height: 20px;
 -moz-border-radius: 50px;
 border-radius: 50px;
 }
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
