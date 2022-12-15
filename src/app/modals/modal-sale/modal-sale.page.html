@@ -22,6 +22,15 @@
         </ion-col>
       </ion-row>
 
+      <ion-row style="height: auto;" *ngIf="sale.operation == 2">
+        <ion-col size="6" class="ion-text-left">
+          <p class="p-normal" style="color: #000000; font-weight: normal;">Vendedor</p>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <p class="p-normal" style="font-weight: bold;">{{ sale.seller }}</p>
+        </ion-col>
+      </ion-row>
+
       <ion-row style="height: auto;">
         <ion-col size="6" class="ion-text-left">
           <p class="p-normal" style="color: #000000; font-weight: normal;">Código del boleto</p>
@@ -56,14 +65,9 @@
       </ion-row>
 
       <ion-row style="height: auto;">
-        <ion-col size="6" class="ion-text-center">
-          <ion-button color="warning" fill="outline" shape="round" expand="full" style="height: 35px; font-size: 12px;">
-            <ion-icon name="cloud-download-outline"></ion-icon>&nbsp;Descargar
-          </ion-button>
-        </ion-col>
-        <ion-col size="6" class="ion-text-center">
-          <ion-button color="warning" fill="outline" shape="round" expand="full" style="height: 35px; font-size: 12px;">
-            <ion-icon name="share-social-outline"></ion-icon>&nbsp;Compartir
+        <ion-col size="12" class="ion-text-center">
+          <ion-button color="warning" fill="outline" shape="round" expand="full" style="height: 35px; font-size: 12px;" (click)="sendShare()">
+            <ion-icon name="cloud-download-outline"></ion-icon>&nbsp;Compartir
           </ion-button>
         </ion-col>
       </ion-row>
