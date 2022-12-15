@@ -290,7 +290,7 @@
           <p class="p-normal" style="padding-top: 0px; font-weight: bold;">Balance</p>
         </ion-col>
 
-        <ion-col [size]="4" class="ion-text-center">
+        <ion-col [size]="(profile.become_seller == true && profile.seller == false) ? 6 : 4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
               <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">MI JIB</p>
@@ -299,7 +299,7 @@
           </ion-card>
         </ion-col>
   
-        <ion-col [size]="4" class="ion-text-center">
+        <ion-col [size]="(profile.become_seller == true && profile.seller == false) ? 6 : 4" class="ion-text-center">
           <ion-card class="app-card">
             <ion-card-content>
               <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">EFECTIVO</p>
@@ -308,11 +308,20 @@
           </ion-card>
         </ion-col>
 
-        <ion-col [size]="4" class="ion-text-center">
+        <ion-col [size]="(profile.become_seller == true && profile.seller == false) ? 6 : 4" class="ion-text-center" *ngIf="profile.seller == false">
           <ion-card class="app-card">
             <ion-card-content>
-              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">{{ profile.role == 'seller' ? 'VENTAS' : 'COMPRAS' }}</p>
-              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.role == 'seller' ? profile.amount_sale : profile.amount_shopping }}</p>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">COMPRAS</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.amount_shopping }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col [size]="(profile.become_seller == true || profile.seller == true) ? 6 : 4" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">VENTAS</p>
+              <p class="p-info" style="padding-top: 0px; font-weight: bold; color: #f5933b;">{{ profile.amount_sale }}</p>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -343,7 +352,15 @@
 
       <ion-row>
 
-        <ion-col size="12">
+        <ion-col size="12" *ngIf="profile.seller == false">
+          <ion-card class="app-card">
+            <ion-card-content>
+              <canvas #myShoppingChart></canvas>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="profile.seller == true || profile.become_seller == true">
           <ion-card class="app-card">
             <ion-card-content>
               <canvas #mySalesChart></canvas>

@@ -23,7 +23,8 @@ import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
 })
 export class ProfileAccountPage implements OnInit {
 
-  @ViewChild('mySalesChart') private mySalesChart: ElementRef;
+  @ViewChild('myShoppingChart') private myShoppingChart: ElementRef;
+  @ViewChild('mySalesChart') private mySalesChart:    ElementRef;
 
   yourSales: any;
   mySales: any;
@@ -40,7 +41,7 @@ export class ProfileAccountPage implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    this.mySalesChartCreate ();
+    this.loadChart ();
   }
 
   loadData() {
@@ -58,20 +59,54 @@ export class ProfileAccountPage implements OnInit {
       });
   }
 
+  loadChart() {
+    if(this.profile.seller == true || this.profile.become_seller == true) {
+      this.mySalesChartCreate ();
+    }
+    if(this.profile.seller == false) {
+      this.myShoppingChartCreate ();
+    }
+  }
+
+  myShoppingChartCreate () {
+
+    this.api
+      .get(`user/shoppings/graphics/${this.profile.id}`)
+      .then((response: any) => {
+        this.load = false;
+        this.mySales = new Chart(this.myShoppingChart.nativeElement, {
+          type: 'line',
+          data: {
+            labels: response.grafics.sales.labels,
+            datasets: [{
+              label: `Compras del mes`,
+              data: response.grafics.sales.data,
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            }]
+          }
+        });
+      })
+      .catch((danger: any) => {
+        this.load = false;
+        this.helper.toast(danger.error.message, 'Lo siento');
+      });
+  }
+
   mySalesChartCreate () {
 
     this.api
-      .get( this.profile.role == 'seller' ? `user/sales/graphics/${this.profile.id}` : `user/shoppings/graphics/${this.profile.id}`)
+      .get(`user/sales/graphics/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        this.grafics = response.grafics;
         this.mySales = new Chart(this.mySalesChart.nativeElement, {
           type: 'line',
           data: {
-            labels: this.grafics.sales.labels,
+            labels: response.grafics.sales.labels,
             datasets: [{
-              label: this.profile.role == 'seller' ? `Ventas del mes` : `Compras del mes`,
-              data: this.grafics.sales.data,
+              label: `Ventas del mes`,
+              data: response.grafics.sales.data,
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
               tension: 0.1

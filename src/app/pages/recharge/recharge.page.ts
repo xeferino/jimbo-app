@@ -13,6 +13,7 @@
  import { HelperService } from 'src/app/services/helper/helper.service';
  import { ModalController } from '@ionic/angular';
  import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
+ import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-recharge',
@@ -42,7 +43,11 @@ export class RechargePage implements OnInit {
     type: 'card'
   };
 
-  constructor(private api: ApiService, private helper: HelperService, private modal: ModalController) {}
+  constructor(private api: ApiService, private helper: HelperService, private modal: ModalController, private platform: Platform) {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.back();
+    });
+  }
 
   ngOnInit() {
     if(this.method.id != 0 && this.method.type == 'card') {
@@ -122,6 +127,10 @@ export class RechargePage implements OnInit {
         this.buyData();
       }
     });
+  }
+
+  back() {
+    this.routes('balances');
   }
 
   routes(route){
