@@ -8,7 +8,7 @@
  *
 */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -16,20 +16,21 @@ import { Platform } from '@ionic/angular';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     
   constructor(
-    private platform: Platform,
+    public platform: Platform
   ){
+
+  }
+
+  ngOnInit() {
     this.initializeApp();
   }
 
   initializeApp() {
-    alert('initializeApp');
-    this.platform.ready().then(() => {
-      alert('then');
+    this.platform.ready().then((source) => {
     }).catch(() => {
-      alert('catch');
     });
   }
 }

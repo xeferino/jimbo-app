@@ -25,7 +25,7 @@ export class ReferPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
-  share: string = `Regístrate en Jimbo usando mi código ${this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO'}`;
+  share: string = `Regístrate en https://jimbosorteos.com usando mi código ${this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO'}`;
 
   constructor(private helper: HelperService, private iab: InAppBrowser, public platform: Platform, private socialSharing: SocialSharing) { }
 
@@ -34,18 +34,16 @@ export class ReferPage implements OnInit {
 
   openUrl() {
     this.platform.ready().then(() => {
-      this.iab.create("https://www.techiediaries.com",'_blank');
+      this.iab.create("https://www.techiediaries.com", '_system');
     });
   }
 
   sendShare() {
-    alert(true);
     this.platform.ready().then(() => {
-      alert(2);
-      this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
-        alert(1);
+      this.socialSharing.share(this.share).then(() => {
+        
       }).catch(() => {
-        alert(0);
+        
       });
     });
   }
