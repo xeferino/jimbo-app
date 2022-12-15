@@ -24,8 +24,9 @@ export class PoliciesPage implements OnInit {
 
   load: boolean = false;
 
+  privacity: any;
+  game: any;
   legality: any;
-  termins: any;
 
   view: number = 1;
 
@@ -53,8 +54,9 @@ export class PoliciesPage implements OnInit {
       .get(`terms-conditions`)
       .then((response: any) => {
         this.load = false;
+        this.privacity = response.privacity;
         this.legality = response.legality;
-        this.termins = response.termins;
+        this.game = response.game;
       })
       .catch((danger: any) => {
         this.load = false;
