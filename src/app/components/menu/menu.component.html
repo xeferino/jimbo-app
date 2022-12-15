@@ -24,6 +24,7 @@
         <p class="app-menu-title" [ngClass]="{ 'active': active == 'notification' }">
           Notificaciones
         </p>
+        <span class="app-menu-notifications" *ngIf="notifications.length">{{ notifications.length }}</span>
       </ion-col>
       <ion-col size="3" class="ion-text-center" style="padding: 0px;" (click)="routes('profile/account')">
         <p class="app-menu-button" [ngClass]="{ 'active': active == 'ajustes' }">

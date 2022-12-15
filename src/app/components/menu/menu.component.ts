@@ -9,6 +9,7 @@
  */
 
  import { Component, OnInit, Input } from '@angular/core';
+ import { ApiService } from 'src/app/services/api/api.service';
  import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
@@ -20,9 +21,26 @@ export class MenuComponent implements OnInit {
 
   @Input() active: string = 'home';
 
-  constructor(private helper: HelperService) { }
+  notifications: any = [];
 
-  ngOnInit() {}
+  profile: any = JSON.parse(localStorage.getItem('profile'));
+
+  constructor(private helper: HelperService, private api: ApiService) { }
+
+  ngOnInit() {
+    this.loadNotifications();
+  }
+
+  loadNotifications(clean: number = 0) {
+    this.api
+      .get(`user/notifications/all/${this.profile.id}`)
+      .then((response: any) => {
+        this.notifications = response.notifications;
+      })
+      .catch((danger: any) => {
+        
+      });
+  }
 
   routes(route: string) { this.helper.routes(route); }
 

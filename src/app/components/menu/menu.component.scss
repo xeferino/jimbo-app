@@ -32,3 +32,20 @@
 .app-menu-title.active {
   color: #f5933b;
 }
+
+.app-menu-notifications {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-size: 10px;
+  background: #f5933b;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding-top: 2px;
+  color: #ffffff;
+  font-weight: bold;
+}
