@@ -29,6 +29,8 @@ export class RafflesSummaryPage implements OnInit {
 
   ticket: any = JSON.parse(localStorage.getItem('ticket'));
 
+  operation: any = localStorage.getItem('operation') || 1;
+
   load: boolean = true;
 
   method: any = JSON.parse(localStorage.getItem('method')) || {
@@ -55,6 +57,7 @@ export class RafflesSummaryPage implements OnInit {
     method_id: this.method.id,
     method_type: this.method.type,
     country_id: this.country.id,
+    operation: this.operation,
   };
 
   constructor(private api: ApiService, private helper: HelperService, private modal: ModalController) {}

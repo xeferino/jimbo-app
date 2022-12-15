@@ -11,6 +11,9 @@
  import { Component, OnInit } from '@angular/core';
  import { ApiService } from 'src/app/services/api/api.service';
  import { HelperService } from 'src/app/services/helper/helper.service';
+ import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
+ import { ModalController } from '@ionic/angular';
+ import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-policies',
@@ -28,7 +31,13 @@ export class PoliciesPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile')) || null;
 
-  constructor(private api: ApiService, private helper: HelperService) { }
+  isModal: any = localStorage.getItem('isModal') || false;
+
+  constructor(private api: ApiService, private helper: HelperService, private modal: ModalController, private platform: Platform) {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.back();
+    });
+  }
 
   ngOnInit() {
     this.loadData();
@@ -53,7 +62,10 @@ export class PoliciesPage implements OnInit {
   }
 
   back() {
-    if(!this.profile){
+    if(this.isModal) {
+      this.modal.dismiss();
+    }
+    else if(!this.profile){
       this.routes('signup');
     } else {
       this.routes('profile/account');

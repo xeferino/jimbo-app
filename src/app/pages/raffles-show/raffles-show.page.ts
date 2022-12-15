@@ -13,6 +13,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
 import { ModalController } from '@ionic/angular';
 import { ModalAlertPage } from '../../modals/modal-alert/modal-alert.page';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { PoliciesPage} from '../policies/policies.page';
 
 @Component({
   selector: 'app-raffles-show',
@@ -33,7 +35,7 @@ export class RafflesShowPage implements OnInit {
     promotion_id: null,
   };
 
-  constructor(private api: ApiService, private helper: HelperService, private modal: ModalController) {}
+  constructor(private api: ApiService, private helper: HelperService, private modal: ModalController, private iab: InAppBrowser) {}
 
   ngOnInit() {
     this.loadData();
@@ -44,10 +46,12 @@ export class RafflesShowPage implements OnInit {
     this.form.promotion_id = promotions;
   }
 
-  buyData() {
+  buyData(option: string) {
+    localStorage.removeItem('operation');
     if(!this.profile.email_verified_at) {
       this.verified();
     } else {
+      localStorage.setItem('operation', option);
       localStorage.setItem('ticket', JSON.stringify(this.form));
       this.routes(`raffles/${this.raffles.id}/summary`);
     }
@@ -74,6 +78,26 @@ export class RafflesShowPage implements OnInit {
   openRaffles(item){
     localStorage.setItem('raffle', JSON.stringify(item));
     this.routes(`raffles/${item.id}`);
+  }
+
+  async policies() {
+    localStorage.setItem('isModal', 'true');
+    const modal = await this.modal.create({
+      component: PoliciesPage,
+      cssClass: 'app-modal',
+      componentProps: {
+        
+      },
+      backdropDismiss: false,
+      swipeToClose: false,
+      keyboardClose: false,
+    });
+
+    await modal.present();
+
+    modal.onDidDismiss().then((success) => {
+      localStorage.removeItem('isModal');
+    });
   }
 
   async verified() {
