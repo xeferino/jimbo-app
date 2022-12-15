@@ -175,6 +175,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/beads-request/beads-request.module').then( m => m.BeadsRequestPageModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'seller',
+    loadChildren: () => import('./pages/seller/seller.module').then( m => m.SellerPageModule)
+  },
   
 ];
 

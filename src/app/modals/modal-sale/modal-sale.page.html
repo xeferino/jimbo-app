@@ -65,9 +65,14 @@
       </ion-row>
 
       <ion-row style="height: auto;">
-        <ion-col size="12" class="ion-text-center">
+        <ion-col size="6" class="ion-text-center">
+          <ion-button color="warning" fill="outline" shape="round" expand="full" style="height: 35px; font-size: 12px;" (click)="openUrl()">
+            <ion-icon name="cloud-download-outline"></ion-icon>&nbsp;Descargar
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
           <ion-button color="warning" fill="outline" shape="round" expand="full" style="height: 35px; font-size: 12px;" (click)="sendShare()">
-            <ion-icon name="cloud-download-outline"></ion-icon>&nbsp;Compartir
+            <ion-icon name="share-social-outline"></ion-icon>&nbsp;Compartir
           </ion-button>
         </ion-col>
       </ion-row>

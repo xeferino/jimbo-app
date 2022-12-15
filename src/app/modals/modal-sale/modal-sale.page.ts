@@ -23,12 +23,14 @@ export class ModalSalePage implements OnInit {
 
   sale: any;
 
-  share: string = `He realizado una compra en https://jimbosorteos.com, te invito a que te animes tu también.`;
+  share: string ;
+  url: string;
   
   constructor(private helper: HelperService, private modal: ModalController, private iab: InAppBrowser, private socialSharing: SocialSharing) {}
 
   ngOnInit() {
-    
+    this.share = `He realizado una compra en https://jimbosorteos.com, te invito a que te animes tu también.`;
+    this.url =  this.sale.url_receipt;
   }
 
   sendShare() {
@@ -40,7 +42,7 @@ export class ModalSalePage implements OnInit {
   }
 
   openUrl() {
-    this.iab.create("https://www.techiediaries.com", '_system');
+    this.iab.create(this.url, '_system');
   }
 
   back(confirm: boolean = false) {
