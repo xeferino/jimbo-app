@@ -99,7 +99,8 @@
         padding-bottom: 5px;
         cursor: pointer;
       "
-      (click)="routes('sales')"
+      (click)="routes('shoppings')"
+      *ngIf="profile.seller == false"
       >
         <ion-col size="1">
           <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
@@ -107,7 +108,26 @@
           </p>
         </ion-col>
         <ion-col size="11">
-          <p class="p-normal" style="padding-top: 0px;">{{ profile.role == 'seller' ? 'Mis ventas' : 'Mis compras' }}</p>
+          <p class="p-normal" style="padding-top: 0px;">Mis compras</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="
+        border-bottom: solid 1px #eeeeee;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        cursor: pointer;
+      "
+      (click)="routes('sales')"
+      *ngIf="profile.become_seller == true || profile.seller == true"
+      >
+        <ion-col size="1">
+          <p class="p-normal" style="padding-top: 0px; color: #f5933b; font-size: 14px !important;">
+            <ion-icon name="cart-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="11">
+          <p class="p-normal" style="padding-top: 0px;">Mis ventas</p>
         </ion-col>
       </ion-row>
 
@@ -353,7 +373,7 @@
           </ion-card>
         </ion-col>
 
-        <ion-col [size]="(profile.become_seller == true || profile.seller == true) ? 6 : 4" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true">
+        <ion-col [size]="(profile.become_seller == true && profile.seller == true) ? 4 : 6" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true">
           <ion-card class="app-card">
             <ion-card-content>
               <p class="p-info" style="padding-top: 0px; color: rgb(52,74,152);">VENTAS</p>
@@ -378,7 +398,7 @@
           </ion-button>
         </ion-col>
 
-        <ion-col size="12" class="ion-text-center" *ngIf="profile.role == 'seller'" (click)="routes('ranking')">
+        <ion-col size="12" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true" (click)="routes('ranking')">
           <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
             <ion-icon name="shirt-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Ranking general de vendedores
           </ion-button>

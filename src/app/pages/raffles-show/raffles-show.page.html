@@ -161,13 +161,13 @@
       </ion-row>
 
       <ion-row>
-        <ion-col size="12" class="ion-text-center" *ngIf="profile.become_seller == true">
-          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData(2)">
+        <ion-col size="12" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true">
+          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData('2')">
             Vender
           </ion-button>
         </ion-col>
-        <ion-col size="12" class="ion-text-center">
-          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData(1)">
+        <ion-col size="12" class="ion-text-center"  *ngIf="profile.seller == false">
+          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData('1')">
             Comprar
           </ion-button>
         </ion-col>

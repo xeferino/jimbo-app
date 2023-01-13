@@ -1,6 +1,6 @@
 /**
  *
- * @fileoverview SalesPage
+ * @fileoverview ShoppingsPage
  *
  * @version 1.0
  *
@@ -8,16 +8,16 @@
  *
  */
 
- import { Component, OnInit } from '@angular/core';
- import { ApiService } from 'src/app/services/api/api.service';
- import { HelperService } from 'src/app/services/helper/helper.service';
- 
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service';
+import { HelperService } from 'src/app/services/helper/helper.service';
+
 @Component({
-  selector: 'app-sales',
-  templateUrl: './sales.page.html',
-  styleUrls: ['./sales.page.scss'],
+  selector: 'app-shoppings',
+  templateUrl: './shoppings.page.html',
+  styleUrls: ['./shoppings.page.scss'],
 })
-export class SalesPage implements OnInit {
+export class ShoppingsPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
@@ -33,16 +33,16 @@ export class SalesPage implements OnInit {
 
   setSale(item) {
     localStorage.setItem('sale', JSON.stringify(item));
-    this.routes(`sales/${item.id}/show`);
+    this.routes(`shoppings/${item.id}/show`);
   }
 
   loadData() {
     this.load = true;
     this.api
-      .get(`sales/${this.profile.id}`)
+      .get(`shoppings/${this.profile.id}`)
       .then((response: any) => {
         this.load = false;
-        this.shoppings = response.sales;
+        this.shoppings = response.shoppings;
       })
       .catch((danger: any) => {
         this.load = false;

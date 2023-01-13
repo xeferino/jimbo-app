@@ -45,10 +45,10 @@ export class RafflesSummaryPage implements OnInit {
   country: any = this.profile.country;
 
   form: any = {
-    name: this.profile.names,
-    email: this.profile.email,
-    dni: this.profile.dni,
-    phone: this.profile.phone,
+    name: this.operation == 1 ? this.profile.names : null,
+    email: this.operation == 1 ?this.profile.emails : null,
+    dni: this.operation == 1 ?this.profile.dnis : null,
+    phone: this.operation == 1 ?this.profile.phones : null,
     address: null,
     seller_id: this.profile.id,
     ticket_id: this.ticket.ticket_id,

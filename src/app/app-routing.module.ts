@@ -132,6 +132,14 @@ const routes: Routes = [
     canActivate: [GuardService],
   },
   {
+    path: 'shoppings',
+    loadChildren: () => import('./pages/shoppings/shoppings.module').then( m => m.ShoppingsPageModule)
+  },
+  {
+    path: 'shoppings/:id/show',
+    loadChildren: () => import('./pages/shoppings-show/shoppings-show.module').then( m => m.ShoppingsShowPageModule)
+  },
+  {
     path: 'balances',
     loadChildren: () => import('./pages/balances/balances.module').then( m => m.BalancesPageModule),
     canActivate: [GuardService],

@@ -1,6 +1,6 @@
 /**
  *
- * @fileoverview SalesShowPage
+ * @fileoverview ShoppingsShowPage
  *
  * @version 1.0
  *
@@ -8,16 +8,16 @@
  *
  */
 
- import { Component, OnInit } from '@angular/core';
- import { ApiService } from 'src/app/services/api/api.service';
- import { HelperService } from 'src/app/services/helper/helper.service';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service';
+import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
-  selector: 'app-sales-show',
-  templateUrl: './sales-show.page.html',
-  styleUrls: ['./sales-show.page.scss'],
+  selector: 'app-shoppings-show',
+  templateUrl: './shoppings-show.page.html',
+  styleUrls: ['./shoppings-show.page.scss'],
 })
-export class SalesShowPage implements OnInit {
+export class ShoppingsShowPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
@@ -40,10 +40,10 @@ export class SalesShowPage implements OnInit {
   loadData() {
     this.load = true;
     this.api
-      .get(`sales/tickets/${this.shopping.id}`)
+      .get(`shoppings/tickets/${this.shopping.id}`)
       .then((response: any) => {
         this.load = false;
-        this.shopping = response.sale;
+        this.shopping = response.shopping;
       })
       .catch((danger: any) => {
         this.load = false;
@@ -51,7 +51,7 @@ export class SalesShowPage implements OnInit {
   }
 
   back () {
-    this.routes(`sales`);
+    this.routes(`shoppings`);
   }
 
   routes(route){
