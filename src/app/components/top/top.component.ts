@@ -20,9 +20,26 @@
 })
 export class TopComponent implements OnInit {
 
-  constructor(private helper: HelperService) { }
+  profile: any = JSON.parse(localStorage.getItem('profile'));
+  
+  notifications: any = [];
 
-  ngOnInit() {}
+  constructor(private helper: HelperService, private api: ApiService) { }
+
+  ngOnInit() {
+    this.loadNotifications();
+  }
+
+  loadNotifications(clean: number = 0) {
+    this.api
+      .get(`user/notifications/all/${this.profile.id}`)
+      .then((response: any) => {
+        this.notifications = response.notifications;
+      })
+      .catch((danger: any) => {
+        
+      });
+  }
 
   routes(route: string) { this.helper.routes(route); }
 

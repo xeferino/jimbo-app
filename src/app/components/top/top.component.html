@@ -2,7 +2,8 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4" class="ion-text-left" style="padding: 0px;">
-        <p class="p-normal" style="color: #FFFFFF; height: 100%; padding-top: 10px;"><b>MODO JIB</b></p>
+        <ion-icon name="notifications-outline" class="app-icon-notification" (click)="routes('notifications')"></ion-icon>
+        <span class="app-menu-notifications" *ngIf="notifications.length" (click)="routes('notifications')">{{ notifications.length }}</span>
       </ion-col>
       <ion-col size="8" class="ion-text-right" style="padding: 0px;">
         <ion-button class="app-button-top" mode="ios" (click)="routes('recharge')">

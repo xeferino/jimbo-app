@@ -212,7 +212,7 @@
           <img [src]="method.icon" style="width: 60px; height: 30px;" *ngIf="method.type == 'card'">
         </ion-col>
         <ion-col size="9" class="ion-text-left">
-          <p class="p-normal" style="font-weight: bold; padding-top: 5px;">{{ method.name }}</p>
+          <p class="p-normal" style="font-weight: bold; padding-top: 5px;">{{ method.type == 'jib' ? profile.jib : method.name }}</p>
         </ion-col>
         <ion-col size="1" class="ion-text-right">
           <p class="p-normal" style="font-weight: bold; padding-top: 6px;">
@@ -226,6 +226,14 @@
         </ion-col>
         <ion-col size="6" class="ion-text-right">
           <p class="p-normal" style="font-weight: bold;">{{ raffles.promotion.price }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row style="height: auto;" *ngIf="!load && method.type == 'jib'">
+        <ion-col size="6" class="ion-text-left">
+          <p class="p-normal" style="font-weight: bold;"></p>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <p class="p-normal" style="font-weight: bold;">{{ raffles.promotion.price_jib }}</p>
         </ion-col>
       </ion-row>
       <ion-row>

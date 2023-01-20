@@ -46,9 +46,9 @@ export class RafflesSummaryPage implements OnInit {
 
   form: any = {
     name: this.operation == 1 ? this.profile.names : null,
-    email: this.operation == 1 ?this.profile.emails : null,
-    dni: this.operation == 1 ?this.profile.dnis : null,
-    phone: this.operation == 1 ?this.profile.phones : null,
+    email: this.operation == 1 ? this.profile.email : null,
+    dni: this.operation == 1 ? this.profile.dni : null,
+    phone: this.operation == 1 ?this.profile.phone : null,
     address: null,
     seller_id: this.profile.id,
     ticket_id: this.ticket.ticket_id,
@@ -105,6 +105,8 @@ export class RafflesSummaryPage implements OnInit {
       .then((response: any) => {
         this.load = false;
         this.raffles = response.raflle;
+        this.profile.jib = response.balance_jib;
+        localStorage.setItem('profile', JSON.stringify(this.profile));
       })
       .catch((danger: any) => {
         this.load = false;

@@ -12,6 +12,7 @@
         <ion-col size="12" class="ion-text-center">
           <p class="p-info" style="color: #666666;">Pagaste</p>
           <p class="p-ultra" style="color: #f5933b; font-weight: bold;">{{ sale.amount }}</p>
+          <p class="p-ultra" style="color: #f5933b; font-weight: bold;" *ngIf="sale.method == 'jib'">{{ sale.amount_jib }}</p>
           <p class="p-info" style="color: #666666;">{{ sale.date }}</p>
         </ion-col>
       </ion-row>
