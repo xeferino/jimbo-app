@@ -187,7 +187,6 @@ const routes: Routes = [
     path: 'seller',
     loadChildren: () => import('./pages/seller/seller.module').then( m => m.SellerPageModule)
   },
-  
 ];
 
 @NgModule({

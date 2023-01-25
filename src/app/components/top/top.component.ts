@@ -27,7 +27,7 @@ export class TopComponent implements OnInit {
   constructor(private helper: HelperService, private api: ApiService) { }
 
   ngOnInit() {
-    this.loadNotifications();
+    //this.loadNotifications();
   }
 
   loadNotifications(clean: number = 0) {

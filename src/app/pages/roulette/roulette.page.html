@@ -6,17 +6,309 @@
 
   <app-menu [active]="'roulette'"></app-menu>
 
-  <br />
-  <br />
-
   <ion-grid class="app-grid">
+    
+    <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+    
     <ion-row>
       <ion-col size="12">
-        <p class="p-normal ion-text-center">
-          Está sección está en contrucción
-        </p>
+        <div class="ruleta">
+          <canvas id='canvas' width='300' height='300'>
+              Canvas not supported, use another browser.
+          </canvas>
+        </div>
       </ion-col>
     </ion-row>
+
+    <ion-row style="position: relative; top: -30px;">
+
+      <ion-col size="8" class="ion-text-left">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">Elige tus números:</p>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="position: relative; top: -30px;">
+      
+      <ion-col size="6">
+        <div class="app-number" style="background: #f7cb10;">
+          
+          <ion-row>
+            <ion-col size="2" class="ion-text-center">
+              <p class="p-normal" style="color: #000000; font-weight: bold;">1</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(0, 'rm')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[0]) }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(0, 'add')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="app-number" style="background: #1759b9;">
+
+          <ion-row>
+            <ion-col size="2" class="ion-text-center">
+              <p class="p-normal" style="color: #000000; font-weight: bold;">2</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(1, 'rm')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[1]) }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(1, 'add')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="app-number" style="background: #1aa019;">
+
+          <ion-row>
+            <ion-col size="2" class="ion-text-center">
+              <p class="p-normal" style="color: #000000; font-weight: bold;">3</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(2, 'rm')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[2]) }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(2, 'add')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="app-number" style="background: #D35400;">
+
+          <ion-row>
+            <ion-col size="2" class="ion-text-center">
+              <p class="p-normal" style="color: #000000; font-weight: bold;">5</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(3, 'rm')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[3]) }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(3, 'add')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="app-number" style="background: #00F3FF;">
+
+          <ion-row>
+            <ion-col size="2" class="ion-text-center">
+              <p class="p-normal" style="color: #000000; font-weight: bold;">10</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(4, 'rm')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[4]) }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(4, 'add')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="app-number" style="background: #FF00EC;">
+
+          <ion-row>
+            <ion-col size="2" class="ion-text-center">
+              <p class="p-normal" style="color: #000000; font-weight: bold;">20</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(5, 'rm')">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[5]) }}</p>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(5, 'add')">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="position: relative; top: -30px;">
+
+      <ion-col size="12" class="ion-text-left">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">Elige el monto a apostar:</p>
+      </ion-col>
+
+      <ion-col size="2" class="ion-text-center">
+        <ion-badge [color]=" multiple == 0.10 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(0.10)">
+          $0.10
+        </ion-badge>
+      </ion-col>
+
+      <ion-col size="2" class="ion-text-center">
+        <ion-badge [color]=" multiple == 0.25 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(0.25)">
+          $0.25
+        </ion-badge>
+      </ion-col>
+
+      <ion-col size="2" class="ion-text-center">
+        <ion-badge [color]=" multiple == 0.50 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(0.50)">
+          $0.50
+        </ion-badge>
+      </ion-col>
+
+      <ion-col size="2" class="ion-text-center">
+        <ion-badge [color]=" multiple == 1 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(1)">
+          $1
+        </ion-badge>
+      </ion-col>
+
+      <ion-col size="2" class="ion-text-center">
+        <ion-badge [color]=" multiple == 5 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(5)">
+          $5
+        </ion-badge>
+      </ion-col>
+
+      <ion-col size="2" class="ion-text-center">
+        <ion-badge [color]=" multiple == 10 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(10)">
+          $10
+        </ion-badge>
+      </ion-col>
+    
+    </ion-row>
+
+    <ion-row style="position: relative; top: -30px;">
+      <ion-col size="4" class="ion-text-center" (click)="repeatBet()">
+        <p class="p-title" style="color: #f5933b;;"><ion-icon name="repeat-outline"></ion-icon></p>
+        <p class="p-normal" style="color: #000000;;">REPETIR<br />APUESTA</p>
+      </ion-col>
+      <ion-col size="4" class="ion-text-rigth">
+        <ion-button [disabled]="girar || load || !stake" (click)="giraRuleta()" mode="ios" class="app-button-jimbo" shape="round" expand="full" style="position: relative; top: 5px;">Jugar</ion-button>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center" (click)="doubleBet()">
+        <p class="p-title" style="color: #3880ff;;"><ion-icon name="cash-outline"></ion-icon></p>
+        <p class="p-normal" style="color: #000000;;">DOBLAR<br />APUESTA</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="position: relative; top: -30px;">
+
+      <ion-col size="8" class="ion-text-left">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">Historial de apuestas:</p>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="position: relative; top: -30px;">
+      
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">1</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">2</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">3</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">5</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">10</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: bold;">20</p>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="position: relative; top: -30px;" *ngFor="let item of history">
+      
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[0]) }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[1]) }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[2]) }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[3]) }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[4]) }}</p>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[5]) }}</p>
+      </ion-col>
+
+    </ion-row>
+
   </ion-grid>
 
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="" style="--background: #FFFFFF;">
+    <ion-grid class="">
+      <ion-row>
+        <ion-col size="6" class="ion-text-center" style="background: #f5933b;">
+          <p class="p-normal" style="color: #FFFFFF;">Apuesta: {{  money(stake) }}</p>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center" style="background: #344a98;">
+          <p class="p-normal" style="color: #FFFFFF;">Saldo: {{  money(balance) }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

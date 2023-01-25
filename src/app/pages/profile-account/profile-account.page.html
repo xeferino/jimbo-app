@@ -387,19 +387,19 @@
       <ion-row>
 
         <ion-col size="6" class="ion-text-center">
-          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
+          <ion-button mode="ios" color="warning" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
             <ion-icon name="create-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Editar perfil
           </ion-button>
         </ion-col>
 
         <ion-col size="6" class="ion-text-center">
-          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('refer')" style="height: 30px; font-size: 12px; width: 100%;">
+          <ion-button mode="ios" color="warning" fill="outline" (click)="routes('refer')" style="height: 30px; font-size: 12px; width: 100%;">
             <ion-icon name="share-social-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Comparte y gana
           </ion-button>
         </ion-col>
 
         <ion-col size="12" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true" (click)="routes('ranking')">
-          <ion-button mode="ios" color="medium" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
+          <ion-button mode="ios" color="warning" fill="outline" (click)="routes('profile/edit')" style="height: 30px; font-size: 12px; width: 100%;">
             <ion-icon name="shirt-outline" style="position: relative; top: -1px;"></ion-icon>&nbsp;&nbsp;Ranking general de vendedores
           </ion-button>
         </ion-col>
@@ -409,7 +409,7 @@
       <ion-row>
 
         <ion-col size="12" *ngIf="profile.seller == false">
-          <ion-card class="app-card">
+          <ion-card class="app-card" style="background: #FFFFFF; border: none;">>
             <ion-card-content>
               <canvas #myShoppingChart></canvas>
             </ion-card-content>
@@ -417,7 +417,7 @@
         </ion-col>
 
         <ion-col size="12" *ngIf="profile.seller == true || profile.become_seller == true">
-          <ion-card class="app-card">
+          <ion-card class="app-card" style="background: #FFFFFF; border: none;">
             <ion-card-content>
               <canvas #mySalesChart></canvas>
             </ion-card-content>

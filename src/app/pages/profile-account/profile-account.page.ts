@@ -82,9 +82,12 @@ export class ProfileAccountPage implements OnInit {
               label: `Compras del mes`,
               data: response.grafics.sales.data,
               fill: false,
-              borderColor: 'rgb(75, 192, 192)',
+              borderColor: 'rgb(245, 147, 59)',
               tension: 0.1
             }]
+          },
+          options: {
+            responsive: true,
           }
         });
       })
@@ -108,9 +111,12 @@ export class ProfileAccountPage implements OnInit {
               label: `Ventas del mes`,
               data: response.grafics.sales.data,
               fill: false,
-              borderColor: 'rgb(75, 192, 192)',
+              borderColor: 'rgb(245, 147, 59)',
               tension: 0.1
             }]
+          },
+          options: {
+            responsive: true,
           }
         });
       })

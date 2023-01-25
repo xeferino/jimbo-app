@@ -24,7 +24,7 @@
       <ion-row>
         <ion-col size="2" class="ion-text-center"></ion-col>
 
-        <ion-col size="8" class="ion-text-center" *ngIf="confirm">
+        <ion-col size="8" class="ion-text-center">
           <ion-button
             class="app-button normal"
             style="font-family: 'Manrope'; font-weight: normal; height: 40px"
@@ -34,6 +34,7 @@
             color="warning"
             mode="ios"
             (click)="back (false)"
+            *ngIf="calcel"
           >
             {{ cancel }}
           </ion-button>
@@ -46,6 +47,7 @@
             color="warning"
             mode="ios"
             (click)="back (true)"
+            *ngIf="confirm"
           >
             {{ confirm }}
           </ion-button>

@@ -1,0 +1,23 @@
+.ruleta{
+  background: url('/assets/img/ruleta-fondo.png');
+  background-size: 100% 100%;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+  border: solid 1px #FFFFFF;
+}
+
+.app-number {
+  margin: auto;
+  float: left;
+  width: 100%;
+  height: auto;
+  min-height: 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.disabled {
+  opacity: 0.5;
+}
