@@ -31,8 +31,9 @@ export class WinnersPage implements OnInit {
     this.loadData();
   }
 
-  setWinner(item) {
-    this.show = item.id;
+  setRaffle(item) {
+    localStorage.setItem('raffle', JSON.stringify(item));
+    this.routes(`winners/${item.id}/show`);
   }
 
   routes(route){

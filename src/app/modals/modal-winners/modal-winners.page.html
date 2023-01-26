@@ -1,0 +1,93 @@
+<ion-progress-bar *ngIf="load" class="app-indeterminate" color="warning" type="indeterminate"></ion-progress-bar>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="app-grid">
+      <ion-row>
+        <ion-col size="1">
+          <p class="p-ultra" style="color: #f5933b; margin-top: 15px;" (click)="back()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </p>
+        </ion-col>
+        <ion-col size="10" class="ion-text-center">
+          <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
+        </ion-col>
+        <ion-col size="1">
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
+  
+  <ion-grid class="app-grid" style="padding-left: 10px; padding-right: 10px;">
+    
+    <ion-row >
+
+      <ion-col size="12" *ngIf="raffles">
+        <ion-card class="app-card-raffles">
+          <ion-card-content>
+
+            <ion-row>
+              <ion-col size="12">
+                <img [src]="raffles.logo" class="img-raffles" alt="">
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <p class="p-ultra" style="color: #92949c;">PRIMER PREMIO</p>
+              </ion-col>
+              <ion-col size="12" class="ion-text-center">
+                <p class="p-ultra" style="color: #f5933b; font-weight: bold;">{{ raffles.cash_to_draw }}</p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+
+              <ion-col size="12" class="ion-text-center">
+
+                <ion-row>
+                  <ion-col size="12" class="ion-text-center">
+                    <p class="p-ultra" style="color: #000000;"><ion-icon name="trophy-outline" style="position: relative; top: 2px;"></ion-icon> GANADORES</p>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row *ngFor="let winner of raffles.winners; let i = index">
+                  <ion-col size="2" class="ion-text-left">
+                    <p class="p-normal" style="color: #000000;">
+                      {{ i+1 }}º
+                    </p>
+                  </ion-col>
+                  <ion-col size="5" class="ion-text-left">
+                    <p class="p-normal" style="color: #000000;">
+                      GANADOR:<br />
+                      PREMIO:
+                    </p>
+                  </ion-col>
+                  <ion-col size="5" class="ion-text-left">
+                    <p class="p-normal" style="color: #000000;">
+                      <span style="color: #f5933b;">{{ winner.ticket_id_winner }}</span><br />
+                      {{ winner.amount }}
+                    </p>
+                  </ion-col>
+                </ion-row>
+
+              </ion-col>
+
+            </ion-row>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+  

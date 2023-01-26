@@ -65,6 +65,11 @@ const routes: Routes = [
     canActivate: [GuardService],
   },
   {
+    path: 'winners/:id/show',
+    loadChildren: () => import('./pages/winners-show/winners-show.module').then( m => m.WinnersShowPageModule),
+    canActivate: [GuardService],
+  },
+  {
     path: 'notifications',
     loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule),
     canActivate: [GuardService],
@@ -186,6 +191,10 @@ const routes: Routes = [
   {
     path: 'seller',
     loadChildren: () => import('./pages/seller/seller.module').then( m => m.SellerPageModule)
+  },
+  {
+    path: 'modal-winners',
+    loadChildren: () => import('./modals/modal-winners/modal-winners.module').then( m => m.ModalWinnersPageModule)
   },
 ];
 

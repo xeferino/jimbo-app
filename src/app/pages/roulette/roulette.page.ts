@@ -39,6 +39,8 @@ export class RoulettePage implements OnInit {
 
   stake: number = 0.00;
 
+  result: any = null;
+
   constructor(
     private helper: HelperService,
     private api: ApiService,
@@ -61,7 +63,7 @@ export class RoulettePage implements OnInit {
         this.profile.balance_usd = response.balance_usd;
         this.profile.balance_jib = response.balance_jib;
         this.balance             = this.profile.balance_usd;
-        //localStorage.setItem('profile', JSON.stringify(this.profile));
+        localStorage.setItem('profile', JSON.stringify(this.profile));
         this.showAlert(response.title, response.message);
       })
       .catch((danger: any) => {
@@ -213,7 +215,6 @@ export class RoulettePage implements OnInit {
       }, 8000);
       setTimeout( () => {
         this.girar = false;
-        this.resetBet();
         this.sonido(2);
       }, 10000);
 
@@ -225,11 +226,14 @@ export class RoulettePage implements OnInit {
     this.ruleta.stopAnimation(false);
     this.ruleta.rotationAngle = -3.5;
     this.ruleta.draw();
+    this.resetBet();
   }
 
   resultado() {
     
     let res = this.ruleta.getIndicatedSegment();
+
+    this.result = res.text;
     
     if(res.opcion == 1){
       this.sonido(5);
@@ -396,7 +400,11 @@ export class RoulettePage implements OnInit {
     await modal.present();
 
     modal.onDidDismiss().then((success) => {
-    
+      if(this.result == 'X2' || this.result == 'X5'){
+        this.giraRuleta();
+      } else {
+        this.reiniciar();
+      }
     });
   }
 
