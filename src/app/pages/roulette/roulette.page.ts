@@ -41,6 +41,8 @@ export class RoulettePage implements OnInit {
 
   result: any = null;
 
+  multiplier: number = 1;
+
   constructor(
     private helper: HelperService,
     private api: ApiService,
@@ -108,16 +110,13 @@ export class RoulettePage implements OnInit {
 
   resetBet(){
     if(!this.load && !this.girar) {
-
       this.bet[0] = 0.00;
       this.bet[1] = 0.00;
       this.bet[2] = 0.00;
       this.bet[3] = 0.00;
       this.bet[4] = 0.00;
       this.bet[5] = 0.00;
-
       this.reloadBet();
-  
     }
   }
 
@@ -266,7 +265,8 @@ export class RoulettePage implements OnInit {
         this.bet[5],
       ],
       result: res.text,
-      strake: this.stake
+      strake: this.stake,
+      multiplier: this.multiplier
     });
     
   }
@@ -301,7 +301,7 @@ export class RoulettePage implements OnInit {
     this.ruleta = new Winwheel({
       'rotationAngle'   : -3.5,
       'outerRadius'     : 130,        // Set outer radius so wheel fits inside the background.
-      'innerRadius'     : 20,         // Make wheel hollow so segments don't go all way to center.
+      'innerRadius'     : 60,         // Make wheel hollow so segments don't go all way to center.
       'textFontSize'    : 8,         // Set default font size for the segments.
       'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
       'textAlignment'   : 'outer',    // Align text to outside of wheel.
@@ -401,8 +401,18 @@ export class RoulettePage implements OnInit {
 
     modal.onDidDismiss().then((success) => {
       if(this.result == 'X2' || this.result == 'X5'){
+        
+        if(this.result == 'X2') {
+          this.multiplier += 2;
+        }
+
+        if(this.result == 'X5') {
+          this.multiplier += 5;
+        }
+        
         this.giraRuleta();
       } else {
+        this.multiplier = 1;
         this.reiniciar();
       }
     });
