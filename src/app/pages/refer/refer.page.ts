@@ -68,6 +68,10 @@ export class ReferPage implements OnInit {
     window.open('https://forum.ionicframework.com/', '_system')
   }
 
+  back() {
+    this.helper.back();
+  }
+
   routes(route) {
     this.helper.routes(route);
   }

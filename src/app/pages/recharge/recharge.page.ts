@@ -130,7 +130,7 @@ export class RechargePage implements OnInit {
   }
 
   back() {
-    this.routes('balances');
+    this.helper.back();
   }
 
   routes(route){

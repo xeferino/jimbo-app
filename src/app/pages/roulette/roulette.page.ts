@@ -101,11 +101,16 @@ export class RoulettePage implements OnInit {
   }
 
   reloadBet() {
-    this.stake = 0.00;
+    
+    this.stake   = 0.00;
+    this.balance = this.profile.balance_usd;
 
     this.bet.forEach(bet => {
       this.stake += bet;
     });
+
+    this.balance = this.balance - this.stake;
+
   }
 
   resetBet(){
@@ -299,9 +304,10 @@ export class RoulettePage implements OnInit {
 
   crearRuleta(){
     this.ruleta = new Winwheel({
+      'lineWidth'       : 2,
       'rotationAngle'   : -3.5,
       'outerRadius'     : 130,        // Set outer radius so wheel fits inside the background.
-      'innerRadius'     : 60,         // Make wheel hollow so segments don't go all way to center.
+      'innerRadius'     : 38,         // Make wheel hollow so segments don't go all way to center.
       'textFontSize'    : 8,         // Set default font size for the segments.
       'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
       'textAlignment'   : 'outer',    // Align text to outside of wheel.
@@ -366,8 +372,10 @@ export class RoulettePage implements OnInit {
         'type'     : 'spinToStop',
         //'stopAngle': 100,
         'duration' : 8,    // Duration in seconds.
-        'spins'    : 3,     // Default number of complete spins.
+        'spins'    : 5,     // Default number of complete spins.
         'soundTrigger'     : 'pin',        // Specify pins are to trigger the sound, the other option is 'segment'.
+        'callbackSound': this.playSound,
+        'callbackFinished': () => { console.log('CALLBACK'); },
       },
       'pins' :{
         'number'     : 54,   // Number of pins. They space evenly around the wheel.
@@ -375,6 +383,10 @@ export class RoulettePage implements OnInit {
         'outerRadius': 1,
       }
     });
+  }
+
+  playSound = () => {
+    console.log('playing sound');
   }
 
   money(value) {

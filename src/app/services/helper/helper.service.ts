@@ -30,6 +30,10 @@ export class HelperService {
     }
   }
 
+  back() {
+    this.nav.back();
+  }
+
   async toast(message, header, color: any = 'dark', position: any = 'bottom') {
     const toast = await this.toastController.create({
       message: message,
