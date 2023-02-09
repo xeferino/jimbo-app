@@ -81,9 +81,9 @@ export class RoulettePage implements OnInit {
   }
 
   setBet(pos: number, option: string) {
-    
+
     if(!this.load && !this.girar) {
-      
+
       if(option == 'add') {
         this.bet[pos] += this.multiple;
       }
@@ -101,7 +101,7 @@ export class RoulettePage implements OnInit {
   }
 
   reloadBet() {
-    
+
     this.stake   = 0.00;
     this.balance = this.profile.balance_usd;
 
@@ -126,15 +126,15 @@ export class RoulettePage implements OnInit {
   }
 
   repeatBet(){
-    
+
     if(!this.load && !this.girar) {
-      
+
       let pos: number = 0;
 
       if(this.history.length > 0) {
-        
+
         const pos: number = this.history.length - 1;
-        
+
         this.bet[0] = this.history[pos][0];
         this.bet[1] = this.history[pos][1];
         this.bet[2] = this.history[pos][2];
@@ -145,7 +145,7 @@ export class RoulettePage implements OnInit {
         this.reloadBet();
 
       }
-  
+
     }
 
   }
@@ -153,7 +153,7 @@ export class RoulettePage implements OnInit {
   doubleBet() {
 
     if(!this.load && !this.girar) {
-      
+
       let pos: number = 0;
 
       if(this.history.length > 0) {
@@ -206,7 +206,7 @@ export class RoulettePage implements OnInit {
       this.showAlert('Lo siento', error);
     }
     else {
-    
+
       const stopAngle: number = Math.random() * (360 - 0) + 0;
       //this.ruleta.animation.stopAngle = (6.66 * 33) - 3;
       this.girar = true;
@@ -234,11 +234,11 @@ export class RoulettePage implements OnInit {
   }
 
   resultado() {
-    
+
     let res = this.ruleta.getIndicatedSegment();
 
     this.result = res.text;
-    
+
     if(res.opcion == 1){
       this.sonido(5);
     }
@@ -273,7 +273,7 @@ export class RoulettePage implements OnInit {
       strake: this.stake,
       multiplier: this.multiplier
     });
-    
+
   }
 
   sonido(tipo){
@@ -312,7 +312,7 @@ export class RoulettePage implements OnInit {
       'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
       'textAlignment'   : 'outer',    // Align text to outside of wheel.
       'numSegments'     : 54,         // Specify number of segments.
-      'segments'        : [ 
+      'segments'        : [
         {'fillStyle' : '#000000', 'text' : 'X2', 'textFontSize' : 10, 'textFillStyle': '#e9ce4d', 'opcion': 1, 'value': 1},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 0, 'value': 2},
         {'fillStyle' : '#1759b9', 'text' : '2', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 2, 'value': 3},
@@ -354,7 +354,7 @@ export class RoulettePage implements OnInit {
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 39},
         {'fillStyle' : '#1aa019', 'text' : '3', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 40},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 41},
-        {'fillStyle' : '#d42116', 'text' : '100 USD', 'textFontSize' : 8, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 42},
+        {'fillStyle' : '#d42116', 'text' : '1000 JIB', 'textFontSize' : 8, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 42},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 1, 'value': 43},
         {'fillStyle' : '#1759b9', 'text' : '2', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 44},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 45},
@@ -413,7 +413,7 @@ export class RoulettePage implements OnInit {
 
     modal.onDidDismiss().then((success) => {
       if(this.result == 'X2' || this.result == 'X5'){
-        
+
         if(this.result == 'X2') {
           this.multiplier += 2;
         }
@@ -421,7 +421,7 @@ export class RoulettePage implements OnInit {
         if(this.result == 'X5') {
           this.multiplier += 5;
         }
-        
+
         this.giraRuleta();
       } else {
         this.multiplier = 1;
