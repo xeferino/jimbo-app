@@ -33,7 +33,7 @@ export class RoulettePage implements OnInit {
 
   history: any = [];
 
-  multiple: number = 0.10;
+  multiple: number = 0;
 
   balance: number = this.profile.balance_usd;
 
@@ -42,6 +42,8 @@ export class RoulettePage implements OnInit {
   result: any = null;
 
   multiplier: number = 1;
+
+  wagers: any = [];
 
   constructor(
     private helper: HelperService,
@@ -54,6 +56,23 @@ export class RoulettePage implements OnInit {
 
   ionViewWillEnter(){
     this.crearRuleta();
+    this.loadWagers();
+  }
+
+  loadWagers() {
+    this.load = true;
+    this.api
+      .get(`roulettes`)
+      .then((response: any) => {
+        this.load = false;
+        this.wagers = response.wagers;
+        if(this.wagers.length) {
+          this.multiple = this.wagers[0].jib_money;
+        }
+      })
+      .catch((danger: any) => {
+        this.load = false;
+      });
   }
 
   loadData(data: any) {
@@ -326,7 +345,7 @@ export class RoulettePage implements OnInit {
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 11},
         {'fillStyle' : '#1aa019', 'text' : '3', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 12},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 1, 'value': 13},
-        {'fillStyle' : '#36286b', 'text' : '5000 JIB', 'textFontSize' : 8, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 14},
+        {'fillStyle' : '#36286b', 'text' : '5JIB', 'textFontSize' : 8, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 14},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 15},
         {'fillStyle' : '#1759b9', 'text' : '2', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 16},
         {'fillStyle' : '#D35400', 'text' : '5', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 2, 'value': 17},
@@ -354,7 +373,7 @@ export class RoulettePage implements OnInit {
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 39},
         {'fillStyle' : '#1aa019', 'text' : '3', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 40},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 41},
-        {'fillStyle' : '#d42116', 'text' : '1000 JIB', 'textFontSize' : 8, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 42},
+        {'fillStyle' : '#d42116', 'text' : '1JIB', 'textFontSize' : 8, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 42},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 1, 'value': 43},
         {'fillStyle' : '#1759b9', 'text' : '2', 'textFontSize' : 10, 'textFillStyle': '#FFFFFF', 'opcion': 0, 'value': 44},
         {'fillStyle' : '#f7cb10', 'text' : '1', 'textFontSize' : 10, 'textFillStyle': '#000000', 'opcion': 2, 'value': 45},

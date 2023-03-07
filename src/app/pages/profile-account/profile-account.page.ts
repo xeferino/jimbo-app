@@ -32,10 +32,12 @@ export class ProfileAccountPage implements OnInit {
   grafics: any;
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
-  
+
+  menus: any = JSON.parse(localStorage.getItem('menus'));
+
   load: boolean = false;
 
-  constructor(private helper: HelperService, private auth: AuthService, private api: ApiService, private modal: ModalController) { 
+  constructor(private helper: HelperService, private auth: AuthService, private api: ApiService, private modal: ModalController) {
     Chart.register(...registerables);
   }
 

@@ -73,7 +73,7 @@ export class RafflesSummaryPage implements OnInit {
   }
 
   setData(tickets, promotions) {
-    
+
   }
 
   saleData() {
@@ -125,8 +125,8 @@ export class RafflesSummaryPage implements OnInit {
       component: ModalAlertPage,
       cssClass: 'app-modal modal-alert',
       componentProps: {
-        title: this.profile.seller ? 'Confirma tu venta' : 'Confirma tu comprar' ,
-        message: this.profile.seller ? `Estás a punto de realizar una venta de ${this.raffles.promotion.price}` : `Estás a punto de realizar una comprar de ${this.raffles.promotion.price}`,
+        title: this.operation == 2 ? 'Confirma tu venta' : 'Confirma tu compra' ,
+        message: this.operation == 2 ? `Estás a punto de realizar una venta de ${this.raffles.promotion.price}` : `Estás a punto de realizar una compra de ${this.raffles.promotion.price}`,
         icon: 'alert-outline',
         confirm: 'Confirmar',
         cancel: 'Cancelar'

@@ -20,9 +20,26 @@
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  load: boolean = true;
+
+  constructor(private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.load = true;
+    this.api
+      .get(`settings/modules`)
+      .then((response: any) => {
+        this.load = false;
+        localStorage.setItem('menus', JSON.stringify(response.menus));
+        localStorage.setItem('views', JSON.stringify(response.views));
+      })
+      .catch((danger: any) => {
+        this.load = false;
+      });
   }
 
 }

@@ -1,5 +1,5 @@
 <ion-content>
-  
+
   <app-top></app-top>
 
   <app-head></app-head>
@@ -7,9 +7,9 @@
   <app-menu [active]="'roulette'"></app-menu>
 
   <ion-grid class="app-grid">
-    
+
     <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
-    
+
     <ion-row>
       <ion-col size="12">
         <div class="ruleta">
@@ -29,10 +29,10 @@
     </ion-row>
 
     <ion-row style="position: relative; top: -30px;">
-      
+
       <ion-col size="6">
         <div class="app-number" style="background: #f7cb10;">
-          
+
           <ion-row>
             <ion-col size="2" class="ion-text-center">
               <p class="p-normal" style="color: #000000; font-weight: bold;">1</p>
@@ -188,42 +188,12 @@
         <p class="p-normal" style="color: #000000; font-weight: bold;">Elige el monto a apostar:</p>
       </ion-col>
 
-      <ion-col size="2" class="ion-text-center">
-        <ion-badge [color]=" multiple == 0.10 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(0.10)">
-          $0.10
+      <ion-col size="2" class="ion-text-center" *ngFor="let wager of wagers">
+        <ion-badge [color]=" multiple == wager.jib_money ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding: 0px; padding-top: 10px; padding-bottom: 10px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(wager.jib_money)">
+          {{ wager.jib }}
         </ion-badge>
       </ion-col>
 
-      <ion-col size="2" class="ion-text-center">
-        <ion-badge [color]=" multiple == 0.25 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(0.25)">
-          $0.25
-        </ion-badge>
-      </ion-col>
-
-      <ion-col size="2" class="ion-text-center">
-        <ion-badge [color]=" multiple == 0.50 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(0.50)">
-          $0.50
-        </ion-badge>
-      </ion-col>
-
-      <ion-col size="2" class="ion-text-center">
-        <ion-badge [color]=" multiple == 1 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(1)">
-          $1
-        </ion-badge>
-      </ion-col>
-
-      <ion-col size="2" class="ion-text-center">
-        <ion-badge [color]=" multiple == 5 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(5)">
-          $5
-        </ion-badge>
-      </ion-col>
-
-      <ion-col size="2" class="ion-text-center">
-        <ion-badge [color]=" multiple == 10 ? 'warning' : 'dark' " style="position: relative; top: 2px; width: 100%; padding-top: 8px; padding-bottom: 8px;" [ngClass]="{ 'disabled': load || girar }" (click)="setMultiple(10)">
-          $10
-        </ion-badge>
-      </ion-col>
-    
     </ion-row>
 
     <ion-row style="position: relative; top: -30px;">
@@ -249,7 +219,7 @@
     </ion-row>
 
     <ion-row style="position: relative; top: -30px;">
-      
+
       <ion-col size="2" class="ion-text-center">
         <p class="p-normal" style="color: #000000; font-weight: bold;">1</p>
       </ion-col>
@@ -272,7 +242,7 @@
     </ion-row>
 
     <ion-row style="position: relative; top: -30px;" *ngFor="let item of history">
-      
+
       <ion-col size="2" class="ion-text-center">
         <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[0]) }}</p>
       </ion-col>

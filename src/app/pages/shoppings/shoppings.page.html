@@ -13,7 +13,7 @@
           <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
         </ion-col>
         <ion-col size="1">
-          
+
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -25,7 +25,7 @@
   <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
 
   <ion-grid class="app-grid" style="padding-left: 20px; padding-right: 20px;">
-    
+
     <ion-row style="margin-top: 10px; margin-bottom: 10px;">
       <ion-col size="12">
         <p class="p-info" style="color: #666666;">
@@ -51,13 +51,13 @@
       <ion-col size="12" >
         <ion-card class="app-card-raffles">
           <ion-card-content>
-  
+
             <ion-row>
               <ion-col size="6">
                 <p class="p-normal" style="font-weight: bold; color: #344a98;">BOLETO</p>
               </ion-col>
               <ion-col size="6" class="ion-text-right">
-                <p class="p-normal" style="color: #f5933b;">${{ item.amount }}</p>
+                <p class="p-normal" style="color: #f5933b;">{{ item.amount }}</p>
               </ion-col>
             </ion-row>
 
@@ -78,13 +78,13 @@
                 <p class="p-normal">{{ item.created_at }}</p>
               </ion-col>
             </ion-row>
-  
+
             <ion-row>
               <ion-col size="12" class="ion-text-center">
                 <ion-button mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="setSale(item)">Ver detalle</ion-button>
               </ion-col>
             </ion-row>
-  
+
           </ion-card-content>
         </ion-card>
       </ion-col>
