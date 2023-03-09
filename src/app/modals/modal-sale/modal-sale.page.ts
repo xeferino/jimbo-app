@@ -30,7 +30,7 @@ export class ModalSalePage implements OnInit {
 
   ngOnInit() {
     this.url =  this.sale.url_receipt;
-    this.share = `He realizado una compra en https://jimbosorteos.com, te invito a que te animes tu también.`;
+    this.share = `Has realizado una ${this.sale.action} bajo el número de recibo ${this.sale.number_receipt}. Puede visualizar el mismo en el siguiente link ${this.url}. Recuerde que toda esta información se la enviamos a su correo ${this.sale.email}`;
   }
 
   sendShare() {
