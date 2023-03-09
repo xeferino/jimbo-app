@@ -35,7 +35,7 @@ export class RoulettePage implements OnInit {
 
   multiple: number = 0;
 
-  balance: number = this.profile.balance_usd;
+  balance: number = this.profile.balance_jib;
 
   stake: number = 0.00;
 
@@ -83,7 +83,7 @@ export class RoulettePage implements OnInit {
         this.load    = false;
         this.profile.balance_usd = response.balance_usd;
         this.profile.balance_jib = response.balance_jib;
-        this.balance             = this.profile.balance_usd;
+        this.balance             = this.profile.balance_jib;
         localStorage.setItem('profile', JSON.stringify(this.profile));
         this.showAlert(response.title, response.message);
       })
@@ -122,13 +122,19 @@ export class RoulettePage implements OnInit {
   reloadBet() {
 
     this.stake   = 0.00;
-    this.balance = this.profile.balance_usd;
+    this.balance = this.profile.balance_jib;
+
+    let stake: any = this.stake;
+    let balance: any = this.balance;
 
     this.bet.forEach(bet => {
-      this.stake += bet;
+      stake += bet;
     });
 
-    this.balance = this.balance - this.stake;
+    balance = balance - stake;
+
+    this.balance = balance.toFixed(2);
+    this.stake   = stake.toFixed(2);
 
   }
 
@@ -196,6 +202,9 @@ export class RoulettePage implements OnInit {
   giraRuleta(){
 
     let error: any = false;
+
+    console.log(this.balance)
+    console.log(this.stake)
 
     if(this.stake > this.balance) {
       error = 'La apuesta no puede ser mayor que tu balance';

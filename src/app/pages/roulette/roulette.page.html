@@ -43,7 +43,7 @@
               </ion-badge>
             </ion-col>
             <ion-col size="4" class="ion-text-center">
-              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[0]) }}</p>
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{ (bet[0]).toFixed(2) }} JIB</p>
             </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(0, 'add')">
@@ -68,7 +68,7 @@
               </ion-badge>
             </ion-col>
             <ion-col size="4" class="ion-text-center">
-              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[1]) }}</p>
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{ (bet[1]).toFixed(2) }} JIB</p>
             </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(1, 'add')">
@@ -93,7 +93,7 @@
               </ion-badge>
             </ion-col>
             <ion-col size="4" class="ion-text-center">
-              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[2]) }}</p>
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{ (bet[2]).toFixed(2) }} JIB</p>
             </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(2, 'add')">
@@ -118,7 +118,7 @@
               </ion-badge>
             </ion-col>
             <ion-col size="4" class="ion-text-center">
-              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[3]) }}</p>
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{ (bet[3]).toFixed(2) }} JIB</p>
             </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(3, 'add')">
@@ -143,7 +143,7 @@
               </ion-badge>
             </ion-col>
             <ion-col size="4" class="ion-text-center">
-              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[4]) }}</p>
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{ (bet[4]).toFixed(2) }} JIB</p>
             </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(4, 'add')">
@@ -168,7 +168,7 @@
               </ion-badge>
             </ion-col>
             <ion-col size="4" class="ion-text-center">
-              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{  money(bet[5]) }}</p>
+              <p class="p-normal" style="color: #FFFFFF; position: relative; top: 4px;">{{ (bet[5]).toFixed(2) }} JIB</p>
             </ion-col>
             <ion-col size="3" class="ion-text-center">
               <ion-badge color="light" style="position: relative; top: 2px;" [ngClass]="{ 'disabled': load || girar }" (click)="setBet(5, 'add')">
@@ -244,22 +244,22 @@
     <ion-row style="position: relative; top: -30px;" *ngFor="let item of history">
 
       <ion-col size="2" class="ion-text-center">
-        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[0]) }}</p>
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ (item[0]).toFixed(2) }}</p>
       </ion-col>
       <ion-col size="2" class="ion-text-center">
-        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[1]) }}</p>
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ (item[1]).toFixed(2) }}</p>
       </ion-col>
       <ion-col size="2" class="ion-text-center">
-        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[2]) }}</p>
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ (item[2]).toFixed(2) }}</p>
       </ion-col>
       <ion-col size="2" class="ion-text-center">
-        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[3]) }}</p>
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ (item[3]).toFixed(2) }}</p>
       </ion-col>
       <ion-col size="2" class="ion-text-center">
-        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[4]) }}</p>
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ (item[4]).toFixed(2) }}</p>
       </ion-col>
       <ion-col size="2" class="ion-text-center">
-        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ money(item[5]) }}</p>
+        <p class="p-normal" style="color: #000000; font-weight: normal;">{{ (item[5]).toFixed(2) }}</p>
       </ion-col>
 
     </ion-row>
@@ -273,10 +273,10 @@
     <ion-grid class="">
       <ion-row>
         <ion-col size="6" class="ion-text-center" style="background: #f5933b;">
-          <p class="p-normal" style="color: #FFFFFF;">Apuesta: {{  money(stake) }}</p>
+          <p class="p-normal" style="color: #FFFFFF;">Apuesta: {{  stake }} JIB</p>
         </ion-col>
         <ion-col size="6" class="ion-text-center" style="background: #344a98;">
-          <p class="p-normal" style="color: #FFFFFF;">Saldo: {{  money(balance) }}</p>
+          <p class="p-normal" style="color: #FFFFFF;">Saldo: {{  balance }} JIB</p>
         </ion-col>
       </ion-row>
     </ion-grid>

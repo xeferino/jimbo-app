@@ -25,19 +25,19 @@ export class ModalSalePage implements OnInit {
 
   share: string ;
   url: string;
-  
+
   constructor(private helper: HelperService, private modal: ModalController, private iab: InAppBrowser, private socialSharing: SocialSharing) {}
 
   ngOnInit() {
-    this.share = `He realizado una compra en https://jimbosorteos.com, te invito a que te animes tu también.`;
     this.url =  this.sale.url_receipt;
+    this.share = `He realizado una compra en https://jimbosorteos.com, te invito a que te animes tu también.`;
   }
 
   sendShare() {
     this.socialSharing.share(this.share).then(() => {
-        
+
     }).catch(() => {
-      
+
     });
   }
 

@@ -25,7 +25,7 @@ export class ReferPage implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
 
-  share: string = `Regístrate en https://jimbosorteos.com usando mi código ${this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO'}`;
+  share: string = `Regístrate en https://play.google.com/store/apps/details?id=com.jimbosorteos.app usando mi código ${this.profile.code_referral ? this.profile.code_referral : 'SIN CÓDIGO'}`;
 
   constructor(private helper: HelperService, private iab: InAppBrowser, public platform: Platform, private socialSharing: SocialSharing) { }
 
@@ -41,9 +41,9 @@ export class ReferPage implements OnInit {
   sendShare() {
     this.platform.ready().then(() => {
       this.socialSharing.share(this.share).then(() => {
-        
+
       }).catch(() => {
-        
+
       });
     });
   }
@@ -58,7 +58,7 @@ export class ReferPage implements OnInit {
 
   shareViaInstagram () {
     this.iab.create(`https://wa.me/?text=${this.share}`, `_blank`);
-  } 
+  }
 
   shareViaWhatsApp () {
     this.iab.create(`https://wa.me/?text=${this.share}`, `_blank`);
