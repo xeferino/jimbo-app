@@ -8,7 +8,7 @@
  *
  */
 
- import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit, Input } from '@angular/core';
 
  import { ApiService } from 'src/app/services/api/api.service';
  import { HelperService } from 'src/app/services/helper/helper.service';
@@ -21,8 +21,11 @@
 export class TopComponent implements OnInit {
 
   profile: any = JSON.parse(localStorage.getItem('profile'));
-  
+
   notifications: any = [];
+
+  @Input() menus: any = null;
+  @Input() views: any = null;
 
   constructor(private helper: HelperService, private api: ApiService) { }
 
@@ -37,7 +40,7 @@ export class TopComponent implements OnInit {
         this.notifications = response.notifications;
       })
       .catch((danger: any) => {
-        
+
       });
   }
 

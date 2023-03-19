@@ -202,7 +202,7 @@
         <p class="p-normal" style="color: #000000;;">REPETIR<br />APUESTA</p>
       </ion-col>
       <ion-col size="4" class="ion-text-rigth">
-        <ion-button [disabled]="girar || load || !stake" (click)="giraRuleta()" mode="ios" class="app-button-jimbo" shape="round" expand="full" style="position: relative; top: 5px;">Jugar</ion-button>
+        <ion-button [disabled]="girar == true || load == true || stake == 0.00" (click)="giraRuleta()" mode="ios" class="app-button-jimbo" shape="round" expand="full" style="position: relative; top: 5px;">Jugar</ion-button>
       </ion-col>
       <ion-col size="4" class="ion-text-center" (click)="doubleBet()">
         <p class="p-title" style="color: #3880ff;;"><ion-icon name="cash-outline"></ion-icon></p>

@@ -22,6 +22,10 @@ export class HomePage implements OnInit {
 
   load: boolean = true;
 
+  menus: any = JSON.parse(localStorage.getItem('menus')) || null;
+
+  views: any = JSON.parse(localStorage.getItem('views')) || null;
+
   constructor(private api: ApiService, private helper: HelperService) { }
 
   ngOnInit() {
@@ -34,8 +38,10 @@ export class HomePage implements OnInit {
       .get(`settings/modules`)
       .then((response: any) => {
         this.load = false;
-        localStorage.setItem('menus', JSON.stringify(response.menus));
-        localStorage.setItem('views', JSON.stringify(response.views));
+        this.menus = response.menus;
+        this.views = response.views;
+        localStorage.setItem('menus', JSON.stringify(this.menus));
+        localStorage.setItem('views', JSON.stringify(this.views));
       })
       .catch((danger: any) => {
         this.load = false;
