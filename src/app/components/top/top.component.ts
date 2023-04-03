@@ -8,10 +8,10 @@
  *
  */
 
- import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
- import { ApiService } from 'src/app/services/api/api.service';
- import { HelperService } from 'src/app/services/helper/helper.service';
+import { ApiService } from 'src/app/services/api/api.service';
+import { HelperService } from 'src/app/services/helper/helper.service';
 
 @Component({
   selector: 'app-top',
@@ -24,8 +24,8 @@ export class TopComponent implements OnInit {
 
   notifications: any = [];
 
-  @Input() menus: any = null;
-  @Input() views: any = null;
+  @Input() menus: any = JSON.parse(localStorage.getItem('menus')) || null;
+  @Input() views: any = JSON.parse(localStorage.getItem('views')) || null;
 
   constructor(private helper: HelperService, private api: ApiService) { }
 

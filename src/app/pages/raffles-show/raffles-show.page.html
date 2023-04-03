@@ -13,7 +13,7 @@
           <img src="../../../assets/img/jimbo.png" class="app-profile-logo" />
         </ion-col>
         <ion-col size="1">
-          
+
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -23,21 +23,23 @@
 <ion-content>
 
   <ion-spinner name="crescent" color="warning" *ngIf="load" class="app-spinner"></ion-spinner>
-  
+
   <ion-grid class="app-grid" style="padding-left: 10px; padding-right: 10px;">
-    
-    <ion-row >
+
+    <ion-row>
 
       <ion-col size="12" *ngIf="raffles">
         <ion-card class="app-card-raffles">
           <ion-card-content>
-            
+
             <ion-row>
               <ion-col size="6">
-                <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Quedan {{ raffles.remaining_days }} días</ion-button>
+                <ion-button mode="ios" color="tertiary" expand="full" style="height: 30px; font-size: 12px;">Quedan {{
+                  raffles.remaining_days }} días</ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;">Premio {{ raffles.cash_to_draw }}</ion-button>
+                <ion-button mode="ios" color="warning" expand="full" style="height: 30px; font-size: 12px;">Premio {{
+                  raffles.cash_to_draw }}</ion-button>
               </ion-col>
             </ion-row>
 
@@ -61,18 +63,18 @@
                 <p class="p-normal" style="color: #000000; font-weight: bold;">Avance del sorteo</p>
               </ion-col>
               <ion-col size="12" class="ion-text-center">
-                <ion-progress-bar [value]=" raffles.progress / 100" color="warning" class="app-progress-bar"></ion-progress-bar>
+                <ion-progress-bar [value]=" raffles.progress / 100" color="warning"
+                  class="app-progress-bar"></ion-progress-bar>
                 <p class="p-info" style="
                   color: #000000;
                   position: absolute;
                   width: 100%;
                   top: 8px;
                   font-weight: bold;
-                "
-                >{{ raffles.progress }}%</p>
+                ">{{ raffles.progress }}%</p>
               </ion-col>
             </ion-row>
-            
+
             <br />
 
             <ion-row *ngIf="!load">
@@ -119,21 +121,16 @@
 
             <ion-row style="" *ngIf="!load">
               <ion-col size="12" class="ion-text-left">
-                <p class="p-normal" style="color: #000000; font-weight: bold;">Selecciona una promoción de boletos</p>
+                <p class="p-normal" style="color: #000000; font-weight: bold;">Selecciona una promoción</p>
               </ion-col>
             </ion-row>
 
             <ion-row style="" *ngIf="!load">
               <ion-col size="12" class="ion-text-center" *ngFor="let tickets of raffles.tickets">
-                <ion-button
-                  [color]="tickets.promotions.id == form.promotion_id ? 'warning' : 'medium'"
-                  [fill]="tickets.promotions.id == form.promotion_id ? 'solid' : 'outline'"
-                  shape="round"
-                  expand="full"
-                  style="font-size: 12px; height: 35px;"
-                  (click)="setData(tickets.id, tickets.promotions.id)"
-                  [disabled]="!tickets.promotions.available"
-                >
+                <ion-button [color]="tickets.promotions.id == form.promotion_id ? 'warning' : 'medium'"
+                  [fill]="tickets.promotions.id == form.promotion_id ? 'solid' : 'outline'" shape="round" expand="full"
+                  style="font-size: 12px; height: 35px;" (click)="setData(tickets.id, tickets.promotions.id)"
+                  [disabled]="!tickets.promotions.available">
                   {{ tickets.promotions.price }} ({{ tickets.promotions.quantity }} BOLETOS)
                 </ion-button>
               </ion-col>
@@ -156,23 +153,25 @@
     <ion-grid>
       <ion-row style="">
         <ion-col size="12" class="ion-text-center">
-          <p class="p-info" style="color: #000000;">Al comprar acepta nuestros <span style="color: #f5933b; cursor: pointer;" (click)="policies()">términos y condiciones</span></p>
+          <p class="p-info" style="color: #000000;">Al continuar acepta nuestros <span
+              style="color: #f5933b; cursor: pointer;" (click)="policies()">términos y condiciones</span></p>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col size="12" class="ion-text-center" *ngIf="profile.become_seller == true || profile.seller == true">
-          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData('2')">
-            Vender
+          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full"
+            (click)="buyData('2')">
+            Para compartir
           </ion-button>
         </ion-col>
-        <ion-col size="12" class="ion-text-center"  *ngIf="profile.seller == false">
-          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full" (click)="buyData('1')">
-            Comprar
+        <ion-col size="12" class="ion-text-center" *ngIf="profile.seller == false">
+          <ion-button [disabled]="!form.promotion_id" mode="ios" class="app-button-jimbo" shape="round" expand="full"
+            (click)="buyData('1')">
+            Para mí
           </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-toolbar>
 </ion-footer>
-  
